@@ -31,7 +31,293 @@
 ```
 # 
 ```
+Lakukan perombakan frontend toko-digital secara menyeluruh agar hasil akhirnya benar-benar mendekati UI referensi Digital Cell yang sudah diberikan sebelumnya.
 
+PENTING:
+- Jangan membuat screenshot-to-code atau fitur screenshot-to-code.
+- Jangan hanya memperbaiki sebagian kecil tampilan.
+- Jangan mengulang pekerjaan yang sudah benar.
+- Sebelum mengubah kode, audit seluruh repository dan pahami struktur yang sudah ada.
+- Pertahankan fitur yang memang sudah berfungsi dan jangan merusaknya.
+- Fokus utama sekarang adalah kualitas UI/UX frontend.
+- Setelah semua perubahan selesai, jalankan lint dan build.
+- Perbaiki semua error sampai build berhasil.
+- Commit semua perubahan dan push ke branch utama repository.
+- Setelah push selesai, pastikan working tree bersih.
+
+TARGET DESAIN:
+Gunakan UI referensi Digital Cell yang diberikan user sebagai acuan visual utama. Hasil akhir harus terasa seperti website toko digital profesional, modern, premium, clean, responsive, bukan halaman template sederhana.
+
+STRUKTUR HALAMAN UTAMA:
+1. HEADER
+   - Desktop dan mobile responsive.
+   - Logo/brand Digital Cell di kiri.
+   - Subjudul/tagline kecil di bawah nama brand.
+   - Tombol dark/light mode.
+   - Tombol menu.
+   - Header berbentuk rounded card dengan shadow/border halus.
+   - Jangan membuat header terlalu tinggi.
+   - Gunakan typography yang modern dan konsisten.
+   - Mobile harus tetap rapi dan tidak membuat elemen bertabrakan.
+
+2. HERO BANNER
+   - Buat hero banner besar dengan rounded corners.
+   - Background dominan biru gelap/gradient biru seperti referensi.
+   - Sediakan headline besar:
+     "Solusi Digital
+      Dalam Genggaman"
+   - Deskripsi:
+     "Akun premium, aplikasi, top up,
+      dan layanan digital lainnya."
+   - Tombol CTA "Belanja Sekarang".
+   - Sediakan visual produk/ilustrasi digital di sisi kanan.
+   - Tambahkan indikator carousel kecil di bagian bawah.
+   - Hero harus terlihat premium dan seimbang.
+   - Jangan menggunakan blok biru polos dengan tombol besar di tengah.
+   - Jangan membuat hero seperti landing page generik.
+
+3. SEARCH BAR
+   - Setelah hero, buat search bar besar rounded.
+   - Ada icon search.
+   - Placeholder:
+     "Cari produk, layanan, atau kategori..."
+   - Tambahkan tombol filter di sisi kanan.
+   - Search bar harus terlihat seperti komponen marketplace modern.
+   - Responsive untuk mobile.
+
+4. CATEGORY NAVIGATION
+   - Buat kategori horizontal/card navigation seperti referensi.
+   - Kategori:
+     Semua
+     AI & Tools
+     Aplikasi
+     Streaming
+     Top Up
+     Cloud & Server
+     Lainnya
+   - Setiap kategori mempunyai icon/visual yang jelas.
+   - Kategori aktif memiliki warna biru dan indicator aktif.
+   - Desktop horizontal.
+   - Mobile dapat horizontal scroll tanpa scrollbar yang mengganggu.
+   - Jangan menggunakan emoji sebagai visual utama jika tersedia icon yang lebih profesional.
+   - Konsisten ukuran icon, card, typography dan spacing.
+
+5. PRODUK POPULER
+   - Heading:
+     "🔥 Produk Populer"
+   - Ada link "Lihat Semua →" di kanan.
+   - Product grid responsive.
+   - Desktop menampilkan 4 product card dalam satu row seperti referensi.
+   - Tablet 2 kolom.
+   - Mobile 2 kolom jika masih nyaman, atau 1 kolom jika diperlukan berdasarkan breakpoint.
+   - Card harus memiliki:
+     image/thumbnail area,
+     badge status,
+     nama produk,
+     tipe produk,
+     rating,
+     jumlah terjual,
+     harga mulai,
+     harga utama,
+     tombol order/cart.
+   - Gunakan hierarchy typography yang jelas.
+   - Card rounded, border/shadow halus.
+   - Image product harus dominan dan konsisten.
+   - Badge seperti Terlaris, Promo, Ready, New harus terlihat profesional.
+   - Jangan membuat card terlalu tinggi atau terlalu kosong.
+
+6. PROMO BANNER
+   - Buat banner promo seperti referensi:
+     "DISKON TERBATAS"
+     "Dapatkan Diskon Hingga 20%"
+     "Untuk semua produk pilihan"
+   - Background biru gelap/gradient.
+   - Ada visual discount/20% di sisi kanan.
+   - Ada CTA/arrow.
+   - Rounded corners.
+   - Responsive.
+
+7. TRUST FEATURES
+   - Tambahkan section fitur:
+     Aman & Terpercaya
+     Proses Cepat
+     Layanan 24/7
+     Harga Terbaik
+   - Setiap item mempunyai icon, title dan subtitle.
+   - Layout horizontal pada desktop dan adaptif pada mobile.
+   - Visual harus ringan dan premium.
+
+8. BOTTOM NAVIGATION MOBILE
+   - Pada mobile buat bottom navigation seperti referensi.
+   - Menu:
+     Beranda
+     Kategori
+     Pesanan
+     Favorit
+     Akun
+   - Fixed di bawah.
+   - Rounded/clean container.
+   - Active state jelas.
+   - Jangan menutupi konten.
+   - Berikan padding bawah pada halaman agar konten terakhir tidak tertutup bottom navigation.
+   - Desktop boleh menyembunyikan bottom navigation jika memang lebih sesuai.
+
+9. DARK MODE
+   - Pastikan dark mode benar-benar didesain, bukan sekadar membalik warna.
+   - Background, card, border, text, icon, hero dan input harus mempunyai dark-mode treatment yang konsisten.
+   - Tidak boleh ada text hitam di background gelap atau text putih yang sulit dibaca.
+   - Simpan preferensi theme bila struktur aplikasi saat ini mendukungnya.
+
+10. RESPONSIVE
+   Pastikan hasil benar-benar bagus pada:
+   - mobile 360px
+   - mobile 390px
+   - mobile 430px
+   - tablet
+   - desktop 1280px+
+   Tidak boleh ada:
+   - horizontal overflow
+   - text terpotong
+   - tombol keluar layar
+   - card terlalu kecil
+   - image gepeng
+   - header berantakan
+   - bottom navigation menutupi konten.
+
+ARSITEKTUR:
+- Gunakan component reusable.
+- Jangan membuat seluruh homepage menjadi satu file besar.
+- Pisahkan komponen seperti:
+  Header
+  HeroBanner
+  SearchBar
+  CategoryNav
+  ProductSection
+  ProductCard
+  PromoBanner
+  TrustFeatures
+  MobileBottomNav
+  dan komponen lain jika diperlukan.
+- Gunakan data produk/kategori dari source data yang sudah ada jika masih relevan.
+- Jangan membuat data duplicate hanya untuk mempercantik UI.
+- Jika ada komponen lama yang masih bagus, reuse dan refactor seperlunya.
+
+PRODUCT ORDER:
+Website ini BUKAN checkout marketplace penuh.
+Tidak perlu membuat sistem pembayaran/checkout.
+Alur order utama adalah:
+produk -> detail produk -> tombol order -> WhatsApp.
+Pastikan tombol order mengarah ke WhatsApp dengan pesan order yang sudah terisi berdasarkan produk.
+Nomor WhatsApp/config jangan hardcode di banyak tempat; gunakan satu konfigurasi/data source.
+
+PRODUCT DETAIL:
+- Pastikan halaman detail produk juga mempunyai kualitas visual yang sama dengan homepage.
+- Informasi produk harus jelas.
+- Harga jelas.
+- Deskripsi jelas.
+- Status/badge jelas.
+- Tombol "Order via WhatsApp" menjadi CTA utama.
+- Jangan membuat checkout/payment flow.
+
+CATEGORY:
+- Halaman kategori harus konsisten dengan homepage.
+- User dapat memilih kategori dan melihat produk terkait.
+- Search/filter jika fitur tersebut sudah tersedia harus tetap berfungsi.
+- Jangan merusak routing yang sudah ada.
+
+ADMIN PANEL:
+- Jangan menghapus panel admin yang sudah ada.
+- Audit panel admin yang sudah dibuat.
+- Pastikan route/admin functionality tidak rusak akibat redesign frontend.
+- Jika panel admin sudah memiliki struktur/data produk, gunakan data tersebut pada frontend bila arsitektur repository memang sudah mendukung.
+- Jangan membuat panel admin kedua/duplikat.
+
+KUALITAS VISUAL:
+- Gunakan satu design system yang konsisten.
+- Gunakan spacing yang teratur.
+- Gunakan border radius konsisten.
+- Gunakan shadow secara halus.
+- Jangan terlalu banyak gradient.
+- Warna utama mengikuti referensi: putih/light background dengan aksen biru kuat, serta dark mode yang profesional.
+- Typography harus memiliki hierarchy yang jelas.
+- Jangan menggunakan emoji sebagai pengganti seluruh icon UI.
+- Jangan membuat UI terlihat seperti prototype kasar.
+- Hindari excessive glassmorphism.
+- Hindari oversized button yang memenuhi layar.
+- Hindari whitespace yang tidak perlu.
+- Pastikan alignment antar section rapi.
+
+ASSET:
+- Audit asset yang sudah ada terlebih dahulu.
+- Jika sudah ada logo/product image/asset yang relevan, gunakan kembali.
+- Jangan membuat asset duplicate dengan nama berbeda.
+- Jika asset belum ada, gunakan solusi visual yang konsisten dengan design system dan mudah diganti nantinya.
+- Pastikan image memiliki aspect ratio yang benar dan tidak pecah.
+
+TECHNICAL AUDIT:
+Sebelum selesai:
+1. Audit package.json.
+2. Audit src/app.
+3. Audit src/components.
+4. Audit src/lib/data atau sumber data yang digunakan.
+5. Audit routing.
+6. Audit theme/dark mode.
+7. Audit Tailwind/CSS/global CSS.
+8. Audit image handling.
+9. Audit environment variables.
+10. Audit dependency yang tidak terpakai.
+11. Cari duplicate app directory atau route duplicate.
+12. Cari import yang salah.
+13. Cari component yang tidak digunakan.
+14. Cari error TypeScript.
+15. Cari masalah hydration/client component.
+16. Pastikan konfigurasi Vercel kompatibel dengan Next.js project.
+17. Jangan menambahkan dependency baru jika tidak diperlukan.
+
+VERCEL:
+- Project harus siap deploy ke Vercel.
+- Jangan membutuhkan VPS untuk frontend.
+- Pastikan build production berhasil dengan command yang digunakan Vercel.
+- Pastikan environment variable yang diperlukan terdokumentasi.
+- Jangan memasukkan secret/API key ke source code.
+- Jangan membuat backend baru jika belum diperlukan.
+
+VALIDASI:
+Setelah implementasi:
+- npm run lint
+- npm run build
+- jika ada test yang relevan, jalankan test yang memang aman/relevan.
+- Perbaiki error yang ditemukan.
+- Jalankan build ulang sampai PASS.
+- Jangan berhenti hanya karena lint berhasil.
+- Pastikan production build benar-benar berhasil.
+
+GIT:
+Setelah semuanya benar:
+- git status
+- git diff
+- git add -A
+- git commit dengan pesan yang jelas, misalnya:
+  "feat: rebuild Digital Cell storefront UI"
+- git push origin main
+
+SEBELUM MENYATAKAN SELESAI:
+- Pastikan perubahan benar-benar sudah masuk remote repository.
+- Pastikan git status bersih.
+- Pastikan tidak ada perubahan penting yang tertinggal.
+- Jangan hanya mengatakan "sudah selesai" tanpa memastikan push berhasil.
+
+HASIL YANG DIHARAPKAN:
+Homepage final harus secara visual mendekati referensi Digital Cell yang diberikan user: header premium, hero banner biru, search bar, category navigation, product cards 4 kolom, promo banner, trust section, dan mobile bottom navigation.
+
+Jangan mengurangi scope menjadi sekadar memperbaiki error build. Kerjakan redesign frontend secara menyeluruh, tetapi tetap pertahankan fitur yang sudah benar.
+
+Setelah semua selesai, cukup tampilkan ringkasan:
+- perubahan utama
+- lint status
+- build status
+- commit hash
+- push status
 ```
 # 
 ```
