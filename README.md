@@ -47,7 +47,91 @@
 ```
 # 
 ```
+Lanjutkan project toko-digital sampai benar-benar siap dipakai dan langsung push semua perubahan ke branch main.
 
+TARGET UTAMA:
+1. Selesaikan UI customer agar semirip mungkin dengan desain referensi yang sudah diberikan sebelumnya.
+2. Buat Panel Admin yang benar-benar berfungsi.
+3. Jangan membuat checkout/cart/payment. Website hanya katalog dan tombol Order via WhatsApp.
+4. Setelah semua selesai, jalankan lint + build, perbaiki error jika ada, lalu commit dan push ke main.
+5. Jangan hanya menjelaskan atau memberi saran — langsung edit file project.
+
+UI CUSTOMER:
+- Header dengan logo/nama Digital Cell, tagline, tombol dark mode, dan menu mobile.
+- Hero/banner besar dengan desain modern seperti referensi.
+- Search produk.
+- Filter/kategori: Semua, AI & Tools, Aplikasi, Streaming, Top Up, Cloud & Server, Lainnya.
+- Section Produk Populer dengan card produk.
+- Product card menampilkan gambar, badge, nama, tipe, rating/terjual, harga mulai, dan tombol Order.
+- Banner promo/diskon.
+- Section keunggulan: Aman & Terpercaya, Proses Cepat, Layanan 24/7, Harga Terbaik.
+- Bottom navigation mobile seperti referensi: Beranda, Kategori, Pesanan, Favorit, Akun.
+- Responsive desktop/mobile.
+- Dark mode tetap berfungsi.
+- Gunakan data produk yang sudah ada, jangan merusak struktur data yang sudah dibuat.
+- Tombol produk/order harus mengarah ke WhatsApp dengan pesan order yang otomatis berisi nama produk.
+- Tidak perlu sistem checkout internal.
+
+HALAMAN CUSTOMER:
+- /
+- /produk
+- /produk/[slug] atau route detail yang sudah digunakan project
+- kategori/filter tetap berfungsi.
+- Search dan navigasi harus benar-benar bekerja, bukan sekadar tampilan.
+
+PANEL ADMIN:
+Buat route /admin dengan layout admin yang rapi dan responsive.
+Fitur minimal:
+- Dashboard ringkas.
+- Kelola produk: tambah, edit, hapus, aktif/nonaktif.
+- Kelola kategori.
+- Pengaturan nomor WhatsApp toko.
+- Pengaturan nama toko, logo, tagline, banner/teks promo jika arsitektur project memungkinkan.
+- Daftar produk menampilkan status aktif/nonaktif.
+- Admin UI harus terpisah dari UI customer.
+- Tambahkan navigasi/sidebar admin.
+- Jangan membuat fitur pembayaran atau checkout.
+
+AUTH ADMIN:
+- Jangan membuat sistem authentication kompleks jika backend/database belum tersedia.
+- Buat struktur admin yang modular sehingga authentication bisa ditambahkan kemudian.
+- Jangan menyimpan secret/API key di frontend.
+- Jika project saat ini sudah mempunyai mekanisme auth/backend, gunakan mekanisme tersebut dan jangan menggantinya secara sembarangan.
+
+ARSITEKTUR:
+- Komponen harus modular.
+- Jangan menumpuk seluruh UI dalam satu file.
+- Reuse ProductCard, CategoryCard, Header, Hero, Footer/BottomNav, dan komponen admin yang relevan.
+- Pertahankan TypeScript yang sudah ada.
+- Gunakan data layer yang sudah ada.
+- Jika diperlukan, buat data/config terpusat agar produk dan setting toko mudah dikelola.
+
+DESAIN:
+- Ikuti referensi UI yang sudah diberikan sebelumnya sebagai acuan utama.
+- Nuansa modern toko digital: putih/soft background, biru sebagai warna utama, rounded card, shadow halus, typography bersih.
+- Desktop dan mobile harus sama-sama bagus.
+- Jangan mengganti desain menjadi template generik.
+- Pastikan spacing, card, header, hero, kategori, dan bottom navigation terasa seperti desain referensi.
+
+SEBELUM SELESAI:
+- Periksa semua route customer.
+- Periksa /admin.
+- Jalankan npm run lint.
+- Jalankan npm run build.
+- Jika ada error, perbaiki langsung.
+- Jangan berhenti hanya karena ada warning non-fatal.
+- Pastikan tidak ada import/path yang rusak.
+- Pastikan environment variable yang diperlukan terdokumentasi di .env.example tanpa memasukkan secret asli.
+
+GIT:
+- Cek git status.
+- Stage perubahan yang memang berasal dari pekerjaan ini.
+- Commit dengan pesan yang jelas, misalnya:
+  "Complete toko-digital customer UI and admin panel"
+- Push langsung ke origin main.
+- Setelah push, tampilkan commit hash terakhir dan ringkasan singkat hasil pekerjaan.
+
+KERJAKAN LANGSUNG. Jangan meminta saya menyalin kode satu per satu dan jangan hanya memberikan instruksi.
 ```
 # 
 ```
