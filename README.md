@@ -39,7 +39,355 @@
 ```
 # 
 ```
+Lakukan AUDIT MENYELURUH project toko-digital dan selesaikan sampai benar-benar siap deploy production ke Vercel. Jangan hanya memperbaiki error yang terlihat dari log terakhir. Audit seluruh project terlebih dahulu, lalu perbaiki semua masalah yang berpotensi menyebabkan build gagal, runtime error, route error, UI rusak, atau fitur tidak berjalan.
 
+KONTEKS PROJECT:
+- Repository: toko-digital
+- Target hosting: Vercel
+- Framework: Next.js + TypeScript
+- Website adalah katalog/toko digital.
+- Website BUKAN sistem checkout/payment.
+- Tombol order produk harus mengarah ke WhatsApp.
+- UI harus mengikuti desain/referensi yang sudah dibuat sebelumnya.
+- Panel admin harus tetap tersedia.
+- Jangan menghapus fitur yang sudah ada hanya untuk membuat build berhasil.
+- Jangan membuat workaround yang menyembunyikan error.
+- Jangan membuat struktur /app kedua. Gunakan struktur App Router yang benar dan konsisten.
+
+TUJUAN AKHIR:
+Project harus dalam kondisi:
+1. Bisa install dependency dari kondisi repository fresh.
+2. Lulus TypeScript check.
+3. Lulus ESLint/lint.
+4. Lulus production build Next.js.
+5. Tidak ada Module not found.
+6. Tidak ada import path yang salah/case-sensitive.
+7. Tidak ada dependency yang dipakai tetapi tidak tercantum di package.json.
+8. Tidak ada dependency tidak diperlukan yang menyebabkan masalah build.
+9. Semua route utama bisa di-build.
+10. Tidak ada server/client component conflict.
+11. Tidak ada penggunaan browser API di Server Component.
+12. Tidak ada penggunaan server-only API di Client Component.
+13. Tidak ada environment variable yang salah nama atau salah penggunaan.
+14. Konfigurasi Vercel/Next.js aman untuk deployment.
+15. UI utama tetap sesuai desain.
+16. Panel admin tetap tersedia dan route-nya benar.
+17. Tombol order menggunakan WhatsApp sesuai konsep website.
+18. Responsive mobile dan desktop tetap baik.
+19. Dark mode tetap berfungsi jika sudah dibuat.
+20. Tidak ada error console/build yang jelas dari source code.
+21. Setelah semua selesai, perubahan di-commit dan di-push ke branch main.
+
+TAHAP 1 — AUDIT STRUKTUR PROJECT
+Periksa seluruh struktur repository terlebih dahulu.
+
+Audit:
+- app/
+- src/app/
+- src/components/
+- src/lib/
+- public/
+- package.json
+- package-lock.json
+- tsconfig.json
+- next.config.*
+- eslint config
+- postcss config
+- tailwind config jika digunakan
+- middleware jika ada
+- environment files
+- konfigurasi Vercel jika ada
+- semua file konfigurasi lain.
+
+Pastikan tidak ada struktur App Router ganda atau file lama yang bertabrakan.
+
+Pastikan route hanya memiliki satu sumber yang benar.
+
+Cari:
+- duplicate app directory
+- duplicate layout
+- duplicate globals.css
+- duplicate page.tsx
+- route collision
+- folder yang salah posisi
+- import dari file yang sudah dipindahkan/dihapus.
+
+TAHAP 2 — AUDIT SEMUA IMPORT
+Periksa SEMUA import di seluruh source code.
+
+Cari:
+- Module not found
+- file path salah
+- alias @/ yang tidak sesuai tsconfig
+- relative import yang salah
+- import case-sensitive yang mungkin berhasil di Windows tetapi gagal di Linux/Vercel
+- import file yang tidak ada
+- import dependency yang tidak terinstall
+- import dependency yang hanya tersedia sebagai devDependency tetapi diperlukan saat build/runtime
+- circular dependency yang bermasalah.
+
+Jangan hanya memperbaiki import yang disebut dalam error terakhir. Scan seluruh repository.
+
+TAHAP 3 — AUDIT PACKAGE.JSON
+Periksa package.json secara menyeluruh.
+
+Pastikan:
+- semua package yang benar-benar digunakan tersedia.
+- versi package kompatibel satu sama lain.
+- Next.js, React, React DOM, TypeScript, Tailwind, icon library, dan package lainnya kompatibel.
+- tidak ada package yang dipanggil source code tetapi belum diinstall.
+- package-lock.json sinkron dengan package.json.
+- script lint/typecheck/build benar.
+- tidak ada script build yang salah.
+- tidak ada konfigurasi yang hanya bekerja lokal tetapi gagal di Vercel.
+
+Jika perlu dependency tambahan, install secara normal dan update package-lock.json.
+
+TAHAP 4 — AUDIT NEXT.JS + TYPESCRIPT
+Periksa semua:
+- layout.tsx
+- page.tsx
+- loading.tsx
+- error.tsx
+- not-found.tsx
+- route.ts
+- metadata
+- server/client components
+- dynamic routes
+- params/searchParams
+- penggunaan hooks
+- penggunaan window/document/localStorage
+- penggunaan environment variables.
+
+Pastikan penggunaan "use client" hanya pada component yang memang membutuhkan client-side API/hooks.
+
+Pastikan globals.css diimport pada lokasi yang benar.
+
+Pastikan tidak ada component client yang menyebabkan dependency server-only masuk ke browser bundle.
+
+TAHAP 5 — AUDIT CSS/UI
+Periksa seluruh UI tanpa mengubah konsep desain.
+
+Referensi desain utama:
+- header dengan logo/nama toko
+- tombol dark mode
+- menu
+- hero/banner
+- search
+- kategori
+- produk populer
+- product card
+- promo banner
+- benefit/keunggulan
+- navigasi/footer jika sudah dibuat
+- responsive layout.
+
+Pastikan:
+- tidak ada class Tailwind yang invalid.
+- tidak ada CSS import yang rusak.
+- tidak ada asset path yang salah.
+- gambar dari public dapat ditemukan.
+- icon/component yang dipakai tersedia.
+- tidak ada layout overflow pada mobile.
+- tidak ada komponen yang hilang akibat import error.
+
+Jangan redesign dari nol. Pertahankan UI yang sudah dibuat.
+
+TAHAP 6 — AUDIT DATA PRODUK
+Periksa data katalog dan struktur data.
+
+Pastikan:
+- products dapat diimport.
+- categories dapat diimport.
+- product ID unik.
+- category ID unik.
+- product/category relationship benar.
+- ProductCard menerima props yang benar.
+- tidak ada field yang digunakan UI tetapi tidak tersedia di data.
+- harga dan informasi produk ditampilkan dengan benar.
+- data provider jika ada tidak menyebabkan build error.
+
+TAHAP 7 — AUDIT WHATSAPP ORDER
+Website tidak menggunakan checkout/payment internal.
+
+Audit alur order:
+- tombol order produk tersedia.
+- tombol tersebut membuat link WhatsApp yang valid.
+- nomor WhatsApp berasal dari konfigurasi yang sesuai.
+- pesan order otomatis berisi informasi produk yang relevan.
+- encoding URL benar.
+- tidak ada link WhatsApp rusak.
+- tidak ada checkout/cart/payment flow yang tidak diperlukan.
+
+Jika nomor WhatsApp membutuhkan environment variable, pastikan fallback/configuration-nya jelas dan tidak menyebabkan build gagal.
+
+TAHAP 8 — AUDIT PANEL ADMIN
+Panel admin WAJIB dipertahankan.
+
+Pastikan route berikut dan route admin lain yang sudah ada tetap bekerja:
+- /admin
+- /admin/login
+- /admin/produk
+- /admin/kategori
+
+Audit:
+- routing
+- login flow
+- form
+- state management
+- data handling
+- component import
+- admin layout
+- responsive UI
+- client/server boundary.
+
+Jangan menghapus panel admin hanya karena deployment publik belum menggunakan backend/database.
+
+Jika sebagian fitur admin memang masih mock/static, jangan mengarang backend baru. Pastikan setidaknya source code tetap valid dan buildable.
+
+TAHAP 9 — AUDIT ENVIRONMENT VARIABLES
+Periksa:
+- .env
+- .env.example
+- penggunaan process.env
+- variable yang diperlukan saat build
+- variable yang hanya diperlukan runtime.
+
+Jangan pernah commit secret/API key/password/token.
+
+Pastikan .env.example berisi nama variable yang diperlukan tanpa secret asli.
+
+Jika environment variable diperlukan Vercel, dokumentasikan nama variable yang harus tersedia.
+
+TAHAP 10 — AUDIT PUBLIC ASSETS
+Scan semua:
+- image
+- logo
+- icon
+- font
+- SVG
+- favicon
+- asset public lainnya.
+
+Pastikan semua path valid.
+
+Cari referensi seperti:
+- /images/...
+- /icons/...
+- /logo...
+- background-image
+- next/image src
+- CSS url()
+
+Pastikan tidak ada asset yang hanya tersedia di environment lokal.
+
+TAHAP 11 — AUDIT BUILD ERROR SAAT INI
+Fokus khusus pada error Vercel sebelumnya yang menunjukkan dua error dan import trace melalui:
+
+src/app/globals.css
+src/app/layout.tsx
+
+Cari root cause sebenarnya dari error tersebut dan periksa semua dependency yang digunakan oleh globals.css/layout.tsx.
+
+Jangan menganggap masalah hanya ada pada dua file tersebut. Trace dependency sampai akar masalah.
+
+TAHAP 12 — TEST DARI KONDISI BERSIH
+Setelah perbaikan, simulasikan environment fresh install.
+
+Gunakan install yang sesuai dengan lockfile, lalu jalankan:
+
+npm run lint
+npx tsc --noEmit
+npm run build
+
+Jika script lint belum benar, perbaiki script/configuration-nya terlebih dahulu.
+
+Build harus benar-benar production build, bukan hanya dev server.
+
+Jika build gagal:
+- baca error lengkap.
+- cari root cause.
+- perbaiki.
+- jalankan ulang.
+- jangan berhenti pada error pertama jika masih ada error lain.
+
+Teruskan sampai:
+- lint PASS
+- TypeScript PASS
+- build PASS
+
+TAHAP 13 — AUDIT ROUTES SETELAH BUILD
+Setelah build berhasil, periksa daftar route yang dihasilkan Next.js.
+
+Pastikan tidak ada route utama yang hilang.
+
+Pastikan route:
+- /
+- halaman katalog/produk yang sudah dibuat
+- route kategori jika ada
+- /admin
+- /admin/login
+- /admin/produk
+- /admin/kategori
+
+terdeteksi dengan benar sesuai implementasi repository.
+
+TAHAP 14 — FINAL CLEANUP
+Sebelum commit:
+- hapus file sementara.
+- hapus duplicate files.
+- hapus debugging console yang tidak diperlukan.
+- jangan hapus fitur.
+- jangan commit .env berisi secret.
+- pastikan package-lock.json berubah hanya jika memang diperlukan.
+- pastikan git diff masuk akal.
+
+Jalankan:
+
+git status
+git diff --stat
+git diff --check
+
+Perbaiki whitespace/error jika ada.
+
+TAHAP 15 — COMMIT DAN PUSH
+Jika semua test PASS:
+- git add semua perubahan yang relevan.
+- commit dengan pesan yang jelas, misalnya:
+  "fix: prepare toko-digital for Vercel production"
+
+- push ke branch main.
+
+Setelah push, pastikan:
+- working tree bersih atau hanya menyisakan file yang memang sengaja tidak di-track.
+- commit terbaru sudah berada di remote.
+- tampilkan hash commit terakhir.
+
+ATURAN PENTING:
+- Jangan berhenti setelah audit saja.
+- Jangan hanya memberikan laporan; LAKUKAN perbaikannya.
+- Jangan meminta saya memperbaiki langkah manual yang sebenarnya bisa kamu perbaiki di repository.
+- Jangan menghapus fitur untuk menghilangkan error.
+- Jangan mengganti UI dengan desain sederhana.
+- Jangan membuat /app kedua.
+- Jangan membuat checkout/payment system.
+- Jangan menambahkan backend/database baru jika tidak diperlukan untuk menyelesaikan build.
+- Jangan menggunakan workaround yang hanya membuat Vercel melewati error.
+- Semua perbaikan harus production-ready.
+- Jangan berhenti sebelum lint, TypeScript check, dan production build berhasil.
+- Setelah berhasil, langsung commit dan push ke main.
+
+HASIL AKHIR YANG SAYA INGINKAN:
+Project toko-digital dalam kondisi siap deploy ke Vercel. Saya cukup melakukan deployment ulang dan tidak perlu memperbaiki error satu per satu lagi.
+
+Setelah selesai, berikan ringkasan singkat:
+1. Masalah yang ditemukan.
+2. Perbaikan yang dilakukan.
+3. Hasil lint.
+4. Hasil TypeScript.
+5. Hasil production build.
+6. Commit hash.
+7. Status push ke main.
 ```
 # 
 ```
