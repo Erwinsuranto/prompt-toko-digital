@@ -51,7 +51,40 @@
 ```
 # 
 ```
+Finalisasi project toko-digital sampai siap deploy ke Vercel.
 
+Kerjakan langsung di repository, jangan hanya memberi penjelasan.
+
+Target:
+- Website katalog Toko Digital, BUKAN checkout/e-commerce penuh.
+- Order semua produk melalui WhatsApp.
+- UI harus mengikuti desain referensi yang sudah diberikan: modern, clean, dominan putih/blue, rounded card, responsive mobile/desktop.
+- Pertahankan struktur modular yang sudah ada.
+- Pastikan homepage memiliki:
+  1. Header/logo Digital Cell + dark mode + menu
+  2. Hero/banner
+  3. Search produk
+  4. Kategori
+  5. Produk populer
+  6. Banner promo
+  7. Keunggulan layanan
+  8. Navigasi mobile bawah
+- Produk memiliki detail yang jelas dan tombol Order via WhatsApp.
+- Jangan membuat sistem cart/checkout/payment.
+- Pastikan nomor/link WhatsApp mudah dikonfigurasi.
+- Pastikan tidak ada data dummy yang merusak tampilan.
+- Pastikan semua halaman dan navigasi berfungsi.
+- Pastikan responsive dan tidak ada overflow pada mobile.
+- Jalankan lint/typecheck/build dan perbaiki semua error.
+- Jangan mengubah requirement menjadi aplikasi checkout.
+- Setelah selesai, commit semua perubahan dan push langsung ke branch main.
+- Jangan berhenti sebelum build berhasil dan perubahan sudah di-push.
+
+Terakhir tampilkan:
+1. ringkasan perubahan,
+2. hasil lint/typecheck/build,
+3. commit hash,
+4. konfirmasi push berhasil.
 ```
 
 # 
