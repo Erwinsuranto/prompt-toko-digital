@@ -7,7 +7,51 @@
 ```
 # 
 ```
+Lanjutkan project toko-digital sampai benar-benar siap digunakan dan push semua perubahan ke repository GitHub.
 
+Target:
+- Website katalog toko digital.
+- Hosting target Vercel.
+- Tidak ada fitur checkout.
+- Semua tombol order mengarah ke WhatsApp.
+- UI mengikuti desain referensi yang saya berikan sebelumnya.
+- Jangan mengubah konsep menjadi marketplace/checkout.
+
+Kerjakan sampai selesai, bukan hanya membuat sebagian.
+
+Pastikan:
+1. Homepage lengkap dan responsive desktop/mobile.
+2. Header dengan logo/nama Digital Cell, dark mode, dan menu mobile.
+3. Hero/banner seperti desain referensi.
+4. Search produk.
+5. Kategori produk.
+6. Product card dengan gambar, nama, deskripsi singkat, rating, harga, badge, dan tombol Order.
+7. Section produk populer.
+8. Banner promo.
+9. Section keunggulan toko.
+10. Navigasi mobile.
+11. Halaman kategori.
+12. Halaman/detail produk.
+13. Tombol Order via WhatsApp menggunakan nomor yang mudah dikonfigurasi melalui environment variable.
+14. Tidak membuat sistem cart, checkout, pembayaran, login, atau database yang tidak diperlukan.
+15. Data produk dibuat terstruktur/modular sehingga mudah ditambah nanti.
+16. Gunakan komponen reusable dan jangan menumpuk semua kode dalam satu file.
+17. Pastikan tampilan mendekati desain referensi: clean, modern, rounded card, spacing rapi, nuansa biru/putih, dan mobile-first.
+18. Pastikan tidak ada TypeScript error, lint error, atau build error.
+19. Jalankan pemeriksaan lint/typecheck dan production build.
+20. Perbaiki semua error yang ditemukan.
+21. Pastikan konfigurasi Vercel/Next.js siap deployment.
+22. Setelah selesai, commit seluruh perubahan dan push langsung ke branch utama repository.
+
+Jangan berhenti setelah memberi penjelasan. Kerjakan perubahan langsung di repository dan push sampai selesai.
+
+Setelah push berhasil, tampilkan:
+- commit terakhir
+- hasil lint/typecheck
+- hasil build
+- ringkasan fitur yang selesai
+
+Jika ada bagian yang belum selesai, selesaikan terlebih dahulu sebelum memberikan laporan.
 ```
 
 # 
