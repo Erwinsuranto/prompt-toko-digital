@@ -35,7 +35,75 @@
 ```
 # 
 ```
+Audit sebelumnya belum benar-benar selesai. Saya sudah cek repository dan menemukan root cause build Vercel masih ada.
 
+WAJIB perbaiki langsung dan selesaikan sampai production build PASS.
+
+Root cause yang sudah terkonfirmasi:
+- src/app/globals.css menggunakan @import "tailwindcss";
+- postcss.config.mjs menggunakan plugin "@tailwindcss/postcss"
+- tetapi package.json TIDAK memiliki tailwindcss dan @tailwindcss/postcss.
+
+Perbaiki root cause tersebut dengan dependency/configuration yang benar dan kompatibel dengan Next.js yang digunakan project.
+
+Setelah itu JANGAN berhenti.
+
+Lakukan audit ulang seluruh repository seperti instruksi sebelumnya:
+1. package.json dan package-lock.json harus sinkron.
+2. Semua dependency yang digunakan source code harus tersedia.
+3. Semua import harus valid.
+4. Audit case-sensitive path untuk Linux/Vercel.
+5. Audit src/app dan pastikan tidak ada duplicate app directory.
+6. Audit layout.tsx dan globals.css.
+7. Audit seluruh client/server component boundary.
+8. Audit Tailwind/PostCSS configuration.
+9. Audit TypeScript configuration.
+10. Audit seluruh route customer.
+11. Audit seluruh route admin.
+12. Pastikan /admin, /admin/login, /admin/produk, /admin/kategori tetap ada.
+13. Jangan hapus panel admin.
+14. Jangan mengubah konsep UI.
+15. Jangan menghapus fitur WhatsApp order.
+16. Pastikan NEXT_PUBLIC_WHATSAPP_NUMBER digunakan dengan benar.
+17. Pastikan .env.example tidak berisi secret asli.
+18. Audit semua asset public dan import gambar/icon.
+19. Audit semua dependency yang dipakai component.
+20. Audit semua konfigurasi Next.js/Vercel.
+
+Kemudian jalankan dari kondisi dependency bersih:
+
+rm -rf node_modules .next
+npm install
+npx tsc --noEmit
+npm run lint
+npm run build
+
+Jika ada error, jangan hanya memperbaiki error pertama. Trace root cause dan lanjutkan sampai SEMUA PASS.
+
+Perhatikan bahwa script "lint" saat ini sebenarnya menjalankan "tsc --noEmit". Jangan menganggap itu sebagai ESLint. Jika project memang membutuhkan ESLint, konfigurasi dengan benar dan tambahkan script lint yang benar tanpa merusak build.
+
+Pastikan production build benar-benar menghasilkan:
+- ✓ TypeScript/check berhasil
+- ✓ lint berhasil
+- ✓ Next.js production build berhasil
+- ✓ tidak ada Module not found
+- ✓ tidak ada dependency missing
+- ✓ tidak ada route compilation error
+
+Setelah build PASS:
+- jalankan git status
+- git diff --check
+- pastikan tidak ada secret yang ikut commit
+- commit semua perubahan yang diperlukan
+- push ke branch main
+- pastikan remote sudah berisi commit terbaru.
+
+JANGAN berhenti dengan laporan saja.
+JANGAN meminta saya memperbaiki manual.
+JANGAN mengatakan "seharusnya sudah".
+LAKUKAN perbaikan, TEST, COMMIT, dan PUSH.
+
+Target akhir: saya cukup melakukan deploy Vercel ulang dan build harus berhasil.
 ```
 # 
 ```
