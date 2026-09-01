@@ -27,6 +27,434 @@
 ```
 # 
 ```
+Lanjutkan perbaikan project toko-digital di repository yang sedang aktif.
+
+PENTING:
+- Kerjakan langsung di repository.
+- Jangan hanya menjelaskan atau memberi contoh code.
+- Kamu yang melakukan semua perubahan code.
+- Setelah selesai WAJIB jalankan lint dan build.
+- Jika ada error, perbaiki sampai bersih.
+- Setelah semuanya berhasil, commit dan push ke branch main.
+- Jangan mengubah fitur yang sudah berjalan tanpa alasan.
+- Jangan membuat pekerjaan setengah jadi.
+- Jangan menunggu prompt berikutnya untuk memperbaiki masalah yang sudah terlihat dari audit ini.
+- Fokus pada kualitas UI production/mobile terlebih dahulu.
+- Jangan membuat desain baru yang jauh dari desain Digital Cell yang sudah ada.
+
+TUJUAN UTAMA:
+Perbaiki halaman storefront Digital Cell agar tampilan mobile terlihat rapi, profesional, proporsional, dan nyaman digunakan. Masalah terbesar saat ini adalah PRODUCT CARD TERLALU BESAR sehingga satu produk mengambil hampir seluruh lebar/tinggi layar. Produk harus dibuat jauh lebih compact dan ditampilkan dalam GRID 2 KOLOM VERTIKAL.
+
+==================================================
+1. PRODUCT CARD — PRIORITAS PALING TINGGI
+==================================================
+
+Perbaiki section "Produk Populer".
+
+Kondisi sekarang:
+- Product card terlalu besar.
+- Gambar produk terlalu besar.
+- Satu card terasa seperti mengambil hampir seluruh layar.
+- Informasi produk menjadi terlalu renggang.
+- Pada mobile layout tidak efisien.
+- User harus scroll terlalu jauh hanya untuk melihat beberapa produk.
+
+UBAH MENJADI:
+- Mobile: tepat 2 kolom produk.
+- Tablet: 2 atau 3 kolom sesuai breakpoint.
+- Desktop: 4 kolom.
+- Produk tersusun ke BAWAH secara vertikal menggunakan normal page scrolling.
+- JANGAN membuat product list horizontal sebagai layout utama.
+- JANGAN membuat satu produk memenuhi seluruh lebar layar.
+- JANGAN membuat carousel horizontal untuk product grid utama.
+- User harus bisa scroll halaman ke bawah dan melihat:
+  row 1 = 2 produk
+  row 2 = 2 produk
+  row 3 = 2 produk
+  dan seterusnya.
+
+Gunakan CSS Grid yang responsive dan stabil.
+
+Contoh konsep:
+mobile:
+[ Produk 1 ] [ Produk 2 ]
+[ Produk 3 ] [ Produk 4 ]
+[ Produk 5 ] [ Produk 6 ]
+
+desktop:
+[ 1 ] [ 2 ] [ 3 ] [ 4 ]
+
+Pastikan grid tidak overflow ke kanan.
+
+==================================================
+2. UKURAN PRODUCT CARD
+==================================================
+
+Buat card jauh lebih compact daripada tampilan sekarang.
+
+Card harus:
+- memiliki width yang mengikuti grid column;
+- tinggi otomatis berdasarkan isi;
+- tidak memiliki min-height besar yang tidak diperlukan;
+- tidak menggunakan height fixed yang menyebabkan ruang kosong raksasa;
+- padding compact tetapi tetap nyaman;
+- border-radius konsisten dengan desain Digital Cell;
+- image/product thumbnail dibuat proporsional dan tidak mengambil sebagian besar card;
+- title maksimal beberapa baris dengan line-clamp;
+- description juga jangan membuat card menjadi sangat tinggi;
+- harga tetap mudah dibaca;
+- badge seperti Populer/Promo/Ready/New tetap terlihat tetapi tidak menutupi produk;
+- tombol cart/action berbentuk compact;
+- seluruh card tetap clickable jika memang sebelumnya clickable.
+
+Jangan gunakan ukuran gambar yang menyebabkan blank space besar.
+
+Jika gambar produk gagal dimuat:
+- tampilkan fallback yang rapi;
+- jangan tampilkan broken-image icon;
+- jangan menyebabkan layout meloncat.
+
+==================================================
+3. PRODUCT INFORMATION
+==================================================
+
+Urutan informasi pada card harus jelas:
+
+[thumbnail + badge]
+Nama produk
+Kategori/provider
+Rating / jumlah terjual jika tersedia
+Harga
+Action/cart
+
+Contoh visual:
+
+┌─────────────────────┐
+│ [ IMAGE ]   POPULER │
+│                     │
+│ ChatGPT Plus        │
+│ Akun Resmi          │
+│ ⭐ 4.9 | 1.2K       │
+│                     │
+│ Mulai dari          │
+│ Rp 25.000       🛒  │
+└─────────────────────┘
+
+Jangan membuat teks terlalu besar.
+
+Typography product card harus lebih kecil daripada heading "Produk Populer".
+
+==================================================
+4. PRODUCT IMAGE
+==================================================
+
+Perbaiki ukuran thumbnail produk.
+
+Thumbnail:
+- konsisten aspect ratio;
+- tidak terlalu tinggi;
+- tidak membuat card menjadi raksasa;
+- gunakan object-fit yang sesuai;
+- gunakan container dengan ukuran responsive;
+- jangan membuat gambar menjadi full-screen/full-card.
+
+Jika menggunakan image component Next.js:
+- pastikan konfigurasi image benar;
+- jangan menyebabkan broken image;
+- jangan membuat layout shift;
+- pertahankan fallback jika URL image kosong/tidak valid.
+
+==================================================
+5. SECTION "PRODUK POPULER"
+==================================================
+
+Section harus memiliki hierarchy yang bagus:
+
+🔥 Produk Populer                         Lihat semua →
+
+Kemudian langsung grid 2 kolom pada mobile.
+
+Jangan memberi jarak vertikal berlebihan antara heading dan product grid.
+
+" Lihat semua " tetap berada di kanan heading dan tidak menyebabkan overflow.
+
+Pastikan heading tidak terlalu besar pada mobile.
+
+==================================================
+6. MOBILE RESPONSIVE
+==================================================
+
+Audit seluruh homepage khusus viewport mobile.
+
+Pastikan:
+- tidak ada horizontal overflow;
+- tidak ada elemen keluar dari layar;
+- tidak ada teks terpotong secara aneh;
+- tidak ada header bertumpuk;
+- search bar tidak bertabrakan dengan logo/menu;
+- hero tidak menutupi header;
+- category row tidak merusak layout;
+- product grid benar-benar 2 kolom;
+- bottom navigation tidak menutupi konten;
+- body memiliki padding bawah yang cukup agar produk terakhir tetap bisa terlihat;
+- semua button mudah disentuh;
+- tidak ada elemen yang terlalu kecil untuk touch target.
+
+Gunakan breakpoint yang masuk akal, bukan workaround berdasarkan ukuran layar tertentu saja.
+
+==================================================
+7. HEADER
+==================================================
+
+Pertahankan header Digital Cell yang sudah ada.
+
+Pastikan:
+- logo/brand berada di kiri;
+- dark mode button dan hamburger menu berada di kanan;
+- tidak ada duplicate header;
+- tidak ada search bar yang menumpuk di dalam header;
+- header tidak menyebabkan konten tertutup;
+- spacing mobile rapi.
+
+Jangan menghapus fitur menu.
+
+==================================================
+8. HERO
+==================================================
+
+Pertahankan hero:
+"Solusi Digital
+Dalam Genggaman"
+
+dengan:
+- badge siap order WhatsApp;
+- tombol Belanja Sekarang;
+- tombol Hubungi Kami;
+- visual/banner;
+- carousel indicator jika memang sudah tersedia.
+
+Tetapi pastikan hero:
+- tidak terlalu tinggi;
+- tidak memenuhi seluruh layar;
+- tidak menyebabkan content below fold terlalu jauh;
+- tetap responsive pada mobile;
+- text tidak keluar dari container;
+- button tidak bertabrakan;
+- visual tidak rusak.
+
+Jangan menghilangkan CTA WhatsApp.
+
+==================================================
+9. SEARCH & FILTER
+==================================================
+
+Search/filter harus berada pada section yang jelas setelah hero.
+
+Pastikan:
+- tidak bertumpuk;
+- tidak overflow;
+- input terlihat jelas;
+- tombol Filter tetap dapat digunakan;
+- ukuran sesuai mobile;
+- tidak terlalu tinggi.
+
+==================================================
+10. CATEGORY
+==================================================
+
+Kategori seperti:
+- Semua
+- AI & Tools
+- Aplikasi
+- Streaming
+- Top Up
+- Cloud & Server
+- Lainnya
+
+harus tetap tersedia.
+
+Pada mobile:
+- boleh menggunakan horizontal scrolling untuk CATEGORY saja jika diperlukan;
+- category item tidak boleh membuat seluruh page horizontal overflow;
+- scrollbar boleh disembunyikan secara visual tetapi fungsi swipe tetap bekerja.
+
+PENTING:
+Horizontal scrolling boleh digunakan untuk category navigation.
+Tetapi PRODUCT GRID UTAMA harus tetap 2 kolom dan turun ke bawah.
+
+==================================================
+11. BOTTOM NAVIGATION
+==================================================
+
+Pertahankan:
+- Beranda
+- Kategori
+- Pesanan
+- Favorit
+- Akun
+
+Pastikan:
+- fixed/sticky sesuai implementasi existing;
+- tidak menutupi product card;
+- memiliki safe bottom spacing;
+- icon dan text sejajar;
+- active state jelas;
+- tidak overflow pada mobile.
+
+==================================================
+12. DATA & FITUR
+==================================================
+
+Jangan mengganti data produk hanya demi memperbaiki UI.
+
+Pertahankan:
+- product data;
+- category;
+- provider;
+- pricing;
+- rating;
+- order/WhatsApp;
+- favorite;
+- cart/action;
+- dark mode;
+- menu;
+- routing yang sudah ada.
+
+Jika ada data yang memang kosong, handle gracefully.
+
+==================================================
+13. DESKTOP
+==================================================
+
+Jangan hanya memperbaiki mobile.
+
+Pastikan desktop juga bagus:
+- product grid 4 kolom;
+- container memiliki max-width yang masuk akal;
+- tidak terlalu melebar;
+- whitespace proporsional;
+- hero tidak terlalu besar;
+- search/filter rapi;
+- kategori rapi;
+- tidak ada horizontal overflow.
+
+==================================================
+14. DARK MODE
+==================================================
+
+Pertahankan dark mode.
+
+Audit agar:
+- product card tetap terbaca;
+- text memiliki contrast yang cukup;
+- border/shadow sesuai;
+- search input tetap terlihat;
+- category tetap terbaca;
+- bottom navigation tetap terbaca;
+- tidak ada hardcoded white background yang merusak dark mode.
+
+==================================================
+15. KODE & STRUKTUR
+==================================================
+
+Sebelum mengubah code:
+- audit struktur project;
+- cek komponen yang sudah tersedia;
+- gunakan komponen existing jika memang sesuai;
+- jangan membuat duplicate component;
+- jangan membuat duplicate app/page directory;
+- jangan membuat workaround yang hanya menyelesaikan satu viewport;
+- jangan menambahkan dependency baru jika tidak diperlukan.
+
+Pastikan tidak ada:
+- duplicate layout;
+- duplicate header;
+- duplicate navigation;
+- CSS conflict;
+- class yang saling menimpa;
+- import yang tidak digunakan;
+- component yang tidak digunakan.
+
+==================================================
+16. QUALITY CHECK
+==================================================
+
+Setelah implementasi:
+
+1. Jalankan lint.
+2. Jalankan production build.
+3. Pastikan tidak ada TypeScript error.
+4. Pastikan tidak ada import error.
+5. Pastikan tidak ada broken route.
+6. Pastikan tidak ada missing module.
+7. Pastikan tidak ada duplicate app directory.
+8. Pastikan tidak ada horizontal overflow pada mobile.
+9. Pastikan product grid mobile benar-benar 2 kolom.
+10. Pastikan product card tidak lagi berukuran raksasa.
+11. Pastikan seluruh homepage tetap dapat discroll sampai bawah.
+12. Pastikan bottom navigation tidak menutupi konten.
+
+Jika build/lint gagal:
+- cari akar masalah;
+- perbaiki;
+- jalankan ulang;
+- jangan berhenti pada error pertama.
+
+==================================================
+17. HASIL AKHIR YANG WAJIB
+==================================================
+
+Target akhir mobile harus terasa seperti storefront e-commerce profesional:
+
+Header
+↓
+Hero compact
+↓
+Search + Filter
+↓
+Category navigation
+↓
+Produk Populer
+↓
+[Product] [Product]
+[Product] [Product]
+[Product] [Product]
+[Product] [Product]
+↓
+Section berikutnya
+↓
+Bottom navigation
+
+BUKAN:
+
+[Product super besar memenuhi layar]
+[Product super besar memenuhi layar]
+[Product super besar memenuhi layar]
+
+Product harus compact sehingga user dapat melihat minimal beberapa produk sekaligus dalam satu layar.
+
+==================================================
+18. GIT
+==================================================
+
+Setelah semua selesai dan build/lint berhasil:
+
+- cek git diff;
+- pastikan hanya perubahan yang relevan;
+- commit dengan pesan yang jelas, misalnya:
+  "fix: optimize mobile product grid and storefront layout"
+- push ke branch main.
+
+Jangan hanya commit tanpa push.
+
+Setelah push, tampilkan:
+- commit hash;
+- ringkasan perubahan;
+- hasil lint;
+- hasil build;
+- konfirmasi push berhasil.
+
+KERJAKAN SEMUA DI ATAS SEKALIGUS DALAM SATU PENGERJAAN. JANGAN MENUNGGU PROMPT BERIKUTNYA UNTUK MEMPERBAIKI HAL-HAL YANG SUDAH TERMASUK DALAM AUDIT INI.
 
 ```
 # 
