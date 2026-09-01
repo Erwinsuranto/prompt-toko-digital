@@ -43,7 +43,60 @@
 ```
 # 
 ```
+Perbaiki struktur project toko-digital sebelum dianggap selesai.
 
+MASALAH YANG DITEMUKAN:
+Project saat ini memiliki dua App Router:
+- /app
+- /src/app
+
+Customer utama masih berada di /app, sedangkan admin berada di /src/app/admin.
+Jangan biarkan struktur App Router ganda seperti ini.
+
+TUGAS:
+1. Audit seluruh project.
+2. Jadikan SATU App Router sebagai sumber route utama.
+3. Pertahankan desain/UI customer yang sudah dibuat.
+4. Pastikan route berikut benar-benar aktif:
+   /
+   /produk
+   /produk/[slug] atau route detail yang digunakan
+   /kategori
+   /favorit
+   /pesanan
+   /akun
+   /admin
+   /admin/login
+   /admin/produk
+   /admin/kategori
+5. Pilih struktur yang paling tepat untuk Next.js dan pindahkan/rapikan file yang diperlukan agar tidak ada route yang mati karena berada di App Router yang salah.
+6. Jangan sampai ada duplikasi page yang menyebabkan bingung saat build/deploy.
+7. Pastikan alias @/* tetap bekerja.
+8. Pastikan komponen dan data yang sudah ada tetap digunakan.
+9. Jangan mengubah konsep website:
+   - katalog saja
+   - tidak ada checkout
+   - tidak ada payment
+   - order melalui WhatsApp
+10. Pastikan panel admin benar-benar bisa dibuka melalui /admin dan halaman produk/kategori admin bisa dinavigasi.
+11. Jika admin CRUD saat ini masih berbasis local state/mock data, pertahankan untuk tahap ini tetapi strukturkan dengan baik agar backend/database bisa ditambahkan kemudian.
+12. Pastikan login admin tidak mengklaim keamanan production jika belum ada authentication backend.
+
+VERIFIKASI WAJIB:
+- npm run lint
+- npm run build
+- periksa hasil route Next.js
+- pastikan / dan /admin tidak error
+- pastikan tidak ada duplicate App Router yang membingungkan deployment.
+
+SETELAH SEMUA BERES:
+- git status
+- commit perubahan
+- push langsung ke origin main
+- tampilkan commit hash terakhir
+- tampilkan ringkasan route customer dan admin yang benar-benar aktif.
+
+Jangan hanya menjelaskan. Kerjakan langsung sampai selesai dan push ke main.
 ```
 # 
 ```
