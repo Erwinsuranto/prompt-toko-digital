@@ -15,7 +15,383 @@
 ```
 # 
 ```
+UPDATE UI TOKO-DIGITAL — DESAIN NOMOR 2
 
+Kerjakan HANYA di repository:
+zenolambee/toko-digital
+
+Jangan menyentuh toko-online.
+
+Gunakan desain nomor 2 sebagai acuan utama.
+
+URUTAN HOMEPAGE:
+
+1. Header
+2. Kategori Pilihan
+3. Hero Banner
+4. Produk Populer
+5. 2-card horizontal slider
+6. Indicator slider
+7. Section berikutnya
+8. Bottom Navigation
+
+================================
+1. KATEGORI PILIHAN
+================================
+
+Kategori Pilihan berada DI ATAS Hero.
+
+Buat sebagai section/card yang jelas terpisah dari background.
+
+Style:
+- background putih
+- border tipis dan sangat lembut
+- border-radius besar
+- shadow sangat halus
+- jangan terlalu terang sampai menyatu dengan background
+- padding compact
+
+Contoh:
+
+┌─────────────────────────────────────┐
+│ 🏷 Kategori Pilihan     Lihat semua │
+│                                     │
+│ [AI] [Streaming] [Game] [Cloud] ...│
+└─────────────────────────────────────┘
+
+Category chips boleh horizontal scroll di mobile.
+
+================================
+2. HERO
+================================
+
+Hero berada setelah Kategori Pilihan.
+
+Gunakan hero existing yang sudah ada.
+
+Hero harus:
+- compact
+- tidak terlalu tinggi
+- border-radius besar
+- memiliki border tipis transparan/putih
+- shadow lembut
+- tidak memenuhi hampir seluruh layar mobile
+- tetap responsive
+
+PENTING:
+Hero jangan dibuat terlalu panjang/tinggi.
+
+Gunakan rasio visual sekitar 6:9 atau proporsi compact yang setara untuk area mobile jika diperlukan.
+
+================================
+3. PRODUK POPULER
+================================
+
+Setelah Hero, tampilkan:
+
+🔥 Produk Populer                 Lihat semua →
+Produk pilihan paling laris
+
+Kemudian product slider.
+
+================================
+4. PRODUCT SLIDER
+================================
+
+MOBILE WAJIB:
+
+Tampilkan tepat 2 card produk secara berdampingan.
+
+Contoh:
+
+┌────────────┐  ┌────────────┐
+│ Product 1  │  │ Product 2  │
+│            │  │            │
+│ detail     │  │ detail     │
+│ harga      │  │ harga      │
+│   Order    │  │   Order    │
+└────────────┘  └────────────┘
+
+User bisa swipe/geser ke kiri dan kanan.
+
+Jangan membuat:
+- 1 card full width
+- 1 card memenuhi layar
+- 4 card sekaligus
+- product grid vertical pada section ini
+
+Harus horizontal carousel.
+
+Gunakan:
+- overflow-x auto
+- scroll-snap
+- touch-friendly
+- smooth scrolling
+- scrollbar hidden
+
+Body halaman tetap vertical scroll.
+
+================================
+5. BORDER CARD PRODUK — WAJIB
+================================
+
+Setiap product card HARUS mempunyai pemisah visual yang jelas dari background.
+
+Gunakan:
+
+- border 1px solid dengan warna yang sangat lembut
+- border-radius sekitar 18–24px
+- shadow lembut
+- background putih
+
+Contoh konsep:
+
+border: 1px solid rgba(..., 0.08);
+box-shadow: 0 8px 24px rgba(..., 0.06);
+
+Jangan menggunakan border hitam atau border yang terlalu tebal.
+
+Tujuannya supaya card terlihat premium dan jelas batasnya, tetapi tetap halus.
+
+Border harus mengelilingi SELURUH card:
+- image/visual
+- badge
+- nama
+- deskripsi
+- rating
+- harga
+- tombol Order
+
+Jangan membuat border hanya pada bagian image.
+
+================================
+6. PRODUCT CARD
+================================
+
+Card harus compact.
+
+Struktur:
+
+[Badge]
+
+[Product Visual]
+
+Nama Produk
+
+Kategori • Brand
+
+Deskripsi singkat
+
+⭐ Rating • Terjual
+
+────────────
+
+Mulai dari
+Rp xxx.xxx          [Order]
+
+Jangan ada whitespace besar.
+
+Image/visual bagian atas jangan terlalu tinggi.
+
+Harga dan tombol Order harus tetap terlihat tanpa membuat card menjadi sangat tinggi.
+
+================================
+7. PRODUCT IMAGE / VISUAL
+================================
+
+Pastikan tidak ada broken image.
+
+Jangan memakai external image URL yang mudah gagal.
+
+Jika product image tidak tersedia:
+gunakan fallback visual yang rapi dari sistem existing.
+
+Jangan menampilkan:
+- broken image icon
+- area putih kosong besar
+- gambar yang overflow keluar card
+
+================================
+8. SLIDER INDICATOR
+================================
+
+Di bawah product slider:
+
+● ○ ○
+
+Active:
+- biru
+- sedikit lebih panjang
+
+Inactive:
+- abu-abu
+
+Indicator jangan terlalu besar.
+
+================================
+9. SECTION BORDER
+================================
+
+Semua section/card utama yang menggunakan background putih harus memiliki pemisah visual dari background halaman.
+
+Gunakan kombinasi:
+
+- background putih
+- border tipis
+- soft shadow
+- rounded corners
+
+Jangan membuat background section terlalu putih/terang tanpa border karena akan menyatu dengan background biru muda.
+
+Namun jangan memberikan border berat pada semua elemen kecil.
+
+================================
+10. BACKGROUND
+================================
+
+Background halaman:
+- very light blue / off-white
+- tidak terlalu putih
+- cukup kontras dengan card putih
+
+Tujuan:
+
+BACKGROUND
+   ↓
+┌───────────────────────┐
+│ WHITE CARD            │
+│ dengan border halus   │
+└───────────────────────┘
+
+Bukan:
+
+BACKGROUND PUTIH
+┌───────────────────────┐
+│ PUTIH                  │
+└───────────────────────┘
+
+================================
+11. RESPONSIVE
+================================
+
+Mobile adalah prioritas.
+
+Mobile:
+- Kategori horizontal jika diperlukan
+- Hero compact
+- 2 product card horizontal
+- swipe
+- tidak ada body horizontal overflow
+
+Tablet:
+- sesuaikan ukuran card
+
+Desktop:
+- tetap modern
+- slider dapat menampilkan beberapa card
+- jangan merusak layout existing
+
+================================
+12. BODY OVERFLOW
+================================
+
+Pastikan horizontal scrolling hanya terjadi pada:
+- category chips
+- product carousel
+
+Bukan pada seluruh halaman.
+
+Header dan bottom navigation tidak boleh ikut bergeser horizontal.
+
+================================
+13. JANGAN RUSAK FITUR EXISTING
+================================
+
+Jangan menghapus:
+- Admin
+- product management
+- category management
+- order WhatsApp
+- dark mode
+- favorite
+- navigation
+- data produk
+- fitur existing lainnya
+
+Audit component existing terlebih dahulu.
+
+Jangan membuat duplicate component jika sudah tersedia.
+
+================================
+14. VALIDASI
+================================
+
+Setelah selesai:
+
+npm run lint
+npm run build
+
+Perbaiki semua error.
+
+Pastikan:
+- tidak ada TypeScript error
+- tidak ada hydration error
+- tidak ada broken import
+- tidak ada broken image
+- tidak ada horizontal body overflow
+- slider bisa swipe
+- 2 card terlihat di mobile
+- border card terlihat halus
+- kategori berada di atas Hero
+- Hero berada di atas Produk Populer
+
+================================
+15. GIT
+================================
+
+Pastikan repository:
+
+zenolambee/toko-digital
+
+Branch:
+
+main
+
+Jangan menyentuh toko-online.
+
+Jangan:
+- force push
+- reset --hard
+- menghapus commit
+- mengubah repository lain
+
+Setelah semua lolos:
+
+git add .
+git commit -m "feat: refine storefront layout and product slider"
+git push origin main
+
+Laporkan:
+- file yang diubah
+- hasil lint
+- hasil build
+- commit hash
+- hasil push
+
+Fokus utama desain:
+KATEGORI PILIHAN
+↓
+HERO COMPACT
+↓
+PRODUK POPULER
+↓
+2 CARD SLIDER
+↓
+INDICATOR
+↓
+SECTION BERIKUTNYA
+
+Dengan border halus pada card dan section supaya tidak menyatu dengan background.
 ```
 # 
 ```
