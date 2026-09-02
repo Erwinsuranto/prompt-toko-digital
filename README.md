@@ -21,8 +21,453 @@
 ```
 
 ```
-# 
+# PROMPT FIX FINAL — JANGAN UBAH PRODUK POPULER
 ```
+TOKO-DIGITAL — FIX MOBILE MENU OVERLAY YANG MASIH MENIMPA HOMEPAGE
+
+Repo: zenolambee/toko-digital
+Branch: main
+
+SCREENSHOT TERBARU MEMBUKTIKAN FIX SEBELUMNYA BELUM BERHASIL.
+
+JANGAN menganggap masalah sudah selesai hanya karena lint/build PASS.
+Screenshot/runtime behavior adalah sumber kebenaran.
+
+=========================================================
+BUG YANG TERLIHAT
+=========================================================
+
+Pada mobile, setelah halaman dibuka, muncul PANEL PUTIH BESAR
+yang berisi:
+
+- Streaming
+- Top Up
+- Cloud & Server
+- Lainnya / item kategori lain
+- Hubungi Kami
+
+Panel tersebut berada DI ATAS homepage dan MENIMPA:
+
+- Hero Banner
+- Kategori
+- Search
+- Produk Populer
+
+Header juga menampilkan tombol X, yang menunjukkan MOBILE MENU
+sedang dalam keadaan OPEN.
+
+INI SALAH.
+
+=========================================================
+PERILAKU YANG WAJIB
+=========================================================
+
+Saat halaman pertama kali dibuka:
+
+mobile menu = CLOSED
+
+Tidak boleh ada panel menu putih yang terlihat.
+
+Header harus menampilkan:
+
+[Logo] Digital Cell          [Moon] [Hamburger]
+
+BUKAN:
+
+[Logo] Digital Cell          [Moon] [X]
+
+Menu hanya boleh terbuka SETELAH USER BENAR-BENAR MENEKAN
+tombol hamburger.
+
+=========================================================
+URUTAN HOMEPAGE MOBILE
+=========================================================
+
+Dalam kondisi normal / menu tertutup, DOM visual harus:
+
+Header
+↓
+Hero Banner
+↓
+Kategori Slider
+↓
+Search + Filter
+↓
+Produk Populer
+↓
+Produk Terkait
+
+Tidak boleh ada overlay menu di antara section tersebut.
+
+=========================================================
+AUDIT KODE — WAJIB CARI ROOT CAUSE
+=========================================================
+
+Jangan langsung menambahkan z-index.
+
+Audit semua komponen yang berhubungan dengan:
+
+- Header
+- hamburger
+- mobile menu
+- navigation
+- category menu
+- overlay
+- drawer
+- dropdown
+
+Cari semua kemungkinan:
+
+- useState(true)
+- initial state yang salah
+- menuOpen default true
+- isMenuOpen default true
+- mobileMenuOpen default true
+- open default true
+- hidden state tidak diterapkan
+- CSS yang membuat menu selalu display
+- conditional rendering yang salah
+- className open selalu aktif
+- data/state hydration yang membuat menu terbuka
+- useEffect yang otomatis membuka menu
+- event handler hamburger yang terbalik
+- SSR/client hydration mismatch
+
+Pastikan initial state benar-benar:
+
+const [menuOpen, setMenuOpen] = useState(false)
+
+atau ekuivalen sesuai arsitektur project.
+
+JANGAN membuat state baru kalau sebenarnya sudah ada state menu.
+Gunakan state yang sudah ada jika memungkinkan.
+
+=========================================================
+MOBILE MENU
+=========================================================
+
+Mobile menu BOLEH tetap ada sebagai fitur.
+
+Tetapi:
+
+CLOSED:
+- tidak terlihat
+- tidak mengambil ruang layout
+- tidak menutupi Hero
+- tidak menutupi kategori
+- tidak menutupi Search
+- tidak menutupi Produk Populer
+
+OPEN:
+- hanya muncul setelah hamburger ditekan
+- tampil sebagai overlay/drawer yang benar
+- mempunyai tombol close/X
+- tombol X menutup menu
+- klik hamburger kembali menutup menu
+
+Saat menu CLOSED, jangan hanya membuat opacity:0.
+Pastikan panel benar-benar tidak mengganggu layout dan pointer events.
+
+Jika menggunakan:
+
+position: fixed
+position: absolute
+transform
+opacity
+visibility
+pointer-events
+z-index
+
+audit semuanya agar state CLOSED benar-benar CLOSED.
+
+=========================================================
+JANGAN GUNAKAN OVERLAY UNTUK CATEGORY SLIDER
+=========================================================
+
+Kategori homepage BUKAN mobile menu.
+
+Kategori homepage harus tetap ada setelah Hero.
+
+Buat sebagai horizontal category slider satu baris:
+
+[Paket Data] [AI & Tools] [Aplikasi] [Streaming] ...
+
+User bisa swipe horizontal.
+
+Kategori TIDAK boleh menjadi panel dropdown besar.
+
+Kategori TIDAK boleh membuka overlay otomatis.
+
+=========================================================
+STRUKTUR FINAL YANG DIINGINKAN
+=========================================================
+
+MOBILE NORMAL:
+
+┌──────────────────────────────┐
+│ Digital Cell       🌙   ☰   │
+└──────────────────────────────┘
+
+┌──────────────────────────────┐
+│                              │
+│        HERO BANNER           │
+│                              │
+└──────────────────────────────┘
+
+Kategori Pilihan
+
+┌────────┬────────┬─────────────→
+│ Paket  │ AI     │ Aplikasi
+└────────┴────────┴─────────────
+
+┌──────────────────────────────┐
+│ 🔍 Cari produk...     Filter │
+└──────────────────────────────┘
+
+🔥 Produk Populer
+
+┌────────────┐  ┌────────────┐
+│ Product 1  │  │ Product 2  │
+└────────────┘  └────────────┘
+
+Produk Terkait
+
+┌────────────┐  ┌────────────┐
+│ Product 1  │  │ Product 2  │
+└────────────┘  └────────────┘
+
+=========================================================
+PRODUK POPULER — ABSOLUTELY JANGAN DIUBAH
+=========================================================
+
+Produk Populer SEKARANG SUDAH BENAR.
+
+JANGAN:
+
+- redesign
+- resize
+- mengubah card
+- mengubah badge
+- mengubah tombol Order
+- mengubah dots
+- mengubah jumlah card yang tampil
+- mengubah slider
+- mengubah typography
+- mengubah spacing
+- mengubah data
+
+Jangan menyentuh component/style Produk Populer kecuali ada
+dependency teknis yang mutlak diperlukan untuk menghilangkan
+overlap.
+
+=========================================================
+SETELAH PRODUK POPULER
+=========================================================
+
+Tambahkan / pertahankan Produk Terkait di bawah Produk Populer.
+
+Harus berupa vertical CSS grid biasa.
+
+MOBILE:
+
+2 kolom
+5 baris
+TOTAL 10 CARD
+
+Contoh:
+
+Product 1 | Product 2
+Product 3 | Product 4
+Product 5 | Product 6
+Product 7 | Product 8
+Product 9 | Product 10
+
+BUKAN carousel.
+BUKAN horizontal slider.
+
+=========================================================
+JANGAN HAPUS KATEGORI
+=========================================================
+
+Kategori tetap ada.
+
+Hanya tampilkan sebagai horizontal slider supaya hemat tempat.
+
+Jangan menghapus section kategori dari homepage.
+
+=========================================================
+DEBUG RUNTIME — WAJIB
+=========================================================
+
+Setelah perubahan, jangan hanya menjalankan lint/build.
+
+Jalankan aplikasi production/dev sesuai kebutuhan dan periksa
+HTML/DOM hasil render homepage mobile.
+
+Verifikasi:
+
+1. Saat fresh page load:
+   - mobile menu CLOSED
+   - hamburger terlihat
+   - X tidak terlihat
+
+2. Hero terlihat penuh.
+
+3. Kategori berada di bawah Hero.
+
+4. Category slider tidak menimpa Hero.
+
+5. Search berada di bawah kategori.
+
+6. Produk Populer berada di bawah Search.
+
+7. Tidak ada panel putih tersembunyi yang masih mengambil ruang.
+
+8. Tidak ada overlay menu yang muncul otomatis.
+
+9. Klik hamburger:
+   - menu OPEN
+   - X muncul
+
+10. Klik X:
+    - menu CLOSED
+    - kembali ke homepage normal
+
+11. Refresh browser saat menu sebelumnya OPEN:
+    - halaman harus kembali CLOSED
+    - jangan menyimpan menu OPEN secara tidak sengaja
+
+=========================================================
+CARI DUPLICATE MOBILE MENU
+=========================================================
+
+Audit seluruh repo.
+
+Pastikan tidak ada dua implementasi mobile menu yang sama-sama
+dirender.
+
+Cari kemungkinan:
+
+- Header.tsx
+- MobileMenu.tsx
+- Navigation.tsx
+- layout.tsx
+- page.tsx
+- component lain
+
+Jika ada dua mobile menu aktif, gunakan SATU implementasi saja.
+
+Jangan membuat komponen baru tanpa alasan.
+
+=========================================================
+CSS BODY
+=========================================================
+
+Pastikan:
+
+html,
+body
+
+tidak menyebabkan horizontal page overflow.
+
+Gunakan overflow-x:hidden hanya pada level yang tepat.
+
+Jangan menggunakan overflow:hidden pada parent yang menyebabkan
+slider kategori atau Produk Populer rusak.
+
+=========================================================
+JANGAN RUSAK FITUR LAIN
+=========================================================
+
+Jangan mengubah:
+
+- Admin
+- WhatsApp
+- product data
+- routing
+- API
+- authentication
+- dark mode
+- Hero design
+- Header design
+- Produk Populer
+
+Fokus utama hanya memperbaiki:
+
+MOBILE MENU DEFAULT OPEN / OVERLAY MENIMPA HOMEPAGE
+
+dan memastikan:
+
+Hero
+↓
+Category Slider
+↓
+Search
+↓
+Produk Populer
+↓
+Produk Terkait 10 card
+
+=========================================================
+VALIDASI AKHIR
+=========================================================
+
+Jalankan:
+
+- lint
+- production build
+
+Perbaiki semua error.
+
+Kemudian commit dan push:
+
+zenolambee/toko-digital
+main
+
+Jangan berhenti sebelum push berhasil.
+
+Setelah selesai laporkan:
+
+ROOT CAUSE:
+...
+
+FILE YANG DIUBAH:
+...
+
+MOBILE MENU INITIAL STATE:
+CLOSED
+
+FRESH LOAD:
+PASS
+
+HAMBURGER OPEN:
+PASS
+
+CLOSE BUTTON:
+PASS
+
+HERO → CATEGORY → SEARCH → POPULAR:
+PASS
+
+PRODUCT POPULER TIDAK DIUBAH:
+PASS
+
+LINT:
+PASS
+
+BUILD:
+PASS
+
+COMMIT:
+...
+
+PUSH:
+PASS
+
+PENTING:
+Jangan menyatakan fix berhasil hanya berdasarkan lint/build.
+Pastikan runtime DOM benar-benar menunjukkan mobile menu CLOSED
+saat fresh page load.
 
 ```
 # PROMPT UNTUK AI CODING AGENT
