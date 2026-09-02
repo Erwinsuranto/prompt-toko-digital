@@ -11,7 +11,292 @@
 ```
 # 
 ```
+UPDATE UI TOKO-DIGITAL — PERBAIKI WARNA KATEGORI PILIHAN
 
+Kerjakan HANYA di repository zenolambee/toko-digital.
+Jangan menyentuh toko-online.
+
+Saya sudah cek tampilan terbaru.
+
+POSISI "Kategori Pilihan" SUDAH BENAR.
+Jangan mengubah posisi atau urutannya.
+
+Yang perlu diperbaiki hanya visual/styling Kategori Pilihan agar lebih menyatu dengan desain Digital Cell.
+
+================================
+TARGET DESAIN
+================================
+
+Kategori Pilihan harus terlihat sebagai bagian dari UI Digital Cell yang sama dengan Header, Hero, dan Product Card.
+
+Saat ini warna category chip terlalu putih/abu-abu dan terasa seperti komponen terpisah.
+
+Buat lebih modern, soft, premium, dan menggunakan aksen biru Digital Cell.
+
+================================
+1. CATEGORY CONTAINER
+================================
+
+Pertahankan container Kategori Pilihan seperti sekarang:
+
+- background putih
+- rounded corner besar
+- border tipis
+- shadow sangat lembut
+
+Tetapi berikan sedikit nuansa biru agar tidak terlihat seperti putih polos.
+
+Gunakan:
+- putih sebagai base
+- very light blue sebagai aksen
+- border biru sangat tipis/transparan
+
+Jangan menggunakan abu-abu dominan.
+
+Container harus tetap kontras dengan background halaman.
+
+================================
+2. CATEGORY CHIP
+================================
+
+Ubah chip kategori agar lebih sesuai dengan warna utama Digital Cell.
+
+Jangan gunakan chip putih polos dengan border abu-abu seperti tampilan sekarang.
+
+Gunakan konsep:
+
+ACTIVE:
+background: very light blue / soft blue
+border: blue tipis
+text: Digital Cell blue
+icon: blue
+
+INACTIVE:
+background: very light blue-gray / hampir putih
+border: soft blue-gray
+text: dark navy/blue-gray
+icon: blue-gray
+
+Contoh visual:
+
+[ Semua ] [ 💡 AI & Tools ] [ 📖 Aplikasi ] [ ... ]
+
+Bukan:
+
+[ Semua ] [ AI & Tools ] [ Aplikasi ]
+semuanya putih + border abu-abu.
+
+================================
+3. ACTIVE CATEGORY
+================================
+
+Kategori yang aktif harus langsung terlihat.
+
+Gunakan:
+- background biru muda
+- border biru lembut
+- text biru
+- icon biru
+- sedikit shadow/glow jika diperlukan
+
+Jangan gunakan biru terlalu gelap.
+
+Tetap gunakan warna biru yang konsisten dengan Hero Digital Cell.
+
+================================
+4. ICON
+================================
+
+Icon kategori harus memiliki warna yang konsisten.
+
+Jangan menggunakan kombinasi warna yang terlalu banyak seperti:
+hijau + ungu + orange + merah
+untuk chip utama.
+
+Gunakan warna utama Digital Cell sebagai dasar.
+
+Jika ingin memberikan sedikit variasi warna, gunakan hanya sebagai aksen yang sangat lembut.
+
+Prioritas:
+BLUE > soft blue > navy
+
+================================
+5. TYPOGRAPHY
+================================
+
+Judul:
+
+Kategori Pilihan
+
+harus tetap tegas dan konsisten dengan heading Produk Populer.
+
+Gunakan:
+- dark navy
+- font weight 700/800
+- ukuran responsive
+- jangan terlalu besar
+
+" Lihat semua → "
+gunakan Digital Cell blue.
+
+================================
+6. CATEGORY SCROLL
+================================
+
+Mobile tetap:
+
+horizontal scroll untuk chip kategori.
+
+Contoh:
+
+[Semua] [AI & Tools] [Aplikasi] [Streaming] →
+
+User dapat swipe ke samping.
+
+Tetapi:
+- scrollbar hidden
+- tidak membuat seluruh body horizontal
+- tidak menyebabkan layout overflow
+- spacing antar chip konsisten
+
+================================
+7. BORDER — WAJIB DIPERHATIKAN
+================================
+
+Container kategori:
+- border tipis
+- soft blue/neutral
+- rounded besar
+- shadow lembut
+
+Chip:
+- border tipis
+- active border lebih terlihat
+- inactive border lebih soft
+
+Jangan:
+- border hitam
+- border abu-abu tebal
+- outline terlalu kontras
+
+Border harus membantu memisahkan elemen dari background, bukan menjadi elemen utama.
+
+================================
+8. KONSISTENSI WARNA
+================================
+
+Gunakan color system yang sama dengan Hero dan UI Digital Cell.
+
+Primary:
+Digital Cell blue
+
+Background:
+very light blue / off-white
+
+Card:
+white
+
+Text:
+dark navy
+
+Secondary text:
+slate blue-gray
+
+Border:
+soft blue-gray
+
+Hindari warna yang membuat kategori terlihat seperti aplikasi lain.
+
+================================
+9. JANGAN UBAH BAGIAN LAIN
+================================
+
+Jangan mengubah:
+- posisi Kategori Pilihan
+- Hero
+- Product Slider
+- Product Card
+- Header
+- Bottom Navigation
+- Admin Panel
+- data produk
+- fungsi order WhatsApp
+
+Khusus perbaiki styling Kategori Pilihan.
+
+================================
+10. RESPONSIVE
+================================
+
+Pastikan tampilan bagus pada:
+- Android mobile
+- tablet
+- desktop
+
+Mobile adalah prioritas.
+
+Kategori tetap compact dan tidak mengambil tinggi berlebihan.
+
+================================
+11. VALIDASI
+================================
+
+Setelah perubahan:
+
+npm run lint
+npm run build
+
+Perbaiki semua error.
+
+Kemudian:
+
+git status
+git diff
+
+Pastikan repository:
+zenolambee/toko-digital
+
+Branch:
+main
+
+Jangan force push.
+Jangan reset --hard.
+Jangan menyentuh toko-online.
+
+Commit:
+
+style: refine category selection colors
+
+Push:
+
+git push origin main
+
+Laporkan:
+- file yang diubah
+- hasil lint
+- hasil build
+- commit hash
+- hasil push
+
+HASIL YANG DIINGINKAN:
+
+Kategori Pilihan tetap di posisi sekarang,
+tetapi tampilannya lebih menyatu dengan Digital Cell:
+
+white/light-blue container
++
+soft blue border
++
+soft blue category chips
++
+blue active state
++
+dark navy text
++
+Digital Cell blue accent
+
+Jangan mengubah layout yang sekarang sudah benar.
+Fokus hanya memperbaiki warna, border, shadow, icon, dan styling kategori.
 ```
 # 
 ```
