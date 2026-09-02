@@ -71,7 +71,347 @@
 ```
 # 
 ```
+PERBAIKI HALAMAN PAKET DATA — SEDERHANAKAN TOTAL
 
+Repository:
+zenolambee/toko-digital
+
+Jangan menyentuh repository toko-online.
+
+PENTING:
+JANGAN HAPUS FITUR PAKET DATA.
+
+Yang dilakukan adalah MENYEDERHANAKAN UI halaman Paket Data.
+
+========================================
+STRUKTUR FINAL
+========================================
+
+Halaman Paket Data hanya terdiri dari:
+
+1. Provider
+2. Kategori Paket
+3. List Paket
+
+Urutannya:
+
+Paket Data
+↓
+Pilih Provider
+↓
+Pilih Kategori Paket
+↓
+Daftar Paket
+
+========================================
+HAPUS ELEMEN YANG TIDAK DIPERLUKAN
+========================================
+
+Hapus dari halaman Paket Data:
+
+- input nomor HP
+- tampilan nomor HP
+- tombol Kontak
+- tombol Scan
+- tombol Bantuan
+- search button khusus referensi
+- list/grid/image button
+- card tambahan
+- banner tambahan
+- informasi yang tidak berhubungan dengan pemilihan paket
+- elemen UI besar dari desain referensi provider
+
+Jangan mengganti dengan elemen baru yang tidak diperlukan.
+
+========================================
+HEADER
+========================================
+
+Tetap gunakan header website Digital Cell yang sudah ada.
+
+Di bawah header cukup:
+
+← Paket Data
+
+Buat compact dan rapi.
+
+Jangan membuat header halaman terlalu tinggi.
+
+========================================
+1. PROVIDER
+========================================
+
+Tampilkan:
+
+Pilih Provider
+
+Contoh:
+
+[ Semua ] [ Telkomsel ] [ Indosat ] [ XL ] [ Tri ] [ AXIS ]
+
+Provider selector boleh horizontal scroll.
+
+Jangan membuat card provider besar.
+
+Provider yang dipilih harus terlihat jelas dengan border/accent.
+
+========================================
+2. KATEGORI
+========================================
+
+Di bawah Provider:
+
+Pilih Kategori Paket
+
+Contoh:
+
+[ Semua ] [ Internet ] [ Combo ] [ Unlimited ] [ Masa Aktif ]
+
+Kategori juga boleh horizontal scroll.
+
+Kategori mengikuti provider yang dipilih.
+
+========================================
+3. LIST PAKET
+========================================
+
+Di bawah kategori:
+
+Daftar Paket
+
+Gunakan card/list compact.
+
+Contoh:
+
+┌────────────────────────────────────┐
+│  [LOGO]  3GB All Jaringan 28 Hari │
+│          Rp 22.270          OPEN   │
+└────────────────────────────────────┘
+
+┌────────────────────────────────────┐
+│  [LOGO]  Happy 7GB 28 Hari        │
+│          Rp 30.198          OPEN   │
+└────────────────────────────────────┘
+
+┌────────────────────────────────────┐
+│  [LOGO]  Happy 4,5GB 28 Hari      │
+│          Rp 25.420      GANGGUAN   │
+└────────────────────────────────────┘
+
+Card harus:
+
+- compact
+- border halus
+- radius sekitar 18–22px
+- shadow sangat lembut
+- logo kecil
+- nama paket jelas
+- harga menonjol
+- status compact
+
+========================================
+4. NOMOR HP
+========================================
+
+JANGAN tampilkan nomor HP di halaman ini.
+
+Tidak boleh ada:
+
+- input nomor
+- nomor tujuan
+- form nomor
+- card nomor
+
+Nomor/provider tujuan diproses pada flow order berikutnya jika diperlukan.
+
+========================================
+5. BORDER
+========================================
+
+WAJIB mempertahankan border.
+
+Provider selector:
+- border tipis
+- selected menggunakan accent biru
+- radius pill
+
+Kategori:
+- border tipis
+- selected menggunakan accent biru
+- radius pill
+
+Package card:
+- border tipis abu/biru muda
+- radius 18–22px
+- shadow lembut
+
+Status GANGGUAN:
+- border merah muda/transparan
+- badge merah muda
+
+Status OPEN:
+- border normal
+- badge hijau muda
+
+Jangan menggunakan border hitam tebal.
+
+========================================
+6. MOBILE
+========================================
+
+Prioritas mobile.
+
+Layout:
+
+Header
+↓
+Paket Data
+↓
+Pilih Provider
+[ provider horizontal scroll ]
+↓
+Pilih Kategori Paket
+[ kategori horizontal scroll ]
+↓
+Daftar Paket
+[ package ]
+[ package ]
+[ package ]
+[ package ]
+
+Hanya provider dan kategori yang boleh horizontal scroll.
+
+List paket WAJIB vertical.
+
+Tidak boleh body horizontal overflow.
+
+========================================
+7. JANGAN UBAH HOMEPAGE
+========================================
+
+Homepage yang sekarang sudah benar.
+
+Jangan mengubah:
+
+- Header homepage
+- Kategori Pilihan
+- Hero banner
+- Produk Populer
+- Product slider 2 card
+- Bottom navigation
+- dark mode
+- product card existing
+- WhatsApp order existing
+
+Hanya perbaiki halaman Paket Data.
+
+========================================
+8. DATA DAN FILTER
+========================================
+
+Pertahankan sistem data Paket Data yang sudah dibuat.
+
+Provider → memfilter paket.
+
+Kategori → memfilter paket.
+
+Contoh:
+
+Provider:
+Tri
+
+Kategori:
+Internet
+
+Maka hanya tampil paket:
+Tri + Internet.
+
+Jangan menghapus data Paket Data.
+
+========================================
+9. RESPONSIVE
+========================================
+
+Test:
+
+360px
+375px
+390px
+412px
+430px
+768px
+1024px
+1280px+
+
+Pastikan tidak ada:
+
+- overflow
+- card terpotong
+- text terpotong
+- badge keluar card
+- logo rusak
+- horizontal body scroll
+
+========================================
+10. VALIDASI
+========================================
+
+Setelah perubahan:
+
+npm run lint
+npm run build
+
+Perbaiki semua error.
+
+Kemudian:
+
+git status
+git add .
+git commit -m "fix: simplify data package page"
+git push origin main
+
+Jangan force push.
+Jangan reset.
+Jangan menyentuh toko-online.
+
+LAPORKAN:
+
+- file yang diubah
+- elemen yang dihapus dari UI
+- hasil lint
+- hasil build
+- commit hash
+- status push
+
+HASIL FINAL:
+
+┌──────────────────────────────┐
+│ ← Paket Data                 │
+│                              │
+│ Pilih Provider               │
+│ [Semua] [Telkomsel] [Tri] → │
+│                              │
+│ Pilih Kategori Paket         │
+│ [Semua] [Internet] [Combo] → │
+│                              │
+│ Daftar Paket                 │
+│                              │
+│ ┌──────────────────────────┐ │
+│ │ Logo  Paket 3GB          │ │
+│ │       Rp22.270    OPEN   │ │
+│ └──────────────────────────┘ │
+│                              │
+│ ┌──────────────────────────┐ │
+│ │ Logo  Paket 7GB          │ │
+│ │       Rp30.198    OPEN   │ │
+│ └──────────────────────────┘ │
+└──────────────────────────────┘
+
+Sederhana.
+Compact.
+Tidak ada nomor HP.
+Tidak ada Kontak/Scan/Bantuan.
+Fokus hanya PROVIDER → KATEGORI → LIST PAKET.
 ```
 # 
 ```
