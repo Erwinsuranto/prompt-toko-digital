@@ -23,7 +23,80 @@
 ```
 # 
 ```
+Kita sekarang bekerja HANYA di repository toko-digital.
 
+Saya sudah masuk ulang ke folder repository yang benar. Tolong jangan menyentuh repository/folder toko-online sama sekali.
+
+Tugas kamu:
+
+1. Pastikan current directory benar-benar repository toko-digital.
+   - Jalankan pwd
+   - Jalankan git remote -v
+   - Pastikan remote mengarah ke repository GitHub zenolambee/toko-digital.
+   - Jika ternyata bukan toko-digital, STOP dan laporkan, jangan mengubah repository lain.
+
+2. Audit Git configuration repository ini:
+   - git status
+   - git branch --show-current
+   - git log -5 --format='%h %an <%ae> %s'
+   - git config user.name
+   - git config user.email
+
+3. Perbaiki masalah deployment Vercel yang diblokir karena commit terakhir menggunakan identitas:
+   root@kenzonano1-0647ecaf-3287-vm...
+
+   Gunakan identitas GitHub yang benar/terhubung dengan repository zenolambee/toko-digital.
+   Prioritaskan mengambil identitas/email yang benar dari konfigurasi/commit GitHub sebelumnya atau akun GitHub yang tersedia di environment.
+   JANGAN menggunakan email root@kenzonano... untuk commit.
+
+4. Jangan mengubah source code hanya untuk membuat commit.
+   Pertama audit apakah source code sudah bersih dan apakah ada perubahan yang memang perlu diperbaiki.
+
+5. Jika repository sudah benar dan source code tidak perlu diubah, buat perubahan Git minimal yang aman untuk menghasilkan commit baru dengan author GitHub yang benar. Jangan merusak aplikasi.
+
+6. Pastikan commit baru:
+   - berada di branch main
+   - author/name dan email valid untuk akun GitHub yang memiliki akses ke zenolambee/toko-digital
+   - bukan root@kenzonano...
+   - tidak menghapus atau mereset pekerjaan yang sudah ada.
+
+7. Sebelum push:
+   - jalankan git status
+   - pastikan hanya repository toko-digital yang digunakan
+   - pastikan remote benar
+   - jangan force push
+   - jangan reset --hard
+   - jangan menghapus commit yang sudah ada.
+
+8. Push commit baru ke origin/main.
+
+9. Setelah push, verifikasi:
+   - git log -1 --format=fuller
+   - git status
+   - git remote -v
+   - pastikan commit terbaru sudah berada di origin/main.
+
+10. Jika GitHub CLI/API tersedia, verifikasi bahwa author email commit baru memang terasosiasi dengan akun GitHub yang memiliki akses ke repository.
+
+11. Jangan melakukan upgrade Vercel/Pro.
+    Jangan mengubah billing.
+    Jangan menyentuh toko-online.
+    Jangan membuat repository baru.
+
+12. Setelah semuanya selesai, laporkan secara singkat:
+    - folder/repository yang digunakan
+    - branch
+    - commit terbaru
+    - author/email commit
+    - apakah push berhasil
+    - apakah masalah Git identity/Vercel deployment block sudah diperbaiki.
+
+PENTING:
+- Jangan menjalankan perintah di luar repository toko-digital yang dapat mengubah repository lain.
+- Jangan menyentuh toko-online.
+- Jangan force push.
+- Jangan menghapus file atau commit yang sudah ada.
+- Fokus utama sekarang adalah memperbaiki Git author identity agar deployment Vercel berikutnya tidak lagi diblokir.
 ```
 # 
 ```
