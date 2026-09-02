@@ -47,6 +47,547 @@
 ```
 # 
 ```
+PERBAIKI REPO zenolambee/toko-digital.
+
+PENTING:
+Jangan membuat desain baru.
+Jangan menambahkan section baru.
+Jangan memindahkan elemen ke posisi lain.
+Jangan mengubah fitur admin, data produk, WhatsApp order, provider, atau logic yang sudah berjalan.
+
+Saya sudah beberapa kali memperbaiki UI tetapi AI sebelumnya terus salah memindahkan elemen. Kali ini lakukan AUDIT dan perbaikan FINAL berdasarkan struktur yang saya tentukan di bawah.
+
+==================================================
+STRUKTUR HOMEPAGE FINAL — WAJIB
+==================================================
+
+Homepage mobile harus memiliki urutan TEPAT seperti ini:
+
+1. HEADER
+2. HERO / BANNER
+3. KATEGORI PILIHAN
+4. SEARCH / PENCARIAN
+5. PRODUK POPULER
+6. 10 PRODUK DALAM GRID 2 KOLOM
+7. selesai
+
+JANGAN ada section lain di antara urutan tersebut.
+
+Visual flow:
+
+[ Header ]
+        ↓
+[ Hero / Banner ]
+        ↓
+[ Kategori Pilihan ]
+[ Paket Data ]
+[ AI & Tools ]
+[ Aplikasi ]
+[ Streaming ]
+[ Top Up ]
+[ Cloud & Server ]
+[ Lainnya ]
+        ↓
+[ Search + Filter ]
+        ↓
+[ Produk Populer ]
+        ↓
+[ Product 1 ] [ Product 2 ]
+[ Product 3 ] [ Product 4 ]
+[ Product 5 ] [ Product 6 ]
+[ Product 7 ] [ Product 8 ]
+[ Product 9 ] [ Product 10 ]
+
+==================================================
+1. HEADER
+==================================================
+
+Pertahankan header Digital Cell yang sekarang.
+
+Isi:
+- Logo D
+- Digital Cell
+- Solusi Digital Terlengkap
+- tombol dark mode
+- hamburger menu
+
+Header harus:
+- berada di bagian paling atas
+- tidak menutupi Hero
+- tidak menutupi Produk Populer
+- tidak overlap dengan konten
+- tidak muncul di tengah halaman saat scroll
+- tidak menyebabkan konten tertutup
+- spacing atas/bawah konsisten
+
+Jika header menggunakan position: fixed/sticky:
+- pastikan layout memberikan offset/top spacing yang benar
+- jangan sampai header menimpa konten
+
+Jangan membuat header kedua.
+
+Pastikan hanya ada SATU header.
+
+==================================================
+2. HERO / BANNER
+==================================================
+
+Hero harus langsung berada DI BAWAH HEADER.
+
+Hero tetap menggunakan desain Digital Cell biru yang sudah ada.
+
+Pertahankan:
+- gradient biru
+- badge "Siap order via WhatsApp"
+- judul "Solusi Digital Dalam Genggaman"
+- deskripsi
+- tombol "Belanja Sekarang"
+- tombol "Hubungi Kami"
+- indikator slider jika memang sudah digunakan
+
+JANGAN:
+- memindahkan Hero ke tengah halaman
+- menaruh Hero setelah Produk Populer
+- membuat Hero duplikat
+- membuat carousel produk sebelum kategori
+- membuat Hero tertutup Header
+
+Hero harus memiliki margin-top yang benar sehingga seluruh Hero terlihat.
+
+==================================================
+3. KATEGORI — HANYA SATU SECTION
+==================================================
+
+Hapus TOTAL kategori yang berada di bagian ATAS homepage sebelum Hero.
+
+Jangan ada:
+- kategori sebelum Hero
+- kategori kedua setelah kategori utama
+- "Lihat semua" kategori tambahan
+- category-card duplikat
+- kategori horizontal tambahan
+
+Sisakan SATU section kategori saja.
+
+Posisi kategori:
+
+HEADER
+↓
+HERO
+↓
+KATEGORI
+
+Judul:
+"Kategori Pilihan"
+
+Kategori yang ditampilkan:
+- Paket Data
+- AI & Tools
+- Aplikasi
+- Streaming
+- Top Up
+- Cloud & Server
+- Lainnya
+
+Gunakan tampilan 2 kolom pada mobile seperti screenshot referensi.
+
+Contoh:
+
+[Paket Data]     [AI & Tools]
+
+[Aplikasi]       [Streaming]
+
+[Top Up]         [Cloud & Server]
+
+[Lainnya]
+
+Setiap card boleh memiliki warna lembut berbeda seperti:
+- Paket Data: hijau muda
+- AI & Tools: biru muda
+- Aplikasi: ungu muda
+- Streaming: merah muda
+- Top Up: orange muda
+- Cloud & Server: cyan muda
+- Lainnya: lavender
+
+Jangan membuat kategori menjadi terlalu besar.
+
+Card harus compact, modern, rapi.
+
+==================================================
+4. SEARCH
+==================================================
+
+Search harus berada:
+
+KATEGORI
+↓
+SEARCH
+↓
+PRODUK POPULER
+
+Jadi search JANGAN berada:
+- sebelum Hero
+- di atas kategori
+- di tengah Produk Populer
+- setelah Produk Populer
+
+Search tetap memiliki:
+- icon search
+- placeholder "Cari produk, layanan, atau kategori..."
+- tombol Filter
+
+Search responsive.
+
+==================================================
+5. PRODUK POPULER
+==================================================
+
+Setelah Search langsung tampil:
+
+🔥 Produk Populer
+
+Subtitle:
+"Produk pilihan paling laris"
+
+Jika "Lihat semua" memang sudah ada dan berfungsi, boleh dipertahankan di kanan heading.
+
+JANGAN membuat Produk Populer sebagai horizontal carousel.
+
+JANGAN membuat hanya 2 produk.
+
+Homepage harus menampilkan TOTAL 10 PRODUCT CARD.
+
+Mobile:
+
+2 kolom.
+
+WAJIB:
+
+Row 1:
+[ Product 1 ] [ Product 2 ]
+
+Row 2:
+[ Product 3 ] [ Product 4 ]
+
+Row 3:
+[ Product 5 ] [ Product 6 ]
+
+Row 4:
+[ Product 7 ] [ Product 8 ]
+
+Row 5:
+[ Product 9 ] [ Product 10 ]
+
+Jadi:
+10 card
+5 baris
+2 kolom.
+
+Gunakan CSS Grid.
+
+Contoh konsep:
+
+grid-template-columns: repeat(2, minmax(0, 1fr));
+
+Jangan gunakan:
+- horizontal slider
+- horizontal carousel
+- overflow-x untuk product grid
+- flex row yang membuat card menyamping tanpa batas
+
+==================================================
+6. PRODUCT CARD
+==================================================
+
+Product card harus compact.
+
+Jangan membuat card sebesar screenshot yang sebelumnya terlalu besar.
+
+Pada mobile:
+- 2 card harus muat sempurna dalam satu layar
+- tidak boleh horizontal overflow
+- tidak boleh ada ruang kosong raksasa
+- tinggi card harus wajar
+- image/header product jangan terlalu tinggi
+- teks tidak boleh keluar card
+- tombol Order tetap terlihat
+
+Card boleh memiliki:
+- badge Populer/Terlaris
+- area image/visual
+- nama produk
+- kategori/provider
+- deskripsi singkat
+- rating
+- harga
+- tombol Order
+
+Tetapi semua harus dipadatkan agar 2 card nyaman terlihat berdampingan.
+
+Jika gambar produk rusak atau URL gambar tidak valid:
+- jangan tampilkan broken image
+- gunakan fallback visual yang rapi
+- jangan menyebabkan layout rusak
+
+==================================================
+7. RESPONSIVE
+==================================================
+
+Mobile adalah prioritas utama.
+
+Target:
+360px
+375px
+390px
+414px
+430px
+
+Tidak boleh:
+- horizontal scrollbar
+- card terpotong
+- header terpotong
+- Hero keluar layar
+- kategori keluar container
+- search keluar layar
+- product grid melebar
+
+Mobile:
+2 kolom product grid.
+
+Tablet:
+2 atau 3 kolom sesuai ruang.
+
+Desktop:
+4 kolom jika sesuai.
+
+==================================================
+8. HAPUS BOTTOM NAVIGATION
+==================================================
+
+HAPUS TOTAL Bottom Navigation yang berisi:
+
+- Beranda
+- Kategori
+- Pesanan
+- Favorit
+- Akun
+
+Jangan hanya disembunyikan secara visual jika component masih mengambil ruang.
+
+Hapus dari homepage/layout jika memang khusus storefront.
+
+Pastikan tidak ada:
+- fixed bottom navigation
+- sticky bottom navigation
+- bottom menu
+- spacer kosong bekas bottom navigation
+
+Setelah dihapus, konten harus bisa scroll normal sampai bawah.
+
+==================================================
+9. HAPUS DUPLIKASI
+==================================================
+
+Audit seluruh homepage.
+
+Pastikan hanya ada:
+
+1 Header
+1 Hero
+1 Kategori section
+1 Search
+1 Produk Populer section
+10 Product Card
+
+Tidak boleh ada:
+- kategori kedua
+- hero kedua
+- search kedua
+- Produk Populer kedua
+- header kedua
+- bottom nav
+- category carousel tambahan
+- product carousel tambahan
+
+==================================================
+10. MASALAH HEADER YANG MENUTUPI KONTEN
+==================================================
+
+Screenshot terakhir menunjukkan Header kadang berada di tengah Hero/Produk Populer.
+
+INI HARUS DIPERBAIKI.
+
+Cari penyebab:
+- position fixed
+- position sticky
+- z-index
+- transform
+- negative margin
+- absolute positioning
+- container spacing
+- duplicated Header
+- layout wrapper
+
+Header boleh tetap sticky jika memang desain membutuhkan, tetapi TIDAK BOLEH menutupi konten.
+
+Jika paling aman, gunakan header normal/static.
+
+Prioritas:
+layout stabil > efek sticky.
+
+==================================================
+11. JANGAN UBAH LOGIC DATA
+==================================================
+
+Jangan merusak:
+- product data
+- category data
+- provider
+- filter
+- search
+- WhatsApp order
+- admin panel
+- API
+- database
+- authentication
+- dark mode
+
+Perubahan fokus pada layout/UI homepage.
+
+==================================================
+12. AUDIT FILE
+==================================================
+
+Sebelum coding:
+
+Audit:
+- src/app/page.tsx
+- src/app/globals.css
+- semua component homepage
+- Header
+- Hero
+- Category
+- Search
+- ProductCard
+- BottomNav
+- layout
+
+Cari component yang menyebabkan:
+- duplikasi
+- overlap
+- positioning salah
+- kategori muncul dua kali
+- BottomNav masih muncul
+- Hero berpindah posisi
+- product grid menjadi carousel
+
+Jangan membuat component baru jika component yang ada masih bisa diperbaiki.
+
+Gunakan struktur project yang sudah ada.
+
+==================================================
+13. HASIL YANG DIHARAPKAN
+==================================================
+
+Homepage mobile harus terlihat seperti storefront normal:
+
+HEADER
+↓
+HERO
+↓
+KATEGORI PILIHAN
+↓
+SEARCH
+↓
+PRODUK POPULER
+↓
+10 PRODUCT CARD
+↓
+FOOTER / akhir halaman
+
+Tidak ada Bottom Navigation.
+
+Tidak ada kategori di atas Hero.
+
+Tidak ada kategori duplikat.
+
+Tidak ada Product Carousel.
+
+Tidak ada Hero duplikat.
+
+Tidak ada Header overlap.
+
+Tidak ada horizontal overflow.
+
+==================================================
+14. VALIDASI WAJIB
+==================================================
+
+Setelah selesai:
+
+npm run lint
+
+Kemudian:
+
+npm run build
+
+Jika ada error:
+- perbaiki sampai bersih
+- jangan berhenti hanya karena UI sudah terlihat benar
+
+Pastikan build sukses.
+
+Kemudian cek git diff.
+
+Pastikan perubahan hanya berkaitan dengan perbaikan yang diminta.
+
+==================================================
+15. GIT
+==================================================
+
+Setelah semua benar:
+
+git add .
+git commit -m "fix: finalize homepage storefront layout"
+git push origin main
+
+Pastikan push benar-benar berhasil ke:
+
+zenolambee/toko-digital
+
+branch:
+
+main
+
+==================================================
+16. LAPORAN AKHIR
+==================================================
+
+Setelah selesai laporkan:
+
+- file yang diubah
+- npm run lint: PASS/FAIL
+- npm run build: PASS/FAIL
+- jumlah product card homepage: 10
+- product grid mobile: 2 kolom
+- kategori homepage: 1 section
+- bottom navigation: DIHAPUS
+- kategori sebelum Hero: DIHAPUS
+- header overlap: DIPERBAIKI
+- horizontal overflow: DIPERBAIKI
+- commit hash
+- push: BERHASIL/GAGAL
+
+JANGAN melakukan perubahan lain di luar instruksi ini.
+
+JANGAN memindahkan kategori ke atas Hero lagi.
+
+JANGAN menambahkan Bottom Navigation lagi.
+
+JANGAN mengubah urutan final:
+
+HEADER → HERO → KATEGORI → SEARCH → PRODUK POPULER → 10 CARD.
 
 ```
 # 
