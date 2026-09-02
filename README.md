@@ -59,7 +59,252 @@
 ```
 # 
 ```
+SIMPLIFY HOMEPAGE — HAPUS KATEGORI DI ATAS, PERTAHANKAN KATEGORI DI BAWAH
 
+Repository:
+zenolambee/toko-digital
+
+JANGAN menyentuh repository toko-online.
+
+Tujuan:
+Homepage terlalu banyak menampilkan kategori.
+Sekarang cukup gunakan SATU section kategori saja, yaitu kategori di bagian bawah.
+
+==================================================
+1. HAPUS KATEGORI BAGIAN ATAS
+==================================================
+
+HAPUS SELURUH section "Kategori Pilihan" yang berada DI ATAS banner/hero.
+
+Hapus seluruh komponen/category selector tersebut dari posisi atas homepage.
+
+Jangan sisakan:
+- judul "Kategori Pilihan"
+- tombol "Lihat semua"
+- category cards/chips
+- icon kategori
+- container kosong
+
+Area tersebut harus benar-benar hilang.
+
+==================================================
+2. PERTAHANKAN KATEGORI BAGIAN BAWAH
+==================================================
+
+Kategori yang berada di bagian bawah homepage tetap dipertahankan.
+
+Gunakan hanya satu section kategori di bawah.
+
+Kategori:
+
+- Paket Data
+- AI & Tools
+- Aplikasi
+- Streaming
+- Top Up
+- Cloud & Server
+- Lainnya
+
+Section ini menjadi SATU-SATUNYA kategori pada homepage.
+
+==================================================
+3. DESAIN KATEGORI BAGIAN BAWAH
+==================================================
+
+Buat kategori bagian bawah terlihat lebih menarik dan berwarna, tetapi tetap mengikuti desain Digital Cell.
+
+Gunakan:
+
+- background soft
+- border tipis
+- rounded corner
+- shadow ringan
+- warna aksen berbeda per kategori
+- icon yang sesuai
+- typography jelas
+
+Warna harus soft/premium, bukan neon.
+
+Contoh:
+
+Paket Data → soft teal
+AI & Tools → soft blue
+Aplikasi → soft purple
+Streaming → soft coral
+Top Up → soft orange
+Cloud & Server → soft cyan
+Lainnya → soft indigo
+
+Pastikan warna tetap harmonis dengan background biru muda dan brand Digital Cell.
+
+==================================================
+4. URUTAN HOMEPAGE
+==================================================
+
+Urutan homepage yang diinginkan:
+
+HEADER
+
+↓
+
+BANNER / HERO
+
+↓
+
+PRODUK POPULER
+
+↓
+
+KATEGORI PILIHAN
+
+↓
+
+PRODUK / SECTION LAINNYA
+
+Jangan menampilkan kategori sebelum banner.
+
+==================================================
+5. BANNER / HERO
+==================================================
+
+JANGAN redesign banner.
+
+Pertahankan versi banner terakhir yang sudah disetujui:
+
+- ukuran
+- aspect ratio
+- border
+- border-radius
+- gradient
+- teks
+- tombol
+- ilustrasi
+- slider indicator
+
+Hanya karena kategori atas dihapus, banner otomatis naik ke posisi setelah header.
+
+==================================================
+6. PRODUK POPULER
+==================================================
+
+Jangan mengubah Product Populer.
+
+Pertahankan:
+
+- card
+- ukuran card
+- slider
+- 2 card yang dapat digeser
+- spacing
+- badge
+- harga
+- tombol Order
+
+==================================================
+7. HEADER & BOTTOM NAVIGATION
+==================================================
+
+JANGAN mengubah:
+
+Header:
+- logo
+- Digital Cell
+- tagline
+- dark mode
+- hamburger
+
+Bottom navigation:
+- Beranda
+- Kategori
+- Pesanan
+- Favorit
+- Akun
+
+Semua tetap seperti versi terakhir yang sudah benar.
+
+==================================================
+8. RESPONSIVE
+==================================================
+
+Mobile:
+- tidak ada kategori di atas banner
+- banner langsung setelah header
+- Product Populer tetap nyaman
+- kategori bawah tetap rapi
+- tidak ada horizontal overflow
+
+Tablet/Desktop:
+- spacing proporsional
+- kategori tidak terlalu besar
+
+==================================================
+9. JANGAN UBAH HALAMAN PAKET DATA
+==================================================
+
+Halaman Paket Data jangan disentuh.
+
+Tetap:
+
+Paket Data
+↓
+Pilih Provider
+↓
+Pilih Kategori Paket
+↓
+Daftar Paket
+
+Jangan menambahkan kembali tombol "Semua" yang sebelumnya sudah dihapus.
+
+==================================================
+10. VALIDASI
+==================================================
+
+Pastikan homepage tidak lagi mempunyai dua section kategori.
+
+Harus hanya ada SATU kategori section:
+Kategori Pilihan di bagian bawah.
+
+Checklist:
+
+[ ] Kategori atas dihapus total
+[ ] Tidak ada ruang kosong bekas kategori atas
+[ ] Banner langsung berada setelah header
+[ ] Product Populer tetap
+[ ] Kategori bawah tetap
+[ ] Kategori bawah lebih berwarna
+[ ] Banner tidak berubah desain
+[ ] Header tidak berubah
+[ ] Bottom navigation tidak berubah
+[ ] Paket Data tidak berubah
+[ ] Tidak ada horizontal overflow
+
+Setelah selesai:
+
+npm run lint
+npm run build
+
+Perbaiki semua error jika ada.
+
+Kemudian:
+
+git add .
+git commit -m "refactor: simplify homepage category layout"
+git push origin main
+
+Jangan force push.
+Jangan reset.
+Jangan menyentuh toko-online.
+
+Laporkan:
+- file yang diubah
+- hasil lint
+- hasil build
+- commit hash
+- status push
+
+PENTING:
+Jangan melakukan redesign bagian lain.
+Perubahan utama hanya menghapus kategori atas dan mempertahankan/mempercantik kategori bawah.
 ```
 # 
 ```
