@@ -29,9 +29,185 @@
 ```
 
 ```
-# 
+# PROMPT — TAMBAHKAN 10 PRODUK DI BAWAH PRODUK POPULER
 ```
+Fokus hanya menambahkan section produk di BAWAH Produk Populer.
 
+PENTING:
+JANGAN MENGUBAH Produk Populer yang sekarang.
+Jangan mengubah slider Produk Populer.
+Jangan mengubah card Produk Populer.
+Jangan mengubah kategori.
+Jangan mengubah search.
+Jangan mengubah Header, Hero, Bottom Navigation, Admin, routing, data produk, atau fitur WhatsApp.
+
+Kondisi saat ini:
+- Kategori sudah menjadi horizontal slider dan sudah benar.
+- Search sudah berada di bawah kategori dan sudah benar.
+- Produk Populer sudah menjadi slider 2 card dan SUDAH BENAR.
+
+Tugas sekarang hanya:
+
+==================================================
+TAMBAHKAN SECTION "PRODUK TERKAIT" DI BAWAH PRODUK POPULER
+==================================================
+
+Setelah seluruh section Produk Populer selesai (termasuk slider dan indicator), langsung tampilkan section baru:
+
+Produk Terkait
+Produk lainnya yang mungkin Anda suka
+
+Kemudian tampilkan 10 product card dalam GRID VERTIKAL.
+
+MOBILE WAJIB:
+
+[ Product 1 ] [ Product 2 ]
+[ Product 3 ] [ Product 4 ]
+[ Product 5 ] [ Product 6 ]
+[ Product 7 ] [ Product 8 ]
+[ Product 9 ] [ Product 10 ]
+
+Jadi:
+- 2 kolom
+- 5 baris
+- total 10 card
+- scrolling normal ke bawah
+- BUKAN slider
+- BUKAN carousel
+- BUKAN horizontal scroll
+
+==================================================
+PRODUCT GRID
+==================================================
+
+Gunakan CSS Grid.
+
+Mobile:
+grid-template-columns: repeat(2, minmax(0, 1fr));
+
+Gap antar card harus rapi dan compact.
+
+Jangan sampai:
+- card keluar layar
+- body memiliki horizontal overflow
+- card terlalu besar
+- ada ruang kosong berlebihan
+
+Desktop boleh menjadi:
+- 3 atau 4 kolom sesuai breakpoint
+
+Tetapi pada mobile HARUS 2 kolom.
+
+==================================================
+PRODUCT CARD
+==================================================
+
+Gunakan komponen ProductCard yang SUDAH ADA.
+
+Jangan membuat desain card baru jika ProductCard existing bisa digunakan.
+
+Card harus tetap:
+- gambar/visual produk
+- badge jika ada
+- nama produk
+- kategori/provider
+- deskripsi
+- rating
+- jumlah terjual
+- harga
+- tombol Order
+
+Pastikan 10 card memiliki tinggi yang konsisten dan tetap compact.
+
+==================================================
+DATA
+==================================================
+
+Gunakan 10 produk yang berbeda dari data produk yang sudah tersedia.
+
+Jangan membuat data produk palsu jika repository sudah memiliki product data.
+
+Ambil dari sumber data produk yang sudah digunakan oleh homepage.
+
+Jangan menghapus atau mengubah data Produk Populer.
+
+Jika Produk Populer menggunakan 10 produk tertentu, gunakan produk lain yang tersedia untuk section Produk Terkait jika memungkinkan.
+
+==================================================
+URUTAN FINAL HOMEPAGE
+==================================================
+
+Header
+↓
+Hero
+↓
+Kategori Pilihan
+    (horizontal slider)
+↓
+Search
+↓
+Produk Populer
+    (horizontal slider 2 card)
+    (JANGAN DIUBAH)
+↓
+Produk Terkait
+    2 kolom × 5 baris = 10 card
+↓
+Footer / section bawah yang sudah ada
+
+==================================================
+BATASAN SANGAT PENTING
+==================================================
+
+Jangan memindahkan Produk Populer.
+Jangan mengganti Produk Populer menjadi grid.
+Jangan menghapus slider Produk Populer.
+Jangan mengubah jumlah Produk Populer.
+Jangan mengubah desain Produk Populer.
+
+Hanya tambahkan Produk Terkait SETELAH Produk Populer.
+
+Jangan membuat carousel untuk Produk Terkait.
+Produk Terkait harus grid biasa dan scroll vertikal.
+
+Pastikan section baru tidak tertutup Bottom Navigation.
+
+==================================================
+VALIDASI
+==================================================
+
+Setelah selesai:
+
+1. npm run lint
+2. npm run build
+
+Jika ada error, perbaiki sampai PASS.
+
+Periksa juga secara manual/berdasarkan code bahwa:
+- Produk Populer tetap slider 2 card
+- Produk Terkait berada tepat di bawah Produk Populer
+- Produk Terkait berisi 10 card
+- mobile = 2 kolom × 5 baris
+- tidak ada horizontal overflow pada body
+
+Kemudian:
+
+git status
+git add .
+git commit -m "feat: add related products grid"
+git push origin main
+
+Laporkan:
+- file yang diubah
+- jumlah Produk Terkait = 10
+- Produk Populer tidak diubah
+- mobile grid = 2 × 5
+- lint PASS
+- build PASS
+- commit hash
+- push PASS
+
+JANGAN mengerjakan perubahan lain di luar instruksi ini.
 ```
 # PROMPT UNTUK AI CODING AGENT — FINAL FIX KATEGORI + PRODUK POPULER
 
