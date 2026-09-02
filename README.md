@@ -75,7 +75,622 @@
 ```
 # 
 ```
+IMPLEMENTASI FITUR PAKET DATA — TOKO-DIGITAL
 
+Repository:
+zenolambee/toko-digital
+
+Branch:
+main
+
+KERJAKAN LANGSUNG DI REPOSITORY INI.
+
+Jangan menyentuh repository toko-online.
+
+==================================================
+TUJUAN
+==================================================
+
+Tambahkan halaman/fitur khusus "Paket Data" dengan alur:
+
+PAKET DATA
+↓
+PILIH PROVIDER
+↓
+PILIH KATEGORI PAKET
+↓
+LIST PAKET
+
+PENTING:
+Nomor HP TIDAK ditampilkan dan TIDAK diinput pada halaman Paket Data.
+
+Nomor tujuan/provider sudah menjadi bagian dari proses berikutnya dan tidak boleh membuat halaman katalog Paket Data menjadi rumit.
+
+==================================================
+1. DESAIN HALAMAN
+==================================================
+
+Gunakan bahasa visual yang konsisten dengan desain Digital Cell yang sekarang:
+
+- background very light blue/off-white
+- card putih
+- border tipis
+- border-radius besar
+- shadow sangat lembut
+- typography modern
+- warna utama biru Digital Cell
+- spacing rapi
+- mobile-first
+- responsive
+
+Jangan membuat desain yang terlihat seperti aplikasi provider asli.
+Tetap harus terasa sebagai bagian dari website toko-digital.
+
+==================================================
+2. HEADER
+==================================================
+
+Buat header halaman:
+
+←  Paket Data
+
+Back button kembali ke halaman sebelumnya/home.
+
+Jangan membuat header terlalu tinggi.
+
+Tetap gunakan style header yang konsisten dengan website existing.
+
+==================================================
+3. PROVIDER
+==================================================
+
+Bagian pertama:
+
+Pilih Provider
+
+Tampilkan provider sebagai horizontal scroll/chips atau compact cards.
+
+Contoh:
+
+[ Semua ]
+[ Telkomsel ]
+[ Indosat ]
+[ XL ]
+[ Tri ]
+[ AXIS ]
+[ Smartfren ]
+
+Jangan membuat provider card terlalu besar.
+
+Setiap provider dapat memiliki:
+- logo
+- nama provider
+
+Provider yang aktif harus memiliki visual selected yang jelas.
+
+Contoh:
+
+[ Telkomsel ] ← selected
+[ Indosat ]
+[ XL ]
+[ Tri ]
+
+Jangan menggunakan warna terlalu mencolok.
+Gunakan warna brand provider hanya sebagai aksen seperlunya.
+
+==================================================
+4. KATEGORI PAKET
+==================================================
+
+Setelah provider:
+
+Pilih Kategori Paket
+
+Contoh:
+
+[ Semua ]
+[ Internet ]
+[ Combo ]
+[ Unlimited ]
+[ Masa Aktif ]
+
+Kategori harus mengikuti provider yang dipilih.
+
+Jika provider memiliki kategori berbeda, tampilkan kategori yang tersedia untuk provider tersebut.
+
+Kategori juga dapat horizontal scroll jika jumlahnya banyak.
+
+Jangan membuat kategori menjadi grid besar.
+
+==================================================
+5. LIST PAKET
+==================================================
+
+Setelah kategori:
+
+Daftar Paket
+
+Gunakan LIST CARD COMPACT.
+
+Jangan menggunakan product card besar seperti Produk Populer.
+
+Referensi visual:
+
+┌────────────────────────────────────┐
+│ [LOGO]  3GB All Jaringan 28 Hari  │
+│         Rp 22.270          OPEN    │
+└────────────────────────────────────┘
+
+┌────────────────────────────────────┐
+│ [LOGO]  Happy 4,5GB 28 Hari       │
+│         Rp 25.420       GANGGUAN  │
+└────────────────────────────────────┘
+
+┌────────────────────────────────────┐
+│ [LOGO]  Happy 7GB 28 Hari         │
+│         Rp 30.198          OPEN    │
+└────────────────────────────────────┘
+
+Struktur setiap item:
+
+[Logo Provider]
+
+Nama Paket
+Harga
+
+Status
+
+==================================================
+6. STATUS PAKET
+==================================================
+
+Status minimal:
+
+OPEN
+GANGGUAN
+
+OPEN:
+- badge hijau muda
+- text hijau
+
+GANGGUAN:
+- badge merah muda
+- text merah
+- card boleh memiliki border merah sangat tipis/halus
+
+Contoh:
+
+OPEN
+
+GANGGUAN
+
+Jangan menggunakan warna merah terlalu kuat sehingga merusak desain.
+
+==================================================
+7. INFORMASI PAKET
+==================================================
+
+Data paket harus mendukung:
+
+- id
+- provider
+- category
+- name
+- quota
+- validity
+- price
+- status
+- logo/provider reference
+- description optional
+- active
+- sort/order
+
+Contoh:
+
+{
+  provider: "tri",
+  category: "internet",
+  name: "Happy 7GB 28 Hari",
+  quota: "7GB",
+  validity: "28 Hari",
+  price: 30198,
+  status: "OPEN",
+  active: true
+}
+
+Jangan hardcode seluruh paket langsung di component UI jika project sudah memiliki sistem data/product.
+
+Gunakan struktur data yang mudah dikembangkan.
+
+==================================================
+8. FILTER
+==================================================
+
+Interaksi:
+
+Jika user memilih provider:
+→ list paket hanya provider tersebut.
+
+Jika user memilih kategori:
+→ list paket hanya kategori tersebut.
+
+Jika user memilih:
+
+Provider:
+Tri
+
+Kategori:
+Internet
+
+Maka hanya tampil paket:
+
+Tri + Internet.
+
+Jika tidak ada paket:
+
+Tampilkan empty state yang rapi:
+
+"Tidak ada paket tersedia"
+
+Jangan tampilkan card kosong.
+
+==================================================
+9. KLIK PAKET
+==================================================
+
+Setiap paket harus clickable.
+
+Ketika user memilih paket:
+
+buka detail/konfirmasi paket menggunakan flow yang sudah tersedia di project jika ada.
+
+Jangan membuat checkout/payment system baru.
+
+Website ini tetap katalog/order via WhatsApp.
+
+Jika flow WhatsApp sudah tersedia:
+gunakan flow tersebut.
+
+Jangan mengganti sistem WhatsApp existing.
+
+==================================================
+10. NOMOR HP
+==================================================
+
+PENTING SEKALI:
+
+JANGAN menambahkan:
+
+- input nomor HP
+- field nomor HP
+- nomor tujuan di halaman list
+- form nomor di halaman provider
+- card nomor HP
+
+Halaman ini hanya katalog/pemilihan paket.
+
+Nomor HP merupakan proses terpisah setelah paket dipilih jika memang diperlukan oleh flow order.
+
+==================================================
+11. MOBILE UI
+==================================================
+
+Prioritas utama mobile.
+
+Pada mobile:
+
+Header
+↓
+Pilih Provider
+↓
+Provider chips horizontal
+↓
+Pilih Kategori Paket
+↓
+Kategori chips horizontal
+↓
+Daftar Paket
+↓
+List card compact
+
+Tidak boleh ada horizontal overflow pada BODY.
+
+Yang boleh horizontal scroll hanya:
+
+- provider selector
+- category selector
+
+List paket tetap vertical.
+
+==================================================
+12. UKURAN CARD
+==================================================
+
+Jangan membuat card paket tinggi.
+
+Target:
+- compact
+- mudah discan
+- satu card sekitar 80–110px tergantung isi
+- logo kecil tetapi jelas
+- nama paket mudah dibaca
+- harga menonjol
+- status badge compact
+
+Jangan membuat card seperti ProductCard Produk Populer.
+
+==================================================
+13. BORDER — WAJIB
+==================================================
+
+Semua card Paket Data harus mempunyai border halus.
+
+Normal:
+
+border tipis abu/biru muda
+border-radius sekitar 18–22px
+shadow sangat lembut
+
+OPEN:
+border normal
+
+GANGGUAN:
+border merah muda/merah transparan
+
+Provider selected:
+gunakan border/accent biru yang jelas.
+
+Kategori selected:
+gunakan border/accent biru yang jelas.
+
+Jangan menggunakan border hitam tebal.
+
+==================================================
+14. DESKTOP
+==================================================
+
+Desktop tetap responsive.
+
+Jangan membuat list paket terlalu lebar.
+
+Gunakan max-width yang nyaman.
+
+Contoh konsep:
+
+┌─────────────────────────────────────┐
+│             Paket Data              │
+│                                     │
+│ Provider                            │
+│ [Telkomsel] [Indosat] [XL] [Tri]  │
+│                                     │
+│ Kategori                            │
+│ [Internet] [Combo] [Unlimited]     │
+│                                     │
+│ Daftar Paket                        │
+│ ┌───────────────────────────────┐   │
+│ │ package                       │   │
+│ └───────────────────────────────┘   │
+└─────────────────────────────────────┘
+
+Jangan membuat 4 kolom card besar.
+
+==================================================
+15. INTEGRASI DENGAN ADMIN
+==================================================
+
+Audit admin panel existing.
+
+Jika project sudah memiliki sistem product management:
+
+Tambahkan kemampuan mengelola Paket Data tanpa merusak produk existing.
+
+Admin harus dapat membuat/edit:
+
+- Provider
+- Kategori Paket
+- Nama Paket
+- Kuota
+- Masa Aktif
+- Harga
+- Status OPEN/GANGGUAN
+- Active/Inactive
+- Urutan
+
+Jangan merusak produk digital yang sudah ada.
+
+Jika arsitektur admin saat ini belum mendukung struktur tersebut, buat modul terpisah yang modular.
+
+Jangan memasukkan seluruh logic Paket Data ke satu file besar.
+
+==================================================
+16. ARSITEKTUR
+==================================================
+
+Buat modular.
+
+Pisahkan jika diperlukan:
+
+- data/model Paket Data
+- provider
+- category
+- package list
+- package card
+- provider selector
+- category selector
+
+Jangan membuat satu component raksasa.
+
+Ikuti pola/arsitektur existing repository jika sudah tersedia.
+
+==================================================
+17. HOMEPAGE
+==================================================
+
+Jangan merombak homepage yang sekarang.
+
+Pertahankan:
+
+- Header
+- Kategori Pilihan
+- Hero banner compact
+- Produk Populer
+- Product slider 2 card
+- Bottom navigation
+- Dark mode
+- styling existing
+
+Tambahkan akses ke Paket Data secara natural melalui kategori/menu yang sudah tersedia.
+
+==================================================
+18. DATA AWAL
+==================================================
+
+Jika belum ada backend/database khusus untuk Paket Data, buat sample seed/mock data yang realistis untuk development.
+
+Minimal contoh:
+
+Tri:
+- 3GB All Jaringan 28 Hari
+- Happy 4,5GB 28 Hari
+- Happy 7GB 28 Hari
+- Happy 9GB 28 Hari
+- Happy 10GB 28 Hari
+
+Tambahkan beberapa contoh provider lain untuk menguji filtering.
+
+Status:
+- sebagian OPEN
+- minimal satu GANGGUAN
+
+Jangan mengklaim data tersebut sebagai harga real-time.
+
+==================================================
+19. DARK MODE
+==================================================
+
+Pastikan halaman Paket Data mengikuti dark mode existing.
+
+Jangan hanya membalik background.
+
+Perhatikan:
+
+- card
+- border
+- text
+- provider chip
+- category chip
+- status badge
+- empty state
+
+==================================================
+20. RESPONSIVE TEST
+==================================================
+
+Wajib test:
+
+360px
+375px
+390px
+412px
+430px
+768px
+1024px
+1280px+
+
+Pastikan:
+
+- tidak ada body horizontal overflow
+- provider selector dapat swipe
+- category selector dapat swipe
+- package list tetap vertical
+- text tidak terpotong
+- harga tidak keluar card
+- status badge tidak keluar card
+- logo tidak pecah
+- spacing konsisten
+
+==================================================
+21. CODE QUALITY
+==================================================
+
+Sebelum implementasi:
+audit struktur repository terlebih dahulu.
+
+Jangan membuat duplicate component/page.
+
+Gunakan component existing jika memang cocok.
+
+Jangan menghapus fitur existing.
+
+Setelah implementasi:
+
+npm run lint
+npm run build
+
+Perbaiki SEMUA error yang muncul.
+
+==================================================
+22. GIT
+==================================================
+
+Setelah semuanya selesai dan lint/build berhasil:
+
+git status
+
+Pastikan hanya perubahan repository:
+
+zenolambee/toko-digital
+
+Kemudian:
+
+git add .
+git commit -m "feat: add data package catalog"
+git push origin main
+
+Jangan:
+- force push
+- reset --hard
+- menghapus commit lama
+- mengubah toko-online
+- mengubah repository lain
+
+==================================================
+23. LAPORAN AKHIR
+==================================================
+
+Setelah push berhasil, laporkan:
+
+1. File yang dibuat/diubah
+2. Fitur Paket Data yang dibuat
+3. Provider filtering
+4. Category filtering
+5. Package list
+6. Status OPEN/GANGGUAN
+7. Admin integration
+8. Responsive test
+9. npm run lint → hasil
+10. npm run build → hasil
+11. Commit hash
+12. Push → berhasil/gagal
+
+FOKUS UTAMA:
+
+Paket Data harus terasa sederhana:
+
+PILIH PROVIDER
+↓
+PILIH KATEGORI
+↓
+LIHAT LIST PAKET
+↓
+PILIH PAKET
+↓
+LANJUT KE FLOW ORDER
+
+TIDAK ADA INPUT NOMOR HP DI HALAMAN INI.
+
+Jangan membuat desain terlalu besar.
+Gunakan card paket compact dengan border halus seperti referensi.
 ```
 
 # 
