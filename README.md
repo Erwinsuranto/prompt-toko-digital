@@ -19,7 +19,103 @@
 ```
 # 
 ```
+KOREKSI UI — URUTAN KATEGORI & PRODUK POPULER
 
+Kerjakan hanya di repository zenolambee/toko-digital.
+Jangan menyentuh toko-online.
+
+Koreksi prompt sebelumnya:
+
+URUTAN YANG BENAR PADA HOMEPAGE MOBILE ADALAH:
+
+Header
+↓
+Kategori Pilihan
+↓
+Produk Populer
+↓
+Product Slider
+↓
+Section berikutnya
+↓
+Bottom Navigation
+
+Kategori Pilihan HARUS berada DI ATAS card Produk Populer.
+
+Contoh layout:
+
+┌─────────────────────────────────┐
+│ 🏷 Kategori Pilihan             │
+│                                 │
+│ [AI & Tools] [Streaming] [Game] │
+│ [Cloud] [Edu] [Semua]           │
+└─────────────────────────────────┘
+
+Produk Populer                    Lihat semua →
+Produk pilihan paling laris
+
+┌──────────────┐ ┌──────────────┐
+│   Product 1  │ │   Product 2  │
+│              │ │              │
+│   detail     │ │   detail     │
+│   harga      │ │   harga      │
+│    Order     │ │    Order     │
+└──────────────┘ └──────────────┘
+
+← SWIPE HORIZONTAL →
+
+             ● ○ ○
+
+Kemudian baru section lainnya.
+
+PENTING:
+- Kategori Pilihan jangan dipindahkan ke bawah Produk Populer.
+- Kategori Pilihan harus tetap di bagian atas card Produk Populer.
+- Produk Populer tetap menggunakan horizontal slider.
+- Mobile tetap menampilkan 2 card produk sekaligus.
+- Card bisa swipe/geser horizontal.
+- Halaman utama tetap vertical scrolling.
+- Jangan sampai seluruh body ikut horizontal scrolling.
+- Jangan mengubah header yang sudah bagus.
+- Jangan merusak bottom navigation.
+- Jangan merusak admin panel.
+
+Untuk slider Produk Populer:
+- 2 card terlihat pada mobile.
+- card compact dan proporsional.
+- horizontal touch scrolling.
+- scroll-snap.
+- scrollbar disembunyikan.
+- pagination indicator di bawah card.
+- jangan membuat 1 card full-width.
+- jangan membuat card terlalu besar.
+- jangan ada whitespace berlebihan.
+
+Untuk Kategori Pilihan:
+- section berada tepat sebelum Produk Populer.
+- tampil sebagai card/section rounded dengan background putih atau sangat lembut.
+- category chips dapat horizontal scroll di mobile.
+- tetap compact agar tidak memakan terlalu banyak layar.
+
+Audit implementation existing terlebih dahulu.
+Gunakan component/data yang sudah ada.
+Jangan membuat duplicate ProductCard atau duplicate section.
+
+Setelah selesai:
+- npm run lint
+- npm run build
+- perbaiki semua error
+- git status
+- pastikan repository zenolambee/toko-digital
+- branch main
+- jangan force push
+- jangan reset --hard
+- commit perubahan
+- push ke origin/main
+
+Jangan menyentuh toko-online.
+
+Laporkan file yang diubah, hasil lint, build, commit hash, dan hasil push.
 ```
 # 
 ```
