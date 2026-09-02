@@ -7,7 +7,415 @@
 ```
 # 
 ```
+PERBAIKAN HOMEPAGE TOKO-DIGITAL — KECILKAN HERO BANNER
 
+Kerjakan HANYA di repository:
+zenolambee/toko-digital
+
+Jangan menyentuh toko-online.
+
+Tampilan terbaru sudah cukup bagus. JANGAN melakukan redesign besar.
+
+Fokus utama perubahan kali ini:
+HERO/BANNER biru terlalu besar dan terlalu tinggi di mobile.
+
+================================
+TARGET LAYOUT
+================================
+
+Urutan tetap:
+
+HEADER
+↓
+KATEGORI PILIHAN
+↓
+HERO BANNER COMPACT
+↓
+PRODUK POPULER
+↓
+PRODUCT SLIDER 2 CARD
+↓
+SECTION LAINNYA
+↓
+BOTTOM NAVIGATION
+
+Jangan mengubah urutan tersebut.
+
+================================
+1. HERO BANNER HARUS LEBIH PENDEK
+================================
+
+Banner saat ini mengambil terlalu banyak tinggi layar.
+
+Kecilkan secara signifikan.
+
+Target mobile:
+- banner tetap lebar mengikuti container
+- tetapi tinggi dibuat compact
+- jangan memenuhi hampir seluruh layar
+- jangan terlihat seperti poster vertikal
+- lebih menyerupai promotional banner horizontal/landscape
+
+Gunakan rasio visual sekitar 16:9 sebagai target utama.
+
+PENTING:
+JANGAN menggunakan rasio 9:16.
+JANGAN membuat banner portrait.
+JANGAN membuat banner sangat tinggi.
+
+Target konsep:
+
+┌──────────────────────────────────────────┐
+│                                          │
+│  Solusi Digital       [PHONE / ICON]    │
+│  Dalam Genggaman                         │
+│                                          │
+│  [Belanja Sekarang] [Hubungi Kami]      │
+│                                          │
+└──────────────────────────────────────────┘
+
+Bukan:
+
+┌───────────────────┐
+│                   │
+│       HERO        │
+│                   │
+│                   │
+│                   │
+│                   │
+│                   │
+│                   │
+└───────────────────┘
+
+================================
+2. CONTENT HERO
+================================
+
+Tetap pertahankan:
+- "Siap order via WhatsApp"
+- "Solusi Digital"
+- "Dalam Genggaman"
+- deskripsi
+- tombol "Belanja Sekarang"
+- tombol "Hubungi Kami"
+- ilustrasi phone/D
+- pagination indicator
+
+Tetapi semua elemen harus dipadatkan agar muat dalam banner yang lebih pendek.
+
+Jangan menghapus informasi penting.
+
+================================
+3. HERO RESPONSIVE MOBILE
+================================
+
+Untuk mobile:
+
+Hero width:
+- hampir penuh mengikuti container
+- margin kiri/kanan tetap konsisten
+
+Hero height:
+- sekitar 56.25% dari lebar container (16:9)
+- boleh sedikit fleksibel jika isi membutuhkan ruang
+- tetapi tetap harus terasa compact
+
+Jangan membuat fixed height yang sangat besar.
+
+Gunakan aspect-ratio jika cocok dengan struktur existing.
+
+Contoh konsep:
+
+aspect-ratio: 16 / 9;
+
+Namun jangan memaksakan aspect-ratio jika menyebabkan content overflow.
+
+================================
+4. POSISI ELEMEN HERO
+================================
+
+Atur ulang internal hero agar efisien.
+
+Desktop/tablet:
+- text di kiri
+- illustration di kanan
+
+Mobile:
+- text tetap dominan
+- illustration diperkecil dan ditempatkan di sisi kanan/bawah sesuai kebutuhan
+- tombol tetap terlihat
+- tidak boleh ada elemen keluar dari card
+
+Semua content harus berada di dalam border-radius hero.
+
+================================
+5. TYPOGRAPHY HERO
+================================
+
+Karena tinggi banner dikurangi:
+
+perkecil typography secara responsive.
+
+Heading:
+"Solusi Digital
+Dalam Genggaman"
+
+Tetap menjadi focal point tetapi jangan terlalu besar.
+
+Deskripsi:
+lebih kecil dan compact.
+
+Badge:
+lebih kecil.
+
+Buttons:
+lebih pendek dan compact.
+
+Pagination:
+tetap berada di bagian bawah hero tetapi jangan memakan banyak ruang.
+
+================================
+6. BUTTON
+================================
+
+Jangan membuat dua tombol terlalu tinggi.
+
+Gunakan button height yang compact.
+
+Contoh:
+
+[ Belanja Sekarang → ] [ WhatsApp Hubungi Kami ]
+
+Desktop:
+boleh lebih besar.
+
+Mobile:
+lebih compact agar tidak menyebabkan hero menjadi tinggi.
+
+================================
+7. BORDER HERO — WAJIB
+================================
+
+Hero harus tetap memiliki batas visual yang jelas.
+
+Gunakan:
+
+- border tipis
+- warna border biru/transparan yang halus
+- border-radius besar
+- shadow lembut
+
+Contoh konsep:
+
+border: 1px solid rgba(...);
+box-shadow: 0 10px 30px rgba(...);
+
+Jangan menggunakan border hitam.
+
+Border harus mengelilingi seluruh banner.
+
+Tujuannya agar banner terlihat seperti premium card dan tidak menyatu dengan background.
+
+================================
+8. JARAK ANTAR SECTION
+================================
+
+Setelah Hero selesai, jangan beri ruang kosong terlalu besar.
+
+Hero
+↓
+spacing compact
+↓
+🔥 Produk Populer
+
+Produk Populer harus terlihat lebih cepat setelah hero.
+
+Jangan membuat user harus scroll jauh hanya untuk melihat Produk Populer.
+
+================================
+9. BACKGROUND
+================================
+
+Pertahankan background halaman very light blue/off-white.
+
+Hero tetap menggunakan gradient biru Digital Cell.
+
+Jangan membuat background halaman menjadi putih polos.
+
+================================
+10. JANGAN RUSAK BAGIAN YANG SUDAH BENAR
+================================
+
+Jangan mengubah secara tidak perlu:
+
+- Header
+- Kategori Pilihan
+- warna kategori yang sudah diperbaiki
+- Produk Populer
+- product slider
+- 2 card mobile
+- swipe horizontal
+- bottom navigation
+- Admin
+- data produk
+- WhatsApp order
+- dark mode
+
+Fokus hanya:
+HERO BANNER + spacing yang berhubungan langsung dengannya.
+
+================================
+11. PRODUCT POPULER
+================================
+
+Pastikan setelah hero diperkecil:
+
+🔥 Produk Populer
+
+tetap muncul dengan posisi yang rapi.
+
+Product slider tetap:
+- 2 card terlihat di mobile
+- horizontal swipe
+- compact
+- border halus
+- tidak ada body horizontal overflow
+
+Jangan mengubah implementasi slider kecuali diperlukan untuk menyesuaikan spacing.
+
+================================
+12. MOBILE PRIORITY
+================================
+
+Prioritas pengujian:
+Android mobile.
+
+Periksa minimal viewport:
+- 360px
+- 375px
+- 390px
+- 412px
+- 430px
+
+Pastikan hero:
+- tidak overflow
+- tidak memotong text
+- tidak memotong tombol
+- tidak memotong ilustrasi
+- tidak terlalu tinggi
+- tidak terlalu sempit
+
+================================
+13. DESKTOP / TABLET
+================================
+
+Jangan membuat desktop menjadi terlalu kecil.
+
+Gunakan responsive behavior:
+
+Mobile:
+16:9 / compact
+
+Tablet:
+sedikit lebih besar jika diperlukan
+
+Desktop:
+banner tetap landscape dan proporsional
+
+Jangan menggunakan satu fixed height untuk semua device.
+
+================================
+14. AUDIT CODE
+================================
+
+Sebelum mengedit:
+- cari component Hero/Banner existing
+- cari CSS hero
+- cari responsive breakpoint
+- cari aspect-ratio/min-height/height yang membuat hero terlalu tinggi
+
+Perbaiki source existing.
+
+Jangan membuat duplicate Hero component.
+
+================================
+15. VALIDASI
+================================
+
+Setelah selesai:
+
+npm run lint
+npm run build
+
+Perbaiki semua error.
+
+Kemudian cek:
+- mobile hero compact
+- hero sekitar 16:9
+- tidak overflow
+- text tidak terpotong
+- button tidak terpotong
+- illustration tidak terpotong
+- border hero terlihat
+- Produk Populer muncul lebih dekat setelah hero
+- product slider tetap 2 card mobile
+- body tidak horizontal overflow
+
+================================
+16. GIT
+================================
+
+Pastikan:
+
+repository:
+zenolambee/toko-digital
+
+branch:
+main
+
+Jangan menyentuh toko-online.
+
+Jangan:
+- force push
+- reset --hard
+- menghapus commit existing
+- mengubah repository lain
+
+Setelah lint dan build berhasil:
+
+git add .
+git commit -m "fix: compact responsive hero banner"
+git push origin main
+
+Laporkan:
+- file yang diubah
+- hasil lint
+- hasil build
+- commit hash
+- hasil push
+
+HASIL AKHIR YANG DIINGINKAN:
+
+Header
+↓
+Kategori Pilihan
+↓
+┌──────────────────────────────┐
+│       HERO 16:9 COMPACT      │
+│  text + buttons + illustration│
+└──────────────────────────────┘
+↓
+🔥 Produk Populer
+↓
+[ Product 1 ] [ Product 2 ]
+      ← swipe →
+↓
+section berikutnya
+
+Fokus utama:
+BANNER JANGAN LAGI TERLALU TINGGI.
+
+Buat terasa seperti promotional banner marketplace modern, bukan banner portrait.
 ```
 # 
 ```
