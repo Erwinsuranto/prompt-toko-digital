@@ -63,6 +63,299 @@
 ```
 # 
 ```
+PERBAIKAN FINAL UI — MENU HAMBURGER + WARNA KATEGORI
+
+Repository:
+zenolambee/toko-digital
+
+JANGAN menyentuh repository toko-online.
+
+Gunakan screenshot terbaru sebagai referensi visual utama.
+
+PENTING:
+Jangan membuat gambar baru.
+Jangan mengubah fitur/functionality yang sudah berjalan.
+Jangan redesign seluruh homepage.
+Fokus HANYA pada:
+1. menu hamburger
+2. warna/styling kategori di bagian bawah homepage.
+
+==================================================
+1. PERBAIKI MENU HAMBURGER
+==================================================
+
+Saat hamburger menu dibuka, sekarang panel menu terlalu besar dan memanjang hampir memenuhi seluruh layar.
+
+UBAH menjadi menu overlay yang lebih compact dan premium.
+
+Target desain:
+
+- panel menu berbentuk card/modal rounded besar
+- tidak memenuhi seluruh tinggi layar
+- posisi tetap nyaman di bawah header
+- margin kiri dan kanan cukup
+- border tipis
+- shadow lembut
+- background putih/light yang sedikit berbeda dari background halaman
+- border-radius besar sekitar 24–30px
+- padding lebih compact
+- jangan membuat jarak antar menu terlalu tinggi
+
+Struktur menu tetap:
+
+Semua Produk
+Paket Data
+Semua
+AI & Tools
+Aplikasi
+Streaming
+Top Up
+Cloud & Server
+Lainnya
+Hubungi Kami
+
+JANGAN menghapus menu-menu tersebut.
+
+Namun tampilkan dengan spacing yang lebih rapat dan rapi sehingga seluruh menu terlihat sebagai satu navigation card yang compact.
+
+==================================================
+MENU HEADER
+==================================================
+
+Bagian atas menu:
+
+- tetap gunakan tombol X untuk menutup
+- X harus berada di header kanan seperti sekarang
+- jangan membuat header ikut berubah ukuran
+- menu harus muncul sebagai overlay di bawah/di sekitar header
+- halaman di belakang tetap terlihat sedikit
+- jangan membuat menu mendorong layout homepage ke bawah
+
+Overlay:
+
+- gunakan background overlay/transparansi ringan jika diperlukan
+- jangan terlalu gelap
+- jangan sampai terlihat seperti halaman baru
+- menu harus terasa seperti dropdown/mobile navigation premium
+
+==================================================
+MENU ITEM
+==================================================
+
+Setiap item menu:
+
+- tinggi lebih kecil
+- padding horizontal konsisten
+- spacing vertikal compact
+- typography tetap jelas
+- gunakan hover/active state yang lembut
+- icon hanya jika memang sudah ada
+- jangan menambahkan icon secara berlebihan
+
+Untuk item "Paket Data":
+- boleh diberi icon yang sesuai
+- tetap terlihat sebagai menu utama
+
+"Hubungi Kami":
+- tetap berada di bagian paling bawah
+- gunakan aksen hijau yang sesuai dengan tombol WhatsApp/CTA
+- pisahkan dengan divider tipis
+
+==================================================
+2. PERBAIKI WARNA KATEGORI HOMEPAGE
+==================================================
+
+Kategori di bagian bawah homepage saat ini terlalu putih/plain.
+
+Struktur kategori JANGAN diubah.
+
+Tetap pertahankan kategori:
+
+- Paket Data
+- AI & Tools
+- Aplikasi
+- Streaming
+- Top Up
+- Cloud & Server
+- Lainnya
+
+Buat category cards lebih hidup dan sesuai dengan desain Digital Cell.
+
+Gunakan pendekatan:
+
+- background card putih/light
+- border lembut
+- setiap kategori memiliki aksen warna/icon yang berbeda
+- warna tetap soft/premium, jangan terlalu mencolok
+- gunakan warna yang harmonis dengan brand biru Digital Cell
+
+Contoh arah warna:
+
+Paket Data:
+aksen hijau/teal
+
+AI & Tools:
+aksen biru
+
+Aplikasi:
+aksen ungu
+
+Streaming:
+aksen merah/coral
+
+Top Up:
+aksen orange
+
+Cloud & Server:
+aksen cyan/blue
+
+Lainnya:
+aksen abu-abu/indigo
+
+JANGAN menggunakan warna background yang terlalu terang/neon.
+
+==================================================
+CATEGORY CARD
+==================================================
+
+Buat category card:
+
+- rounded sekitar 18–22px
+- border tipis
+- background soft tint sesuai aksen kategori
+- icon berada di dalam small rounded icon container
+- nama kategori jelas
+- visual hierarchy bagus
+- ukuran compact
+- tidak terlalu tinggi
+- tidak membuat halaman menjadi terlalu panjang
+
+Desktop/tablet:
+gunakan grid yang rapi.
+
+Mobile:
+gunakan 2 kolom jika layout kategori memang berupa card grid.
+
+Contoh:
+
+[ Paket Data ] [ AI & Tools ]
+[ Aplikasi   ] [ Streaming ]
+[ Top Up     ] [ Cloud & Server ]
+[ Lainnya    ]
+
+Pastikan semua card memiliki tinggi yang konsisten.
+
+==================================================
+WARNA GLOBAL
+==================================================
+
+Kategori harus menyatu dengan:
+
+- header putih
+- background halaman biru sangat muda
+- hero/banner biru
+- tombol hijau WhatsApp
+- product card putih
+
+Jangan membuat kategori terlihat seperti section dari website berbeda.
+
+Gunakan warna soft/pastel dengan saturation sedang.
+
+==================================================
+BORDER — WAJIB
+==================================================
+
+Semua card kategori WAJIB memiliki:
+
+- border 1px solid yang sangat lembut
+- border-radius konsisten
+- shadow sangat ringan
+- tidak boleh terlihat flat tanpa border
+
+Menu hamburger juga WAJIB memiliki border tipis dan rounded corner.
+
+Jangan menghilangkan border yang sudah bagus pada komponen lain.
+
+==================================================
+RESPONSIVE
+==================================================
+
+Pastikan:
+
+Mobile:
+- menu compact
+- tidak keluar dari viewport
+- tidak menyebabkan horizontal overflow
+- kategori tetap nyaman disentuh
+- 2 kolom kategori
+
+Tablet:
+- spacing menyesuaikan
+
+Desktop:
+- menu tidak menjadi terlalu besar
+- kategori tetap proporsional
+
+==================================================
+JANGAN UBAH
+==================================================
+
+Jangan mengubah:
+
+- header Digital Cell
+- hero/banner
+- product populer
+- product card
+- Paket Data page
+- provider selector
+- category selector Paket Data
+- list paket
+- WhatsApp order
+- admin panel
+- routing
+- database
+- API
+- dark mode functionality
+- bottom navigation
+
+Jangan menghapus fitur apa pun.
+
+==================================================
+VALIDASI
+==================================================
+
+Setelah selesai:
+
+npm run lint
+npm run build
+
+Jika ada error, perbaiki sampai bersih.
+
+Kemudian:
+
+git add .
+git commit -m "fix: refine mobile menu and category styling"
+git push origin main
+
+Jangan force push.
+Jangan reset repository.
+Jangan menyentuh toko-online.
+
+Setelah selesai laporkan:
+
+- file yang diubah
+- hasil lint
+- hasil build
+- commit hash
+- status push
+
+HASIL AKHIR YANG DIINGINKAN:
+
+Menu hamburger = compact, premium, rounded, tidak memenuhi layar.
+
+Kategori homepage = lebih berwarna, soft, modern, memiliki border, dan menyatu dengan desain Digital Cell.
+
+Jangan melakukan perubahan lain di luar dua bagian tersebut.
 
 ```
 # 
