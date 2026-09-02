@@ -51,7 +51,145 @@
 ```
 # 
 ```
+Perbaiki kembali layout homepage toko-digital sesuai struktur berikut.
 
+STRUKTUR FINAL HOMEPAGE:
+
+1. Header Digital Cell
+2. Banner / Hero
+3. Kategori
+4. Search / Pencarian
+5. Produk Populer
+6. Daftar produk populer sebanyak 10 card
+
+URUTAN WAJIB:
+
+Header
+↓
+Banner
+↓
+Kategori
+↓
+Search
+↓
+Produk Populer
+↓
+10 Product Card
+
+BAGIAN KATEGORI:
+- Kategori berada SEBELUM search.
+- Jangan menaruh search sebelum kategori.
+- Gunakan kategori yang sudah ada di project.
+- Jangan membuat kategori menjadi terlalu besar.
+- Tetap gunakan desain kategori yang sudah bagus.
+- Pertahankan border/outline halus, rounded corner, shadow ringan, dan warna kategori yang berbeda namun tetap sesuai tema Digital Cell.
+
+BAGIAN SEARCH:
+- Search harus tepat DI BAWAH section Kategori.
+- Jangan diletakkan di bawah Produk Populer.
+- Search menggunakan card/container rounded seperti desain sekarang.
+- Placeholder tetap:
+  "Cari produk, layanan, atau kategori..."
+- Tombol Filter tetap tersedia jika memang sudah menjadi bagian fitur existing.
+- Jangan membuat search terlalu tinggi.
+
+BAGIAN PRODUK POPULER:
+- Tepat berada DI BAWAH Search.
+- Pertahankan heading:
+  "🔥 Produk Populer"
+- Pertahankan subtitle:
+  "Produk pilihan paling laris"
+- Link "Lihat semua →" tetap di kanan jika memang sudah ada.
+
+PRODUCT GRID:
+Jangan gunakan horizontal carousel untuk daftar produk utama.
+
+Tampilkan TOTAL 10 PRODUCT CARD.
+
+MOBILE:
+Gunakan grid 2 kolom:
+
+[ Produk 1 ] [ Produk 2 ]
+[ Produk 3 ] [ Produk 4 ]
+[ Produk 5 ] [ Produk 6 ]
+[ Produk 7 ] [ Produk 8 ]
+[ Produk 9 ] [ Produk 10 ]
+
+Jadi tepat 5 baris × 2 card = 10 card.
+
+Desktop/tablet:
+- Tetap responsive.
+- Desktop boleh menggunakan 4 kolom jika sesuai layout existing.
+- Tablet gunakan 2–3 kolom sesuai lebar layar.
+- Mobile WAJIB 2 kolom.
+
+PRODUCT CARD:
+- Jangan terlalu besar.
+- Jangan ada ruang kosong vertikal yang berlebihan.
+- Image/product visual tetap proporsional.
+- Badge "Populer" tetap boleh digunakan.
+- Nama produk terbaca jelas.
+- Harga dan tombol Order tetap rapi.
+- Semua card harus memiliki tinggi yang konsisten.
+- Border halus dan shadow ringan.
+- Jangan membuat card memenuhi hampir seluruh layar.
+
+PENTING:
+- Jangan mengubah Header yang sekarang sudah bagus.
+- Jangan memperbesar Banner.
+- Jangan membuat banner kembali memenuhi layar.
+- Jangan membuat kategori menjadi section raksasa.
+- Jangan memindahkan Search ke bawah Produk Populer.
+- Jangan menggunakan carousel untuk 10 produk utama.
+- Jangan menghapus fitur order WhatsApp.
+- Jangan mengubah admin panel.
+- Jangan mengubah halaman Paket Data.
+- Jangan mengubah BottomNav.
+- Jangan membuat gambar baru.
+- Gunakan asset/product image yang sudah ada di project.
+
+BORDER / VISUAL:
+Terapkan border yang konsisten dengan desain Digital Cell:
+- border tipis dan sangat halus
+- rounded corner modern
+- shadow ringan
+- jangan menggunakan border hitam tebal
+- jangan menggunakan outline yang terlalu mencolok
+- setiap section/card harus terlihat menyatu dengan background putih kebiruan
+
+RESPONSIVE:
+Pastikan tidak ada:
+- horizontal overflow
+- card terpotong
+- teks keluar dari card
+- tombol keluar layar
+- overlap antar section
+- header menutupi konten
+- BottomNav menutupi product card
+
+Setelah implementasi:
+1. Audit seluruh homepage.
+2. Pastikan urutannya benar:
+   Header → Banner → Kategori → Search → Produk Populer → 10 Produk.
+3. Pastikan benar-benar ada 10 product card.
+4. Pastikan mobile menjadi 2 kolom × 5 baris.
+5. Jalankan npm run lint.
+6. Jalankan npm run build.
+7. Perbaiki semua error/warning yang disebabkan perubahan.
+8. Commit perubahan.
+9. Push ke branch main.
+
+Jangan berhenti hanya setelah kode berhasil dibuat.
+Pastikan hasil akhirnya benar-benar sesuai struktur dan responsive requirement di atas.
+
+Laporkan:
+- file yang diubah
+- jumlah product card yang ditampilkan
+- hasil responsive layout
+- hasil lint
+- hasil build
+- commit hash
+- status push ke main
 ```
 # PROMPT — HAPUS TOTAL KATEGORI ATAS
 ```
