@@ -33,9 +33,261 @@
 ```
 
 ```
-# 
-```
+# PROMPT UNTUK AI CODING AGENT — FINAL FIX KATEGORI + PRODUK POPULER
 
+```
+Perbaiki homepage repo zenolambee/toko-digital.
+
+PENTING:
+Jangan melakukan redesign besar.
+Jangan mengubah Header, Hero/Banner, Search, Bottom Navigation, Admin Panel, data produk, routing, atau fitur WhatsApp yang sudah ada.
+Fokus HANYA pada:
+1. Kategori Pilihan
+2. Slider Produk Populer
+
+Tujuan utama: homepage harus kembali rapi seperti screenshot terakhir, tetapi kategori tidak memakan banyak tempat dan Produk Populer menjadi slider yang benar.
+
+==================================================
+1. KATEGORI PILIHAN — UBAH MENJADI HORIZONTAL SLIDER
+==================================================
+
+Kategori TETAP ADA.
+JANGAN DIHAPUS.
+JANGAN dibuat grid 2 kolom besar seperti sebelumnya.
+
+Setelah Hero/Banner:
+
+Kategori Pilihan
+[ Paket Data ] [ AI & Tools ] [ Aplikasi ] [ Streaming ] [ Top Up ] [ Cloud & Server ] [ Lainnya ]
+
+Buat kategori dalam SATU BARIS horizontal scroll/slider.
+
+Pada mobile:
+- hanya sekitar 2–3 kategori terlihat di layar
+- kategori berikutnya dapat digeser/swipe ke kiri/kanan
+- jangan turun menjadi banyak baris
+- jangan membuat tinggi section kategori besar
+- gunakan overflow-x: auto atau carousel yang stabil
+- scrollbar horizontal jangan terlihat
+- jangan menyebabkan horizontal overflow pada seluruh halaman
+
+Setiap category item tetap menggunakan desain berwarna pastel seperti sekarang:
+- Paket Data = hijau
+- AI & Tools = biru
+- Aplikasi = ungu
+- Streaming = merah/pink
+- Top Up = orange
+- Cloud & Server = cyan
+- Lainnya = indigo
+
+Category card dibuat compact:
+- tinggi sekitar 64–80px di mobile
+- border radius tetap modern
+- icon tetap ada
+- nama kategori tetap jelas
+- jangan membuat card sangat tinggi
+
+Jangan tampilkan tombol "Lihat semua" jika itu membuat layout terlalu penuh.
+Jika tetap diperlukan, gunakan link kecil yang tidak menambah tinggi section.
+
+==================================================
+2. URUTAN HOMEPAGE HARUS TETAP
+==================================================
+
+Urutan section WAJIB:
+
+HEADER
+↓
+HERO / BANNER
+↓
+KATEGORI PILIHAN (horizontal slider satu baris)
+↓
+SEARCH
+↓
+PRODUK POPULER
+
+Jangan memindahkan Search ke tempat lain.
+Search harus tepat DI BAWAH Kategori.
+Produk Populer harus tepat DI BAWAH Search.
+
+Jangan membuat kategori muncul lagi di bawah Search.
+Jangan membuat kategori muncul dua kali.
+
+==================================================
+3. PRODUK POPULER — BUAT SLIDER YANG BENAR
+==================================================
+
+Produk Populer tetap menggunakan 10 produk.
+
+Jangan menghapus produk.
+
+Tampilkan sebagai HORIZONTAL PRODUCT CAROUSEL/SLIDER.
+
+Mobile:
+- tampilkan 2 product card sekaligus dalam viewport
+- card tidak boleh terlalu besar
+- user dapat swipe kiri/kanan untuk melihat produk berikutnya
+- 10 produk tetap tersedia di slider
+- jangan dibuat 10 card memanjang ke bawah
+- jangan dibuat grid 2 kolom 5 baris untuk section Produk Populer
+- jangan menyebabkan seluruh halaman bisa digeser horizontal
+
+Struktur:
+
+Produk Populer
+Produk pilihan paling laris
+
+[ Product 1 ] [ Product 2 ]
+← swipe →
+
+lalu:
+
+[ Product 3 ] [ Product 4 ]
+[ Product 5 ] [ Product 6 ]
+[ Product 7 ] [ Product 8 ]
+[ Product 9 ] [ Product 10 ]
+
+Tetapi mekanisme tampilannya HARUS berupa horizontal carousel:
+user melihat 2 card dan swipe untuk berpindah ke pasangan/card berikutnya.
+
+Jangan gunakan horizontal page overflow.
+Hanya container slider yang boleh memiliki horizontal overflow.
+
+==================================================
+4. PRODUCT CARD
+==================================================
+
+Pertahankan desain Product Card yang sekarang, tetapi pastikan:
+
+- 2 card muat rapi dalam lebar mobile
+- tidak keluar layar
+- tidak terlalu tinggi
+- tidak ada ruang kosong besar
+- gambar/visual produk tidak rusak
+- badge Populer/Terlaris tetap benar
+- nama produk tidak overflow
+- kategori/provider tetap terlihat
+- deskripsi dipotong dengan line-clamp jika perlu
+- rating tetap terlihat
+- harga tetap terlihat
+- tombol Order tetap terlihat
+- semua card memiliki tinggi yang konsisten
+
+Jangan membuat card fullscreen.
+Jangan membuat card selebar layar.
+
+==================================================
+5. SLIDER BEHAVIOR
+==================================================
+
+Implementasi slider harus stabil di mobile.
+
+Pilihan implementasi boleh:
+- CSS scroll-snap
+- atau carousel React yang sudah ada
+
+Prioritaskan solusi sederhana dan stabil.
+
+Gunakan:
+- overflow-x: auto hanya pada slider
+- scroll-snap-type: x mandatory
+- setiap slide/card memiliki ukuran yang konsisten
+
+Jangan menggunakan transform/position yang menyebabkan card bergeser ke tempat aneh.
+
+Pastikan:
+- tidak ada card yang menutupi Header
+- tidak ada card yang menutupi Search
+- tidak ada card yang keluar dari container
+- tidak ada horizontal scrollbar pada body
+- tidak ada layout shift
+
+==================================================
+6. JANGAN SENTUH BAGIAN YANG SUDAH BENAR
+==================================================
+
+Jangan mengubah:
+- Header Digital Cell
+- logo
+- dark mode
+- hamburger menu
+- Hero/Banner
+- tombol WhatsApp
+- Search
+- Bottom Navigation
+- Admin
+- data produk
+- routing
+- API
+
+Kecuali perubahan CSS minor benar-benar diperlukan agar slider tidak overlap.
+
+Jangan menghapus section lain.
+
+==================================================
+7. RESPONSIVE
+==================================================
+
+Mobile:
+- kategori = horizontal slider satu baris
+- search = di bawah kategori
+- produk populer = horizontal slider, 2 card terlihat
+
+Tablet:
+- kategori tetap horizontal slider
+- produk populer dapat menampilkan 2–3 card
+
+Desktop:
+- kategori dapat menampilkan lebih banyak item dalam satu baris
+- produk populer dapat menampilkan 4 card atau lebih sesuai lebar
+
+Tetap responsif.
+
+==================================================
+8. AUDIT DUPLIKASI
+==================================================
+
+Sebelum selesai, periksa homepage secara menyeluruh.
+
+Pastikan tidak ada:
+- kategori duplikat
+- Produk Populer duplikat
+- Search duplikat
+- Header duplikat
+- Hero duplikat
+- slider lama yang masih aktif bersamaan dengan slider baru
+- CSS lama yang menyebabkan konflik
+- component lama yang masih dirender
+
+Jika ada implementasi slider lama yang bentrok, rapikan dan gunakan SATU implementasi saja.
+
+==================================================
+9. VALIDASI
+==================================================
+
+Setelah coding selesai:
+
+npm run lint
+npm run build
+
+Jika ada error, perbaiki sampai PASS.
+
+Kemudian:
+git status
+git add .
+git commit -m "fix: compact category and popular product sliders"
+git push origin main
+
+Pastikan push berhasil.
+
+Setelah selesai laporkan:
+- file yang diubah
+- lint PASS/FAIL
+- build PASS/FAIL
+- commit hash
+- push PASS/FAIL
+
+JANGAN melakukan perubahan lain di luar scope di atas.
 ```
 # 
 ```
