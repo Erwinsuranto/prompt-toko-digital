@@ -53,8 +53,69 @@
 ```
 
 ```
-# 
+# PROMPT — HAPUS TOTAL KATEGORI ATAS
 ```
+Perbaiki homepage project toko-digital.
+
+MASALAH:
+Bagian "Kategori Pilihan" yang sebelumnya sudah dihapus malah dipindahkan kembali ke bagian tengah halaman. Ini tidak diinginkan.
+
+INSTRUKSI UTAMA:
+1. HAPUS TOTAL section "Kategori Pilihan" dari homepage.
+2. HAPUS SEMUA category card yang terkait section tersebut:
+   - Paket Data
+   - AI & Tools
+   - Aplikasi
+   - Streaming
+   - Top Up
+   - Cloud & Server
+   - Lainnya
+3. HAPUS juga heading "Kategori Pilihan".
+4. HAPUS tombol/link "Lihat semua" yang khusus untuk section kategori tersebut.
+5. JANGAN memindahkan section kategori ke tengah, bawah, atau lokasi lain.
+6. Jangan membuat section kategori pengganti di homepage.
+
+LAYOUT YANG DIINGINKAN:
+Header Digital Cell
+↓
+Banner/Hero
+↓
+Produk Populer
+↓
+Search / konten produk sesuai struktur homepage yang sudah ada
+
+Setelah kategori atas dihapus, jangan membuat ruang kosong/placeholder khusus untuk kategori tersebut. Layout harus otomatis merapat secara natural.
+
+PENTING:
+- Jangan mengubah desain header.
+- Jangan mengubah banner/hero yang sudah bagus.
+- Jangan mengubah desain Produk Populer.
+- Jangan mengubah halaman Paket Data.
+- Jangan mengubah admin panel.
+- Jangan mengubah BottomNav.
+- Jangan membuat kategori baru di posisi lain.
+- Jangan melakukan perubahan visual lain yang tidak diperlukan.
+
+Tujuan akhir:
+Homepage TIDAK BOLEH memiliki section "Kategori Pilihan" sama sekali.
+Kategori cukup diakses melalui menu/halaman kategori yang memang sudah tersedia.
+
+Setelah selesai:
+- cek seluruh homepage agar tidak ada sisa category section/card
+- pastikan tidak ada import/component kategori yang tidak terpakai
+- npm run lint
+- npm run build
+- perbaiki semua error jika ada
+- commit perubahan
+- push ke branch main
+
+Laporkan:
+1. file yang diubah
+2. kategori sudah benar-benar dihapus
+3. hasil lint
+4. hasil build
+5. commit hash
+6. status push
 
 ```
 # 
