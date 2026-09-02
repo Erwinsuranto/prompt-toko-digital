@@ -25,9 +25,314 @@
 ```
 
 ```
-# 
+# PROMPT UNTUK AI CODING AGENT
 ```
+FIX LAYOUT TOKO-DIGITAL — JANGAN UBAH PRODUK POPULER
 
+Repo: zenolambee/toko-digital
+Branch: main
+
+Saya ingin kamu memperbaiki BUG layout berdasarkan screenshot terbaru.
+
+MASALAH UTAMA:
+Bagian Kategori sekarang tertimpa/menimpa Hero Banner.
+Ada panel/list kategori yang keluar dari posisi normal sehingga:
+- kategori berada di atas/menimpa Hero Banner
+- Hero Banner tertutup oleh kategori
+- Search ikut tertumpuk/bertabrakan
+- beberapa section terlihat saling overlap
+
+JANGAN hanya memperbaiki dengan menaikkan z-index.
+Perbaiki struktur layout dan positioning CSS/React agar setiap section benar-benar berada dalam normal document flow.
+
+==================================================
+STRUKTUR HOMEPAGE YANG WAJIB
+==================================================
+
+Urutan halaman mobile harus persis:
+
+1. Header Digital Cell
+2. Hero Banner
+3. Kategori Pilihan
+4. Search + Filter
+5. Produk Populer
+6. Produk terkait / semua produk
+
+Tidak boleh ada section yang overlap dengan section lain.
+
+==================================================
+HEADER
+==================================================
+
+Pertahankan Header Digital Cell yang sekarang.
+
+Header:
+- logo D
+- Digital Cell
+- Solusi Digital Terlengkap
+- dark mode
+- hamburger
+
+Jangan membuat header kedua.
+Jangan membuat header fixed/sticky yang menutupi content kecuali memang diperlukan.
+Jika header fixed/sticky digunakan, berikan spacing/padding-top yang benar agar Hero tidak tertutup.
+
+==================================================
+HERO BANNER
+==================================================
+
+Hero Banner harus selalu berada SEBELUM kategori.
+
+Hero tidak boleh tertimpa kategori.
+
+Struktur harus normal:
+
+Header
+↓
+Hero
+↓
+Category
+
+Jangan menggunakan position:absolute pada container kategori yang menyebabkan kategori keluar dari document flow.
+
+Jika ada decorative element absolute di dalam Hero, pastikan absolute tersebut hanya relatif terhadap Hero dan tidak keluar menutupi section berikutnya.
+
+Hero tetap seperti desain yang sekarang.
+JANGAN redesign Hero.
+
+==================================================
+KATEGORI
+==================================================
+
+Kategori TETAP ADA.
+Jangan hapus kategori.
+
+Tujuannya supaya kategori tidak makan tempat terlalu banyak, gunakan HORIZONTAL SLIDER/CAROUSEL.
+
+Mobile:
+- kategori 1 baris horizontal
+- card kategori berbentuk horizontal
+- bisa swipe ke kiri/kanan
+- tidak boleh menjadi 2 kolom / 3 kolom vertikal
+- tidak boleh membuat 7 kategori memanjang ke bawah
+- gunakan overflow-x:auto jika diperlukan
+- scrollbar boleh disembunyikan
+
+Contoh:
+
+[ Paket Data ] [ AI & Tools ] [ Aplikasi ] [ Streaming ] →
+
+Kategori tetap berada setelah Hero.
+
+PENTING:
+- category slider harus tetap berada dalam normal document flow
+- jangan position:absolute
+- jangan position:fixed
+- jangan transform yang membuat section keluar dari flow
+- jangan gunakan negative margin yang menyebabkan kategori menimpa Hero
+- tinggi container harus mengikuti tinggi slider
+- overflow horizontal hanya berlaku DI DALAM category slider
+- jangan sampai overflow kategori menimpa Search atau Hero
+
+Jika ada dropdown/modal kategori dari hamburger:
+- dropdown harus menjadi overlay terpisah
+- harus punya positioning yang benar
+- jangan merusak layout homepage
+- jangan muncul secara default ketika halaman pertama dibuka
+
+==================================================
+SEARCH
+==================================================
+
+Search harus berada SETELAH Kategori.
+
+Urutan:
+
+Hero
+↓
+Category Slider
+↓
+Search + Filter
+
+Search tidak boleh tertimpa kategori.
+Search tidak boleh berada di atas Hero.
+
+Pertahankan desain search yang sekarang:
+- icon search
+- placeholder "Cari produk, layanan, atau kategori..."
+- tombol Filter
+
+==================================================
+PRODUK POPULER — JANGAN DIUBAH
+==================================================
+
+INI SANGAT PENTING:
+
+Produk Populer yang sekarang SUDAH BENAR.
+JANGAN redesign.
+JANGAN ubah ukuran card.
+JANGAN ubah spacing.
+JANGAN ubah slider.
+JANGAN ubah isi.
+JANGAN ubah layout 2 card yang sekarang.
+JANGAN ubah tampilan badge.
+JANGAN ubah tombol Order.
+JANGAN ubah pagination/dots.
+
+Hanya pastikan Produk Populer tetap berada setelah Search.
+
+Struktur:
+
+Search
+↓
+Produk Populer
+↓
+Produk Populer slider yang sekarang
+
+Jangan menyentuh styling Produk Populer kecuali diperlukan untuk memperbaiki bug overlap secara struktural.
+
+==================================================
+SETELAH PRODUK POPULER
+==================================================
+
+Setelah section Produk Populer selesai, baru tampilkan:
+
+"Produk Terkait" / daftar produk
+
+Grid:
+
+[ Card 1 ] [ Card 2 ]
+[ Card 3 ] [ Card 4 ]
+[ Card 5 ] [ Card 6 ]
+[ Card 7 ] [ Card 8 ]
+[ Card 9 ] [ Card 10 ]
+
+Total 10 card.
+
+Ini adalah GRID VERTIKAL biasa.
+BUKAN carousel.
+BUKAN horizontal slider.
+
+Mobile:
+grid-template-columns: repeat(2, minmax(0, 1fr))
+
+Jadi tepat 2 kolom dan 5 baris = 10 card.
+
+==================================================
+CSS / LAYOUT RULE
+==================================================
+
+Audit seluruh CSS yang berhubungan dengan:
+- position:absolute
+- position:fixed
+- position:sticky
+- z-index
+- transform
+- negative margin
+- overflow
+- height/min-height
+
+Cari penyebab kategori bisa keluar dari posisi normal dan menimpa Hero.
+
+Perbaiki root cause, bukan sekadar menambah z-index.
+
+Gunakan layout normal:
+
+main
+  header
+  hero
+  category
+  search
+  popular
+  related products
+  footer
+
+Setiap section harus menjadi block normal dalam document flow.
+
+Jangan membuat section saling menutupi.
+
+==================================================
+RESPONSIVE
+==================================================
+
+Pastikan layout benar pada:
+
+- mobile 360px
+- mobile 375px
+- mobile 390px
+- mobile 414px
+- tablet
+- desktop
+
+Mobile adalah prioritas utama.
+
+Tidak boleh ada:
+- horizontal page overflow
+- category menimpa hero
+- search menimpa category
+- popular menimpa search
+- header menutupi hero
+- section keluar container
+- content tertutup bottom navigation
+
+Horizontal scrolling hanya boleh terjadi di Category Slider dan Popular Product Slider jika memang sudah menjadi bagian desain.
+BODY/HALAMAN UTAMA tidak boleh horizontal scroll.
+
+==================================================
+JANGAN UBAH YANG SUDAH BENAR
+==================================================
+
+Jangan membuat ulang homepage dari nol.
+
+Jangan mengganti desain Hero.
+Jangan menghapus Category.
+Jangan mengubah Produk Populer.
+Jangan mengubah data produk.
+Jangan mengubah admin panel.
+Jangan mengubah fitur WhatsApp.
+Jangan mengubah routing yang sudah bekerja.
+
+Fokus hanya:
+
+1. memperbaiki document flow
+2. memperbaiki Category Slider
+3. memastikan Category berada di bawah Hero
+4. memastikan Search berada di bawah Category
+5. memastikan Produk Populer tetap persis seperti sekarang
+6. memastikan section berikutnya berada di bawah Produk Populer
+
+==================================================
+VALIDASI WAJIB
+==================================================
+
+Setelah selesai:
+
+1. jalankan lint
+2. jalankan production build
+3. perbaiki semua error
+4. pastikan tidak ada TypeScript error
+5. pastikan tidak ada hydration error
+6. pastikan tidak ada duplicate component/render
+7. pastikan tidak ada horizontal body overflow
+
+Kemudian commit dan push ke:
+
+zenolambee/toko-digital
+branch main
+
+Jangan berhenti sebelum push berhasil.
+
+Setelah selesai laporkan:
+
+- root cause bug kategori menimpa Hero
+- file yang diubah
+- lint: PASS/FAIL
+- build: PASS/FAIL
+- commit hash
+- push: PASS/FAIL
+
+PENTING:
+JANGAN MENYENTUH DESAIN PRODUK POPULER YANG SEKARANG SUDAH BENAR.
 ```
 # PROMPT — TAMBAHKAN 10 PRODUK DI BAWAH PRODUK POPULER
 ```
