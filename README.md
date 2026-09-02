@@ -67,7 +67,171 @@
 ```
 # 
 ```
+REVISI KECIL HALAMAN PAKET DATA — HAPUS TOMBOL "SEMUA"
 
+Repository:
+zenolambee/toko-digital
+
+Jangan menyentuh repository toko-online.
+
+JANGAN HAPUS FITUR PAKET DATA.
+JANGAN REDESIGN HALAMAN.
+
+Hanya lakukan perubahan berikut:
+
+========================================
+HAPUS 2 TOMBOL "SEMUA"
+========================================
+
+Pada halaman Paket Data, HAPUS tombol:
+
+1. "Semua" pada bagian:
+Pilih Provider
+
+2. "Semua" pada bagian:
+Pilih Kategori Paket
+
+Kedua tombol tersebut benar-benar tidak perlu ditampilkan.
+
+========================================
+HASIL YANG DIINGINKAN
+========================================
+
+Pilih Provider
+
+[ Telkomsel ] [ Indosat ] [ XL ] [ Tri ] [ AXIS ] ...
+
+Tidak ada:
+[ Semua ]
+
+Kemudian:
+
+Pilih Kategori Paket
+
+[ Internet ] [ Unlimited ] [ Masa Aktif ] ...
+
+Tidak ada:
+[ Semua ]
+
+========================================
+PERILAKU DEFAULT
+========================================
+
+Karena pilihan "Semua" dihapus:
+
+Saat halaman Paket Data dibuka:
+- pilih provider pertama yang tersedia sebagai provider aktif/default
+ATAU gunakan provider yang memang sudah dipilih dari navigasi sebelumnya jika tersedia.
+
+Setelah provider dipilih:
+- tampilkan kategori yang tersedia untuk provider tersebut.
+- pilih kategori pertama sebagai kategori aktif/default jika diperlukan.
+
+List paket langsung menampilkan paket sesuai provider + kategori aktif.
+
+Jangan membuat filter "semua" tersembunyi di UI.
+
+========================================
+PROVIDER
+========================================
+
+Tetap gunakan horizontal scroll jika provider banyak.
+
+Provider selected:
+- border/accent biru
+- background selected yang lembut
+- text tetap jelas
+
+Provider tidak selected:
+- border tipis
+- background putih/light
+- text dark/gray
+
+========================================
+KATEGORI
+========================================
+
+Tetap gunakan horizontal scroll jika diperlukan.
+
+Kategori selected:
+- border/accent biru
+- background selected lembut
+
+Tidak ada tombol "Semua".
+
+========================================
+JANGAN UBAH BAGIAN LAIN
+========================================
+
+Pertahankan:
+
+- Header Digital Cell
+- ← Paket Data
+- Provider selector
+- Category selector
+- Daftar Paket
+- package card
+- logo provider
+- harga
+- status OPEN
+- status GANGGUAN
+- border card
+- bottom navigation
+- dark mode
+- WhatsApp order
+- data Paket Data
+
+Jangan menambahkan:
+- input nomor HP
+- tombol Kontak
+- tombol Scan
+- tombol Bantuan
+- search
+- menu tambahan
+
+========================================
+RESPONSIVE
+========================================
+
+Mobile:
+Provider → horizontal scroll
+Kategori → horizontal scroll
+Daftar paket → vertical
+
+Jangan sampai body mengalami horizontal overflow.
+
+========================================
+VALIDASI
+========================================
+
+Setelah perubahan:
+
+npm run lint
+npm run build
+
+Perbaiki semua error.
+
+Kemudian:
+
+git add .
+git commit -m "fix: remove all filters from package data"
+git push origin main
+
+Jangan force push.
+Jangan reset.
+Jangan menyentuh toko-online.
+
+Laporkan:
+- file yang diubah
+- hasil lint
+- hasil build
+- commit hash
+- status push
+
+PERUBAHAN HANYA:
+HAPUS DUA TOMBOL "SEMUA" YANG DILINGKARI.
+
+Jangan mengubah desain lainnya.
 ```
 # 
 ```
