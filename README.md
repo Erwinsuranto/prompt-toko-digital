@@ -43,7 +43,360 @@
 ```
 # 
 ```
+FINAL UI FIX — JANGAN UBAH URUTAN LAYOUT
 
+Repo: zenolambee/toko-digital
+Branch: main
+
+Screenshot terbaru menunjukkan URUTAN SECTION SUDAH BENAR.
+
+JANGAN MEMINDAHKAN SECTION LAGI.
+
+Urutan homepage WAJIB tetap:
+
+HEADER
+↓
+HERO
+↓
+KATEGORI PILIHAN
+↓
+SEARCH
+↓
+PRODUK POPULER
+↓
+10 PRODUCT CARD
+
+==================================================
+MASALAH YANG HARUS DIPERBAIKI SEKARANG
+==================================================
+
+Jangan redesign.
+
+Jangan menambah section.
+
+Jangan memindahkan kategori.
+
+Jangan memindahkan search.
+
+Jangan memindahkan Produk Populer.
+
+Jangan mengubah Header.
+
+Jangan mengubah Hero.
+
+Fokus HANYA membuat kategori dan product card lebih compact dan proporsional.
+
+==================================================
+1. KATEGORI PILIHAN — PERKECIL
+==================================================
+
+Section "Kategori Pilihan" tetap setelah Hero.
+
+Kategori tetap:
+
+Paket Data
+AI & Tools
+Aplikasi
+Streaming
+Top Up
+Cloud & Server
+Lainnya
+
+Tetap 2 kolom di mobile.
+
+Tetapi card kategori SEKARANG TERLALU TINGGI/BESAR.
+
+Perkecil:
+- tinggi card
+- padding
+- ukuran icon
+- jarak antar card
+- ukuran heading jika terlalu besar
+
+Target mobile:
+
+[Paket Data]     [AI & Tools]
+[Aplikasi]       [Streaming]
+[Top Up]         [Cloud & Server]
+[Lainnya]
+
+Card harus terlihat seperti tombol kategori compact, bukan panel besar.
+
+Jangan membuat setiap kategori memakan terlalu banyak tinggi layar.
+
+==================================================
+2. SEARCH
+==================================================
+
+Search tetap TEPAT setelah kategori.
+
+Jangan pindahkan.
+
+Buat tinggi search proporsional dan compact.
+
+Tetap:
+- icon search
+- placeholder
+- tombol Filter
+
+==================================================
+3. PRODUK POPULER
+==================================================
+
+Produk Populer tetap TEPAT setelah Search.
+
+Jangan pindahkan.
+
+Tetap ada:
+🔥 Produk Populer
+Produk pilihan paling laris
+Lihat semua →
+
+==================================================
+4. PRODUCT GRID — WAJIB 10 CARD
+==================================================
+
+Ini sangat penting.
+
+Homepage harus menampilkan 10 produk.
+
+Mobile WAJIB 2 kolom:
+
+Row 1:
+[1] [2]
+
+Row 2:
+[3] [4]
+
+Row 3:
+[5] [6]
+
+Row 4:
+[7] [8]
+
+Row 5:
+[9] [10]
+
+Gunakan CSS Grid:
+
+grid-template-columns: repeat(2, minmax(0, 1fr));
+
+BUKAN carousel.
+
+BUKAN horizontal slider.
+
+BUKAN hanya 2 product.
+
+Semua 10 card harus berada dalam vertical page flow normal.
+
+User harus bisa scroll ke bawah untuk melihat:
+produk 1 sampai produk 10.
+
+==================================================
+5. PRODUCT CARD — PERKECIL SECARA SIGNIFIKAN
+==================================================
+
+Screenshot menunjukkan product card terlalu besar.
+
+Perkecil product card agar 2 card terlihat nyaman berdampingan.
+
+Jangan membuat satu product card hampir memenuhi tinggi layar.
+
+Kurangi:
+- tinggi image/visual header
+- padding
+- margin
+- ukuran font yang terlalu besar
+- tinggi deskripsi
+- jarak antar elemen
+- tinggi area harga
+- ukuran tombol jika terlalu besar
+
+Card harus tetap berisi informasi penting:
+
+- badge
+- visual/image
+- nama produk
+- kategori/provider
+- deskripsi singkat
+- rating
+- harga
+- tombol Order
+
+Tetapi dibuat COMPACT.
+
+Jika deskripsi terlalu panjang:
+- batasi menjadi 2 baris
+- gunakan ellipsis
+
+Nama produk juga jangan membuat card menjadi sangat tinggi.
+
+==================================================
+6. TARGET VISUAL MOBILE
+==================================================
+
+Pada layar sekitar 360–430px:
+
+Kategori:
+- 2 kolom
+- compact
+- tidak memenuhi sebagian besar layar
+
+Search:
+- satu baris
+- compact
+
+Produk Populer:
+- heading normal
+- tidak terlalu besar
+
+Product:
+- 2 kolom
+- gap kecil tetapi tetap nyaman
+- card tidak terlalu tinggi
+- 10 card tersusun vertikal
+
+Contoh:
+
+┌────────────┐ ┌────────────┐
+│ Product 1  │ │ Product 2  │
+│            │ │            │
+│ info       │ │ info       │
+│ Rp xxx     │ │ Rp xxx     │
+│ Order      │ │ Order      │
+└────────────┘ └────────────┘
+
+┌────────────┐ ┌────────────┐
+│ Product 3  │ │ Product 4  │
+└────────────┘ └────────────┘
+
+dan seterusnya sampai Product 10.
+
+==================================================
+7. JANGAN ADA HORIZONTAL OVERFLOW
+==================================================
+
+Pastikan:
+
+body:
+overflow-x: hidden;
+
+Product grid:
+width: 100%;
+min-width: 0;
+
+Card:
+min-width: 0;
+
+Jangan menggunakan horizontal scrolling untuk product grid.
+
+==================================================
+8. JANGAN UBAH YANG SUDAH BENAR
+==================================================
+
+Pertahankan:
+
+Header
+↓
+Hero
+↓
+Kategori
+↓
+Search
+↓
+Produk Populer
+↓
+10 Product Cards
+
+Jangan mencoba "memperbaiki" urutan tersebut.
+
+Jangan membuat kategori kembali ke atas Hero.
+
+Jangan membuat search ke atas kategori.
+
+Jangan membuat Produk Populer sebelum search.
+
+Jangan menambahkan kategori kedua.
+
+Jangan menambahkan Bottom Navigation.
+
+Jangan menambahkan product carousel.
+
+==================================================
+9. AUDIT DUPLIKASI
+==================================================
+
+Pastikan hanya ada:
+
+1 Header
+1 Hero
+1 Category Section
+1 Search
+1 Produk Populer Section
+10 Product Cards
+
+Hapus component/markup duplikat jika ada.
+
+==================================================
+10. VALIDASI
+==================================================
+
+Setelah perubahan:
+
+npm run lint
+
+npm run build
+
+Jika error, perbaiki sampai PASS.
+
+Kemudian cek halaman homepage secara visual/responsive.
+
+Test minimal:
+360px
+375px
+390px
+414px
+430px
+
+Pastikan:
+- 2 kolom product
+- 10 product
+- kategori 2 kolom
+- tidak overflow
+- card compact
+- search setelah kategori
+- Produk Populer setelah search
+- Header tidak overlap
+- Hero tidak tertutup
+- tidak ada Bottom Navigation
+
+==================================================
+11. GIT
+==================================================
+
+Setelah semuanya benar:
+
+git add .
+git commit -m "fix: compact homepage category and product cards"
+git push origin main
+
+Jangan berhenti sebelum push berhasil.
+
+LAPORAN:
+
+- urutan homepage: PASS
+- kategori: 7 item / 1 section
+- search: setelah kategori
+- Produk Populer: setelah search
+- product cards: 10
+- mobile grid: 2 kolom
+- product card: compact
+- horizontal overflow: tidak ada
+- Bottom Navigation: tidak ada
+- lint: PASS
+- build: PASS
+- commit hash:
+- push: PASS
 ```
 # 
 ```
