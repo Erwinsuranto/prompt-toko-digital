@@ -13,9 +13,280 @@
 ```
 
 ```
-# 
+# PROMPT — UPGRADE ADMIN DASHBOARD TOKO DIGITAL
 ```
+Kerjakan langsung pada repository GitHub `zenolambee/toko-digital`, branch `main`.
 
+TUJUAN:
+Upgrade halaman Admin Dashboard yang SUDAH ADA di `/admin` menjadi admin panel toko digital yang modern, rapi, profesional, dan responsive.
+
+JANGAN membuat dashboard baru dari nol.
+JANGAN menghapus fitur admin yang sudah ada.
+
+ATURAN PALING PENTING:
+1. JANGAN mengubah atau merusak storefront/public homepage.
+2. Jangan mengubah Hero, Category Slider, Search, Produk Populer, Produk Terkait, product card, atau mobile navigation storefront.
+3. Fokus pekerjaan hanya pada area `/admin`.
+4. Pertahankan route:
+   - `/admin/login`
+   - `/admin`
+   - `/admin/produk`
+   - `/admin/kategori`
+   - `/admin/paket-data`
+5. Jangan menghapus data produk, kategori, atau paket data.
+6. Jangan mengganti framework atau melakukan migrasi besar.
+7. Jangan menambahkan dependency baru kecuali benar-benar diperlukan.
+8. Jangan membuat data dummy yang menggantikan data asli.
+
+SEBELUM CODING:
+Inspect terlebih dahulu:
+- `src/app/admin/page.tsx`
+- `src/app/admin/login/page.tsx`
+- `src/app/admin/produk/*`
+- `src/app/admin/kategori/*`
+- `src/app/admin/paket-data/*`
+- `src/lib/data.ts`
+- `src/lib/data-packages.ts`
+- seluruh component/layout yang berkaitan dengan admin
+
+1. ADMIN LAYOUT
+
+Buat layout admin yang konsisten.
+
+Desktop:
+- Sidebar di sebelah kiri.
+- Konten utama di sebelah kanan.
+- Branding toko.
+- Menu aktif terlihat jelas.
+
+Mobile:
+- Sidebar menjadi drawer/menu.
+- Menu HARUS dalam keadaan tertutup ketika halaman pertama kali dibuka.
+- Drawer hanya muncul setelah hamburger/menu ditekan.
+- Tidak boleh menutupi konten secara permanen.
+- Tidak boleh menyebabkan horizontal overflow.
+
+Menu:
+- Dashboard
+- Produk
+- Kategori
+- Paket Data
+- Kembali ke Toko
+- Logout
+
+Gunakan icon yang sudah tersedia jika ada.
+
+2. DASHBOARD `/admin`
+
+Pertahankan judul:
+`Dashboard Admin`
+
+Tambahkan deskripsi singkat:
+`Kelola toko digital Anda`
+
+Pertahankan tombol Logout.
+
+Buat statistic cards menggunakan DATA ASLI:
+- Total Produk
+- Produk Tersedia
+- Total Kategori
+- Paket Data
+
+Jangan menggunakan angka hardcoded.
+
+3. AKSI CEPAT
+
+Tambahkan section:
+`Aksi Cepat`
+
+Buat tombol/card:
+- Kelola Produk → `/admin/produk`
+- Kelola Kategori → `/admin/kategori`
+- Kelola Paket Data → `/admin/paket-data`
+- Lihat Toko → `/`
+
+Semua tombol harus benar-benar berfungsi.
+
+4. PRODUK
+
+Tambahkan section:
+`Produk`
+
+Tampilkan ringkasan produk menggunakan data yang sudah ada:
+- gambar
+- nama
+- kategori
+- harga
+- status tersedia/tidak tersedia
+
+Jangan membuat produk dummy.
+
+Jika data tidak memiliki timestamp, jangan mengarang tanggal. Gunakan urutan data yang tersedia.
+
+Tambahkan:
+`Lihat Semua Produk` → `/admin/produk`
+
+5. STATUS PRODUK
+
+Tambahkan ringkasan:
+- Produk tersedia
+- Produk tidak tersedia
+
+Gunakan data asli.
+
+Bisa menggunakan progress/bar sederhana tanpa menambahkan chart library baru.
+
+6. WHATSAPP
+
+Jika `NEXT_PUBLIC_WHATSAPP_NUMBER` tersedia, tampilkan nomor WhatsApp.
+
+Jika kosong:
+`Belum dikonfigurasi`
+
+Jangan menyebabkan error ketika environment variable tidak tersedia.
+
+7. AUTHENTICATION
+
+Pertahankan authentication yang sekarang.
+
+Jika belum login:
+`/admin` harus redirect ke `/admin/login`.
+
+Logout harus:
+- menghapus authentication state yang sekarang digunakan
+- redirect ke `/admin/login`
+
+Jangan mengganti sistem authentication menjadi sistem baru tanpa alasan.
+
+8. RESPONSIVE
+
+Wajib nyaman pada:
+- 360–430px mobile
+- 768px tablet
+- 1280px+ desktop
+
+Pastikan:
+- tidak ada horizontal scrollbar
+- card tidak keluar layar
+- sidebar tidak menutupi konten secara permanen
+- text tidak bertabrakan
+- button mudah ditekan
+- tabel/list admin tetap usable di mobile
+
+9. VISUAL
+
+Gunakan style yang konsisten dengan toko:
+- modern
+- clean
+- profesional
+- rounded cards
+- subtle border
+- spacing yang rapi
+- branding biru
+- status sukses/error/warning jelas
+
+Jangan membuat dashboard terlalu ramai.
+
+10. REUSABLE COMPONENT
+
+Jika sidebar/header/layout digunakan beberapa halaman admin, buat component reusable.
+
+Pastikan:
+`/admin`
+`/admin/produk`
+`/admin/kategori`
+`/admin/paket-data`
+
+mempunyai navigasi dan struktur admin yang konsisten.
+
+Jangan membuat satu file besar jika logic dapat dipisahkan dengan wajar.
+
+11. DATA INTEGRITY
+
+Dashboard harus membaca data yang benar-benar digunakan project.
+
+Jangan:
+- hardcode statistik
+- membuat data palsu
+- menghapus data existing
+- mengganti struktur data tanpa alasan
+
+Jika data project masih static/local, tampilkan data tersebut dengan benar. Jangan berpura-pura sudah menggunakan database.
+
+12. JANGAN SENTUH STOREFRONT
+
+Ini WAJIB.
+
+Setelah perubahan admin selesai, pastikan tidak ada perubahan terhadap:
+- homepage `/`
+- hero
+- category slider
+- search
+- Produk Populer
+- Produk Terkait
+- product card
+- mobile menu storefront
+
+Produk Populer yang sekarang sudah bagus JANGAN DIUBAH LAGI.
+
+13. TEST
+
+Jalankan:
+
+`npm run lint`
+
+lalu:
+
+`npm run build`
+
+Perbaiki semua error yang disebabkan perubahanmu sampai berhasil.
+
+Pastikan tidak ada:
+- TypeScript error
+- ESLint error
+- build error
+- hydration error
+- broken route
+- horizontal overflow
+
+14. GIT
+
+Setelah semuanya berhasil:
+
+`git status`
+
+Pastikan perubahan hanya terkait Admin Dashboard/admin layout.
+
+Jangan memasukkan perubahan yang tidak berkaitan.
+
+Commit:
+
+`feat: upgrade admin dashboard`
+
+Kemudian push ke:
+
+`origin main`
+
+15. LAPORAN
+
+Setelah selesai, laporkan:
+- file yang diubah
+- fitur dashboard yang ditambahkan
+- status `/admin/login`
+- status `/admin/produk`
+- status `/admin/kategori`
+- status `/admin/paket-data`
+- hasil `npm run lint`
+- hasil `npm run build`
+- commit SHA
+- konfirmasi push ke `main`
+
+JANGAN berhenti setelah coding.
+
+Wajib:
+INSPECT → IMPLEMENT → TEST → FIX → COMMIT → PUSH.
+
+Mulai sekarang dengan inspect repository terlebih dahulu.
 ```
 # 
 ```
