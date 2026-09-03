@@ -9,9 +9,275 @@
 ```
 
 ```
-# 
+# PROMPT — AMANKAN AUTHENTICATION ADMIN
 ```
+Kerjakan pada repository GitHub `zenolambee/toko-digital`, branch `main`.
 
+TUJUAN:
+Perbaiki sistem login Admin Panel agar password admin TIDAK menggunakan `NEXT_PUBLIC_ADMIN_PASSWORD` dan tidak pernah diekspos ke browser.
+
+Gunakan environment variable private:
+
+`ADMIN_PASSWORD`
+
+PENTING:
+Jangan hanya mengganti nama environment variable di frontend.
+Authentication harus benar-benar dilakukan melalui server-side logic.
+
+ATURAN:
+
+1. INSPECT DULU
+
+Periksa seluruh authentication admin yang sekarang, terutama:
+- `src/app/admin/login/page.tsx`
+- `src/app/admin/page.tsx`
+- route/API/server action yang berkaitan dengan admin
+- middleware jika ada
+- seluruh penggunaan `adminAuth`
+- seluruh penggunaan `NEXT_PUBLIC_ADMIN_PASSWORD`
+
+Pahami mekanisme yang sekarang sebelum melakukan perubahan.
+
+2. PRIVATE PASSWORD
+
+Ubah sistem agar password admin dibaca dari:
+
+`process.env.ADMIN_PASSWORD`
+
+Jangan pernah menggunakan:
+
+`process.env.NEXT_PUBLIC_ADMIN_PASSWORD`
+
+untuk authentication.
+
+Jangan menaruh password:
+- di source code
+- di client-side JavaScript
+- di localStorage
+- di URL
+- di query parameter
+- di public environment variable
+
+3. SERVER-SIDE LOGIN
+
+Buat mekanisme login server-side yang sesuai dengan arsitektur Next.js project saat ini.
+
+Login form boleh tetap berada di client component, tetapi password harus dikirim melalui mekanisme POST/server action/API route yang aman dan diverifikasi di server.
+
+Server harus membandingkan password input dengan:
+
+`process.env.ADMIN_PASSWORD`
+
+Jangan mengirim nilai `ADMIN_PASSWORD` kembali ke browser.
+
+4. SESSION / AUTH STATE
+
+Jangan lagi mengandalkan:
+
+`localStorage.setItem("adminAuth", "true")`
+
+sebagai satu-satunya pengaman dashboard.
+
+Implementasikan authentication state server-side yang sesuai, misalnya secure HTTP-only cookie/session.
+
+Cookie authentication harus:
+- `HttpOnly`
+- `Secure` pada production
+- `SameSite` yang sesuai
+- memiliki expiry yang wajar
+
+Jangan menyimpan password di cookie.
+
+5. PROTECT `/admin`
+
+Pastikan user yang belum login tidak dapat mengakses dashboard admin hanya dengan membuka:
+
+`/admin`
+
+Jika authentication tidak valid:
+
+`/admin` → `/admin/login`
+
+Proteksi harus berlaku pada halaman admin dan route admin sensitif yang memang membutuhkan authentication.
+
+6. LOGOUT
+
+Pertahankan tombol Logout.
+
+Logout harus benar-benar menghapus/invalidate session atau authentication cookie dan mengarahkan user ke:
+
+`/admin/login`
+
+Jangan hanya menghapus tampilan client-side.
+
+7. LOGIN ERROR
+
+Jika password salah:
+
+tampilkan:
+
+`Password salah`
+
+Jangan memberitahukan apakah environment variable kosong atau detail internal server.
+
+Jangan menampilkan password atau secret dalam error.
+
+8. ENVIRONMENT VARIABLE
+
+Jangan membuat nilai password default hardcoded.
+
+Jika `ADMIN_PASSWORD` belum dikonfigurasi:
+- login harus gagal dengan aman
+- jangan crash seluruh aplikasi
+- jangan menampilkan nilai secret
+- tampilkan pesan generik yang sesuai jika memang diperlukan
+
+Jangan menggunakan fallback seperti:
+
+`admin123`
+`password`
+atau password default lainnya.
+
+9. BACKWARD COMPATIBILITY
+
+Pertahankan route:
+
+`/admin/login`
+`/admin`
+`/admin/produk`
+`/admin/kategori`
+`/admin/paket-data`
+
+Jangan menghapus dashboard admin yang sudah dibuat.
+
+Jangan mengubah fitur CRUD admin yang tidak berkaitan dengan authentication.
+
+10. STOREFRONT
+
+SANGAT PENTING:
+
+Jangan mengubah storefront/public homepage.
+
+Jangan menyentuh desain:
+- Hero
+- Category Slider
+- Search
+- Produk Populer
+- Produk Terkait
+- product cards
+- mobile menu storefront
+
+Produk Populer yang sekarang sudah bagus JANGAN DIUBAH.
+
+11. SECURITY CHECK
+
+Setelah implementasi, cari seluruh repository untuk memastikan tidak ada lagi authentication yang menggunakan:
+
+`NEXT_PUBLIC_ADMIN_PASSWORD`
+
+Jika variable tersebut hanya digunakan untuk authentication lama, hapus penggunaannya.
+
+Pastikan `ADMIN_PASSWORD` hanya digunakan pada server-side code.
+
+Jangan menambahkan `ADMIN_PASSWORD` ke client bundle.
+
+12. TEST LOGIN
+
+Pastikan skenario berikut:
+
+A. Password benar:
+Login berhasil → `/admin`
+
+B. Password salah:
+Login gagal → tetap di `/admin/login`
+
+C. Belum login:
+Membuka `/admin` → diarahkan ke `/admin/login`
+
+D. Logout:
+Logout → `/admin/login`
+
+E. Direct access:
+User tidak bisa melewati authentication hanya dengan membuka URL admin.
+
+13. VERCEL
+
+Setelah coding selesai, dokumentasikan bahwa environment variable yang harus dibuat di Vercel adalah:
+
+Name:
+`ADMIN_PASSWORD`
+
+Value:
+password pilihan administrator
+
+Environment:
+Production
+
+Jika Preview/Development diperlukan, jelaskan juga.
+
+JANGAN mencoba memasukkan password asli ke repository atau source code.
+
+14. TEST BUILD
+
+Jalankan:
+
+`npm run lint`
+
+kemudian:
+
+`npm run build`
+
+Perbaiki semua error sampai keduanya berhasil.
+
+Pastikan tidak ada:
+- TypeScript error
+- ESLint error
+- build error
+- hydration error
+- broken admin route
+
+15. GIT
+
+Jalankan:
+
+`git status`
+
+Pastikan perubahan hanya berkaitan dengan authentication/admin security.
+
+Jangan commit file `.env` atau secret/password.
+
+Commit dengan:
+
+`fix: secure admin authentication`
+
+Kemudian push ke:
+
+`origin main`
+
+16. LAPORAN
+
+Setelah selesai laporkan:
+
+- file yang diubah
+- bagaimana authentication sekarang bekerja
+- apakah password sudah server-side/private
+- apakah `NEXT_PUBLIC_ADMIN_PASSWORD` sudah tidak digunakan
+- hasil login benar
+- hasil password salah
+- hasil protection `/admin`
+- hasil logout
+- hasil `npm run lint`
+- hasil `npm run build`
+- commit SHA
+- konfirmasi push ke `main`
+
+JANGAN berhenti setelah coding.
+
+Wajib lakukan:
+
+INSPECT → IMPLEMENT → SECURITY CHECK → TEST → FIX → COMMIT → PUSH.
+
+Setelah push berhasil, berhenti dan berikan laporan hasilnya.
 ```
 # PROMPT — UPGRADE ADMIN DASHBOARD TOKO DIGITAL
 ```
