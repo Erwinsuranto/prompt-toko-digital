@@ -19,6 +19,198 @@
 ```
 # 
 ```
+PERBAIKI HANYA TAMPILAN MENU KATEGORI HAMBURGER.
+
+KONDISI SAAT INI:
+Website toko-digital sudah hampir benar.
+Produk Populer SUDAH BENAR dan JANGAN DISENTUH.
+Hero/banner SUDAH BENAR dan JANGAN DISENTUH.
+Header SUDAH BENAR dan JANGAN DISENTUH.
+Search SUDAH BENAR dan JANGAN DISENTUH.
+Kategori horizontal di halaman utama SUDAH BENAR dan JANGAN DISENTUH.
+
+MASALAH YANG HARUS DIPERBAIKI:
+Saat hamburger menu dibuka, muncul panel kategori putih besar seperti screenshot terakhir.
+Panel tersebut terlalu tinggi, terlalu kosong, jarak antar item terlalu jauh, dan tampilannya masih seperti daftar teks biasa.
+
+TARGET:
+Buat hamburger category menu menjadi compact, modern, rapi, dan profesional seperti mobile e-commerce/app menu.
+
+ATURAN WAJIB:
+
+1. JANGAN mengubah Produk Populer.
+   - Jangan ubah slider Produk Populer.
+   - Jangan ubah ukuran card Produk Populer.
+   - Jangan ubah jumlah card.
+   - Jangan ubah badge.
+   - Jangan ubah tombol Order.
+   - Jangan ubah dots slider.
+   - Jangan ubah CSS atau struktur Produk Populer kecuali benar-benar diperlukan agar menu overlay tidak menutupinya.
+
+2. JANGAN mengubah Hero/banner.
+
+3. JANGAN mengubah Header selain bagian hamburger open/close jika memang diperlukan.
+
+4. JANGAN mengubah Search.
+
+5. JANGAN menghapus kategori.
+
+6. SEMUA kategori tetap tersedia:
+   - Semua Produk
+   - Paket Data
+   - AI & Tools
+   - Aplikasi
+   - Streaming
+   - Top Up
+   - Cloud & Server
+   - Lainnya
+   - Hubungi Kami
+
+7. PERBAIKI PANEL HAMBURGER:
+   - Panel tetap berupa overlay di atas halaman.
+   - Background halaman di belakang overlay dibuat sedikit gelap/blur.
+   - Panel menggunakan rounded corners yang konsisten dengan desain website.
+   - Panel jangan memenuhi hampir seluruh layar.
+   - Tinggi panel harus compact dan hanya sebesar konten + padding yang wajar.
+   - Jangan ada ruang kosong vertikal besar seperti screenshot sekarang.
+   - Gunakan padding sekitar 20–28px.
+   - Jarak antar item sekitar 10–16px, bukan puluhan pixel.
+   - Typography lebih compact.
+
+8. BUAT KATEGORI MENJADI GRID 2 KOLOM DI DALAM MENU:
+   
+   Contoh:
+
+   ┌─────────────────────────────────────┐
+   │ Semua Produk                        │
+   │                                     │
+   │ [📶 Paket Data]    [💡 AI & Tools] │
+   │ [▣ Aplikasi]       [▶ Streaming]   │
+   │ [▤ Top Up]         [☁ Cloud &...]  │
+   │ [⋮ Lainnya]                         │
+   │                                     │
+   │ 💬 Hubungi Kami                     │
+   └─────────────────────────────────────┘
+
+   Tetapi "Semua Produk" boleh dibuat sebagai item full-width di bagian atas.
+
+9. SETIAP KATEGORI:
+   - Gunakan ikon yang sesuai dengan kategori.
+   - Ikon harus konsisten.
+   - Ikon berada dalam kotak kecil rounded.
+   - Teks kategori berada di sebelah ikon.
+   - Item memiliki background subtle.
+   - Border tipis.
+   - Rounded.
+   - Tinggi item compact sekitar 56–64px.
+   - Jangan gunakan item yang hanya berupa teks besar tanpa visual.
+
+10. WARNA:
+   Pertahankan bahasa visual website sekarang.
+   Jangan membuat warna baru yang terlalu mencolok.
+   Gunakan warna pastel/subtle yang sudah digunakan pada category cards:
+   - Paket Data: hijau muda
+   - AI & Tools: biru muda
+   - Aplikasi: ungu muda
+   - Streaming: merah/pink muda
+   - Top Up: orange muda
+   - Cloud & Server: cyan muda
+   - Lainnya: lavender/biru muda
+
+11. "Hubungi Kami":
+   - Tetap berada di bagian paling bawah menu.
+   - Buat sebagai tombol/action full-width.
+   - Warna hijau seperti tombol WhatsApp yang sudah digunakan.
+   - Ikon WhatsApp/chat tetap ada.
+   - Tinggi compact.
+   - Jangan terlalu besar.
+
+12. "Semua Produk":
+   - Jadikan item utama di bagian atas.
+   - Bisa full-width.
+   - Beri visual/icon yang sesuai.
+   - Harus terlihat berbeda sedikit dari kategori biasa karena merupakan pilihan semua produk.
+
+13. MENU TIDAK BOLEH MENUTUPI SECARA ANEH:
+   - Panel harus memiliki z-index yang benar.
+   - Panel berada di atas hero/category/search/product.
+   - Background overlay berada di bawah panel.
+   - Tidak boleh ada kategori halaman utama yang menembus panel.
+   - Tidak boleh ada hero yang menimpa menu.
+   - Tidak boleh ada search bar yang menembus menu.
+   - Tidak boleh ada produk yang menembus menu.
+
+14. SCROLL:
+   - Pada layar mobile normal, menu sebaiknya tidak membutuhkan scrolling.
+   - Jika tinggi layar sangat kecil dan scrolling memang diperlukan, hanya panel menu yang boleh scroll.
+   - Body halaman belakang jangan ikut bergeser ketika menu terbuka.
+   - Jangan membuat panel menjadi sangat tinggi hanya untuk menghindari scroll.
+
+15. ANIMASI:
+   - Tambahkan animasi open/close yang ringan jika sudah ada sistem animasi.
+   - Jangan membuat animasi berat.
+   - Jangan mengubah fungsi hamburger.
+   - Klik X menutup menu.
+   - Klik item kategori menutup menu dan menjalankan routing/filter yang memang sudah ada.
+
+16. RESPONSIVE:
+   - Fokus utama mobile.
+   - Pada mobile: grid kategori 2 kolom.
+   - Pada layar sangat kecil, tetap compact dan tidak overflow horizontal.
+   - Tidak boleh ada horizontal body overflow.
+   - Jangan sampai panel keluar dari viewport.
+
+17. JANGAN MEMBUAT DUPLIKASI:
+   - Audit komponen hamburger/category menu yang sudah ada.
+   - Jika ada lebih dari satu implementasi menu, gunakan satu implementasi saja.
+   - Jangan membuat menu kedua.
+   - Jangan membuat kategori kedua.
+   - Jangan membuat overlay kedua.
+   - Jangan menambahkan komponen baru kalau fungsi yang sama sudah tersedia.
+
+18. PENTING:
+   Jangan melakukan redesign website.
+   Ini BUKAN permintaan untuk membuat ulang halaman.
+   Ini hanya perbaikan UI category hamburger menu.
+
+HASIL YANG SAYA INGINKAN:
+Ketika hamburger diklik, tampil panel kategori yang:
+- compact
+- 2 kolom
+- semua kategori tetap ada
+- setiap kategori memiliki ikon
+- spacing rapat tetapi tetap nyaman
+- tidak terlalu tinggi
+- modern
+- bersih
+- tidak menutupi/merusak hero
+- tidak menutupi/merusak search
+- tidak menutupi/merusak Produk Populer
+- overlay rapi
+- close button tetap bekerja.
+
+VERIFIKASI WAJIB SEBELUM SELESAI:
+1. Jalankan lint.
+2. Jalankan build production.
+3. Pastikan tidak ada TypeScript error.
+4. Pastikan tidak ada horizontal overflow.
+5. Pastikan hamburger open/close bekerja.
+6. Pastikan semua 9 menu tetap ada.
+7. Pastikan Produk Populer TIDAK berubah.
+8. Pastikan Hero TIDAK berubah.
+9. Pastikan Search TIDAK berubah.
+10. Pastikan tidak ada duplicate menu/overlay.
+11. Commit perubahan.
+12. Push ke branch main repository zenolambee/toko-digital.
+
+JANGAN mengerjakan hal lain di luar permintaan ini.
+
+SETELAH SELESAI LAPORKAN:
+- file yang diubah
+- hasil lint
+- hasil build
+- commit hash
+- status push ke main
 
 ```
 # PROMPT FIX FINAL — JANGAN UBAH PRODUK POPULER
